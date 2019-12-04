@@ -11,6 +11,11 @@ import Foundation
 class GooFuriganaConverterRemoteAPI: FuriganaConverterRemoteAPI {
 
     let requestURL = URL(string: "https://labs.goo.ne.jp/api/hiragana")!
+    let session: URLSession
+
+    init(session: URLSession) {
+        self.session = URLSession(configuration: .default)
+    }
 
     func convert(
         _ japaneseString: String,

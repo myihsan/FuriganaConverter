@@ -11,13 +11,16 @@ import XCTest
 
 class GooFuriganaConverterRemoteAPITests: XCTestCase {
 
+    var session: URLSession!
     var sut: GooFuriganaConverterRemoteAPI!
 
     override func setUp() {
-        sut = GooFuriganaConverterRemoteAPI()
+        session = .shared
+        sut = GooFuriganaConverterRemoteAPI(session: session)
     }
 
     override func tearDown() {
+        session = nil
         sut = nil
     }
 
@@ -31,5 +34,9 @@ class GooFuriganaConverterRemoteAPITests: XCTestCase {
 
         // then
         XCTAssertEqual(sut.requestURL, requestURL)
+    }
+
+    func test_init_setsSession() {
+        XCTAssertEqual(sut.session, session)
     }
 }
