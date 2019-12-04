@@ -39,7 +39,8 @@ class GooFuriganaConverterRemoteAPI: FuriganaConverterRemoteAPI {
         request.httpBody = try!  JSONSerialization.data(withJSONObject: httpBodyJSONObject)
         let task = session.dataTask(with: request) { data, response, error in
             guard let response = response as? HTTPURLResponse,
-                response.statusCode == 200 else {
+                response.statusCode == 200,
+                error == nil else {
                     completionHandler(.failure(.unknown))
                     return
             }
