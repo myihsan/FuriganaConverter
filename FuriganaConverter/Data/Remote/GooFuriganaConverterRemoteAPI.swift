@@ -15,6 +15,7 @@ class GooFuriganaConverterRemoteAPI: FuriganaConverterRemoteAPI {
     private let requestURL = URL(string: "https://labs.goo.ne.jp/api/hiragana")!
     private let appID: String
     private static let unexpectedStatusCodes = [404, 405]
+    private static let limitExceededMessage = "Rate limit exceeded"
     private static let unexpectedMessages = [
         "Content-Type is empty",
         "Invalid JSON",
@@ -76,7 +77,13 @@ class GooFuriganaConverterRemoteAPI: FuriganaConverterRemoteAPI {
                     return
                 }
 
-                if  Self.unexpectedMessages.contains(errorResponse.error.message) {
+                let message = errorResponse.error.message
+                if message == Self.limitExceededMessage {
+                    result = .failure(.limitExceeded)
+                    return
+                }
+
+                if  Self.unexpectedMessages.contains(message) {
                     result = .failure(.unexpected)
                     return
                 }
