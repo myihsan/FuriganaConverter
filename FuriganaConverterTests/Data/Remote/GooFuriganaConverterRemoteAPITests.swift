@@ -42,4 +42,27 @@ class GooFuriganaConverterRemoteAPITests: XCTestCase {
         // then
         XCTAssertEqual(mockTask.request.url, requestURL)
     }
+
+    func test_convert_setsExpectedBody() throws {
+        // given
+        let privateInfosPath = Bundle.main.path(forResource: "PrivateInfo", ofType: "plist")!
+        let privateInfos = NSDictionary(contentsOfFile: privateInfosPath)!
+        let appID = try XCTUnwrap(privateInfos["AppID"] as? String)
+
+        let japaneseString = "漢字が混ざっている文章"
+
+        let expectedBodyJSONObject = [
+            "app_id": appID,
+            "sentence": japaneseString,
+            "output_type": "hiragana"
+        ]
+
+        // when
+        let mockTask = try XCTUnwrap(sut.convert(japaneseString) { _ in } as? MockURLSessionDataTask)
+        let httpBody = try  XCTUnwrap(mockTask.request.httpBody)
+        let httpBodyJSONObject = try JSONSerialization.jsonObject(with: httpBody) as? [String: String]
+
+        // then
+        XCTAssertEqual(httpBodyJSONObject, expectedBodyJSONObject)
+    }
 }
