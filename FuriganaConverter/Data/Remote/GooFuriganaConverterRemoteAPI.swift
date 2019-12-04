@@ -14,7 +14,7 @@ class GooFuriganaConverterRemoteAPI: FuriganaConverterRemoteAPI {
     let session: URLSession
 
     init(session: URLSession) {
-        self.session = URLSession(configuration: .default)
+        self.session = session
     }
 
     func convert(
