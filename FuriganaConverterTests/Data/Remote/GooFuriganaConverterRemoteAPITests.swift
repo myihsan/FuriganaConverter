@@ -34,13 +34,13 @@ class GooFuriganaConverterRemoteAPITests: XCTestCase {
 
     func test_init_setsRequestURL() throws {
         // given
-        let requestURL = URL(string: "https://labs.goo.ne.jp/api/hiragana")!
+        let actualRequestURL = URL(string: "https://labs.goo.ne.jp/api/hiragana")!
 
         // when
         let mockTask = try XCTUnwrap(sut.convert("") { _ in } as? MockURLSessionDataTask)
 
         // then
-        XCTAssertEqual(mockTask.request.url, requestURL)
+        XCTAssertEqual(mockTask.request.url, actualRequestURL)
     }
 
     func test_convert_setsExpectedBody() throws {
