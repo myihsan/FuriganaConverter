@@ -45,6 +45,14 @@ class GooFuriganaConverterRemoteAPITests: XCTestCase {
         XCTAssertEqual(mockTask.request.url, actualRequestURL)
     }
 
+    func test_convert_callsByPOST() throws {
+        // when
+        let mockTask = try XCTUnwrap(sut.convert("") { _ in } as? MockURLSessionDataTask)
+
+        // then
+        XCTAssertEqual(mockTask.request.httpMethod, "POST")
+    }
+
     func test_convert_setsExpectedBody() throws {
         // given
         let privateInfosPath = Bundle.main.path(forResource: "PrivateInfo", ofType: "plist")!
