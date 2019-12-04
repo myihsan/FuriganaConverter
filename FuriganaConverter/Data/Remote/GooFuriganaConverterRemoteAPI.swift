@@ -10,7 +10,7 @@ import Foundation
 
 class GooFuriganaConverterRemoteAPI: FuriganaConverterRemoteAPI {
 
-    let requestURL = URL(string: "https://example.com/")!
+    let requestURL = URL(string: "https://labs.goo.ne.jp/api/hiragana")!
 
     func convert(
         _ japaneseString: String,
