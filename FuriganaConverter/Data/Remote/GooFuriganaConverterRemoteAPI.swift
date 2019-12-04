@@ -16,6 +16,7 @@ class GooFuriganaConverterRemoteAPI: FuriganaConverterRemoteAPI {
     private let appID: String
     private static let unexpectedStatusCodes = [404, 405]
     private static let limitExceededMessage = "Rate limit exceeded"
+    private static let tooLongMessage = "Request to large"
     private static let unexpectedMessages = [
         "Content-Type is empty",
         "Invalid JSON",
@@ -80,6 +81,11 @@ class GooFuriganaConverterRemoteAPI: FuriganaConverterRemoteAPI {
                 let message = errorResponse.error.message
                 if message == Self.limitExceededMessage {
                     result = .failure(.limitExceeded)
+                    return
+                }
+
+                if message == Self.tooLongMessage {
+                    result = .failure(.tooLong)
                     return
                 }
 
