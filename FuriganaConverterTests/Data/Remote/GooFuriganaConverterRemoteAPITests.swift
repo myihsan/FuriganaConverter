@@ -77,10 +77,24 @@ class GooFuriganaConverterRemoteAPITests: XCTestCase {
     }
 
     func test_convert_givenFailureResponseWithUndecodableBody_callsCompletionWithUnknown() throws {
-        // given
+        // when
+        let result = try whenConvert(data: nil, statusCode: 500, error: nil)
+
+        // then
+        XCTAssertEqual(result, .failure(.unknown))
+    }
+}
+
+extension GooFuriganaConverterRemoteAPITests {
+
+    func whenConvert(
+        data: Data? = nil,
+        statusCode: Int = 200,
+        error: Error? = nil
+    ) throws -> RemoteAPIResult? {
         let response = HTTPURLResponse(
             url: requestURL,
-            statusCode: 500,
+            statusCode: statusCode,
             httpVersion: nil,
             headerFields: nil
         )
@@ -91,9 +105,8 @@ class GooFuriganaConverterRemoteAPITests: XCTestCase {
         let mockTask = try XCTUnwrap(sut.convert("") { result in
             receivedResult = result
             } as? MockURLSessionDataTask)
-        mockTask.completionHandler(nil, response, nil)
+        mockTask.completionHandler(data, response, error)
 
-        // then
-        XCTAssertEqual(receivedResult, .failure(.unknown))
+        return receivedResult
     }
 }
