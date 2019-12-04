@@ -65,4 +65,12 @@ class GooFuriganaConverterRemoteAPITests: XCTestCase {
         // then
         XCTAssertEqual(httpBodyJSONObject, expectedBodyJSONObject)
     }
+
+    func test_convert_callsResumesOnTask() throws {
+        // when
+        let mockTask = try XCTUnwrap(sut.convert("") { _ in } as? MockURLSessionDataTask)
+
+        // then
+        XCTAssertTrue(mockTask.calledResume)
+    }
 }

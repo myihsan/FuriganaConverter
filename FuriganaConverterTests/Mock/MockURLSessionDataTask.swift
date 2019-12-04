@@ -12,6 +12,7 @@ class MockURLSessionDataTask: URLSessionDataTask {
 
     let completionHandler: (Data?, URLResponse?, Error?) -> Void
     let request: URLRequest
+    var calledResume = false
 
     init(
         completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void,
@@ -22,6 +23,6 @@ class MockURLSessionDataTask: URLSessionDataTask {
     }
 
     override func resume() {
-        // Do nothing to avoid actually starting this task
+        calledResume = true
     }
 }
