@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workspace
    version = "1.0">
+   <Group
+      location = "container:"
+      name = "Environment">
+      <FileRef
+         location = "group:Gemfile">
+      </FileRef>
+      <FileRef
+         location = "group:Podfile">
+      </FileRef>
+   </Group>
    <FileRef
       location = "group:FuriganaConverter.xcodeproj">
    </FileRef>
