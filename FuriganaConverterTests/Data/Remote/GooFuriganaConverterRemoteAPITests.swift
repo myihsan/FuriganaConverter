@@ -24,4 +24,12 @@ class GooFuriganaConverterRemoteAPITests: XCTestCase {
     func test_conformsToFuriganaConverterRemoteAPI() {
         XCTAssertTrue((sut as AnyObject) is FuriganaConverterRemoteAPI)
     }
+
+    func test_init_setsRequestURL() {
+        // given
+        let requestURL = URL(string: "https://labs.goo.ne.jp/api/hiragana")!
+
+        // then
+        XCTAssertEqual(sut.requestURL, requestURL)
+    }
 }
