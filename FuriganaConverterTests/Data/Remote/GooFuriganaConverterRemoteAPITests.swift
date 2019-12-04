@@ -120,14 +120,7 @@ class GooFuriganaConverterRemoteAPITests: XCTestCase {
 
         try unexpectedError.forEach { code, message in
             // given
-            let data = """
-            {
-                "error": {
-                    "code": \(code),
-                    "message": "\(message)"
-                }
-            }
-            """.data(using: .utf8)
+            let data = errorData(code: code, message: message)
 
             // when
             let result = try whenConvert(data: data, statusCode: code, error: nil)
@@ -161,5 +154,16 @@ extension GooFuriganaConverterRemoteAPITests {
         mockTask.completionHandler(data, response, error)
 
         return receivedResult
+    }
+
+    func errorData(code: Int, message: String) -> Data {
+        """
+        {
+            "error": {
+                "code": \(code),
+                "message": "\(message)"
+            }
+        }
+        """.data(using: .utf8)!
     }
 }
