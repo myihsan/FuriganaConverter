@@ -176,6 +176,17 @@ class GooFuriganaConverterRemoteAPITests: XCTestCase {
 
         XCTAssertEqual(convertedString, expectedConvertedString)
     }
+
+    func test_convert_givenInValidJSON_callsCompletionWithUnknown() throws {
+        // given
+        let data = "".data(using: .utf8)!
+
+        // when
+        let result = try whenConvert(data: data)
+
+        // then
+        XCTAssertEqual(result, .failure(.unknown))
+    }
 }
 
 extension GooFuriganaConverterRemoteAPITests {
