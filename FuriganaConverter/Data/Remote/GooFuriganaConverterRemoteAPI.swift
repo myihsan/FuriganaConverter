@@ -37,7 +37,13 @@ class GooFuriganaConverterRemoteAPI: FuriganaConverterRemoteAPI {
         // Never failed since httpBodyJSONObject is a [String: String]
         // swiftlint:disable:next force_try
         request.httpBody = try!  JSONSerialization.data(withJSONObject: httpBodyJSONObject)
-        let task = session.dataTask(with: request) { _, _, _ in }
+        let task = session.dataTask(with: request) { data, response, error in
+            guard let response = response as? HTTPURLResponse,
+                response.statusCode == 200 else {
+                    completionHandler(.failure(.unknown))
+                    return
+            }
+        }
         task.resume()
         return task
     }
