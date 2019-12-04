@@ -129,6 +129,18 @@ class GooFuriganaConverterRemoteAPITests: XCTestCase {
             XCTAssertEqual(result, .failure(.unexpected))
         }
     }
+
+    func test_convert_givenFailureResponseWithLimitExceededError_callsCompletionWithlimitExceeded() throws {
+        // given
+        let statusCode = 400
+        let data = errorData(code: statusCode, message: "Rate limit exceeded")
+
+        // when
+        let result = try whenConvert(data: data, statusCode: statusCode, error: nil)
+
+        // then
+        XCTAssertEqual(result, .failure(.limitExceeded))
+    }
 }
 
 extension GooFuriganaConverterRemoteAPITests {
