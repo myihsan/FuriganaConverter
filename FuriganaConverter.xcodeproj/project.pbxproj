@@ -21,6 +21,8 @@
 		BBE8A3F9239821BD00663E73 /* FuriganaConverterRemoteAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE8A3F8239821BD00663E73 /* FuriganaConverterRemoteAPI.swift */; };
 		BBE8A3FB239821EA00663E73 /* GooFuriganaConverterRemoteAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE8A3FA239821EA00663E73 /* GooFuriganaConverterRemoteAPI.swift */; };
 		BBE8A3FD2398222900663E73 /* GooFuriganaConverterRemoteAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE8A3FC2398222900663E73 /* GooFuriganaConverterRemoteAPITests.swift */; };
+		BBE8A402239824A300663E73 /* MockURLSessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE8A401239824A300663E73 /* MockURLSessionDataTask.swift */; };
+		BBE8A404239824D500663E73 /* MockURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE8A403239824D500663E73 /* MockURLSession.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +66,8 @@
 		BBE8A3F8239821BD00663E73 /* FuriganaConverterRemoteAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuriganaConverterRemoteAPI.swift; sourceTree = "<group>"; };
 		BBE8A3FA239821EA00663E73 /* GooFuriganaConverterRemoteAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GooFuriganaConverterRemoteAPI.swift; sourceTree = "<group>"; };
 		BBE8A3FC2398222900663E73 /* GooFuriganaConverterRemoteAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GooFuriganaConverterRemoteAPITests.swift; sourceTree = "<group>"; };
+		BBE8A401239824A300663E73 /* MockURLSessionDataTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSessionDataTask.swift; sourceTree = "<group>"; };
+		BBE8A403239824D500663E73 /* MockURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSession.swift; sourceTree = "<group>"; };
 		CB72FA2221E48E0F22612127 /* libPods-FuriganaConverter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FuriganaConverter.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F689D00C84499114531E57A7 /* Pods-FuriganaConverterUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FuriganaConverterUITests.debug.xcconfig"; path = "Target Support Files/Pods-FuriganaConverterUITests/Pods-FuriganaConverterUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		FA17C528C8660D2CA58EA13D /* Pods-FuriganaConverterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FuriganaConverterTests.release.xcconfig"; path = "Target Support Files/Pods-FuriganaConverterTests/Pods-FuriganaConverterTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -160,6 +164,7 @@
 		BBE8A3CA2398139000663E73 /* FuriganaConverterTests */ = {
 			isa = PBXGroup;
 			children = (
+				BBE8A4002398248B00663E73 /* Mock */,
 				BBE8A3CD2398139000663E73 /* Info.plist */,
 				BBE8A3FE2398223900663E73 /* Data */,
 			);
@@ -207,6 +212,15 @@
 				BBE8A3FC2398222900663E73 /* GooFuriganaConverterRemoteAPITests.swift */,
 			);
 			path = Remote;
+			sourceTree = "<group>";
+		};
+		BBE8A4002398248B00663E73 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				BBE8A401239824A300663E73 /* MockURLSessionDataTask.swift */,
+				BBE8A403239824D500663E73 /* MockURLSession.swift */,
+			);
+			path = Mock;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -445,7 +459,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBE8A404239824D500663E73 /* MockURLSession.swift in Sources */,
 				BBE8A3FD2398222900663E73 /* GooFuriganaConverterRemoteAPITests.swift in Sources */,
+				BBE8A402239824A300663E73 /* MockURLSessionDataTask.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

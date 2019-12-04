@@ -6,6 +6,8 @@
 //  Copyright © 2019 Jierong Li. All rights reserved.
 //
 
+import Foundation
+
 typealias RemoteAPIResult = Result<String, RemoteAPIError>
 
 protocol FuriganaConverterRemoteAPI {
@@ -13,5 +15,5 @@ protocol FuriganaConverterRemoteAPI {
     func convert(
         _ japaneseString: String,
         completionHandler: @escaping (RemoteAPIResult) -> Void
-    )
+    ) -> URLSessionDataTask
 }

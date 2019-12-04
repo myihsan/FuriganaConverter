@@ -15,7 +15,7 @@ class GooFuriganaConverterRemoteAPITests: XCTestCase {
     var sut: GooFuriganaConverterRemoteAPI!
 
     override func setUp() {
-        session = .shared
+        session = MockURLSession()
         sut = GooFuriganaConverterRemoteAPI(session: session)
     }
 
@@ -28,15 +28,18 @@ class GooFuriganaConverterRemoteAPITests: XCTestCase {
         XCTAssertTrue((sut as AnyObject) is FuriganaConverterRemoteAPI)
     }
 
-    func test_init_setsRequestURL() {
+    func test_init_setsSession() {
+        XCTAssertEqual(sut.session, session)
+    }
+
+    func test_init_setsRequestURL() throws {
         // given
         let requestURL = URL(string: "https://labs.goo.ne.jp/api/hiragana")!
 
-        // then
-        XCTAssertEqual(sut.requestURL, requestURL)
-    }
+        // when
+        let mockTask = try XCTUnwrap(sut.convert("") { _ in } as? MockURLSessionDataTask)
 
-    func test_init_setsSession() {
-        XCTAssertEqual(sut.session, session)
+        // then
+        XCTAssertEqual(mockTask.request.url, requestURL)
     }
 }

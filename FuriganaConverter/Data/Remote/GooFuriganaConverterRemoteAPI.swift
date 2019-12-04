@@ -10,7 +10,7 @@ import Foundation
 
 class GooFuriganaConverterRemoteAPI: FuriganaConverterRemoteAPI {
 
-    let requestURL = URL(string: "https://labs.goo.ne.jp/api/hiragana")!
+    private let requestURL = URL(string: "https://labs.goo.ne.jp/api/hiragana")!
     let session: URLSession
 
     init(session: URLSession) {
@@ -20,5 +20,8 @@ class GooFuriganaConverterRemoteAPI: FuriganaConverterRemoteAPI {
     func convert(
         _ japaneseString: String,
         completionHandler: @escaping (Result<String, RemoteAPIError>) -> Void
-    ) {}
+    ) -> URLSessionDataTask {
+        let request = URLRequest(url: URL(string: "Wrong", relativeTo: requestURL)!)
+        return session.dataTask(with: request) { _, _, _ in }
+    }
 }
