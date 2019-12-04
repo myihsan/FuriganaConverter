@@ -153,6 +153,29 @@ class GooFuriganaConverterRemoteAPITests: XCTestCase {
         // then
         XCTAssertEqual(result, .failure(.tooLong))
     }
+
+    func test_convert_givenValidJSON_callsCompletionWithConvertedString() throws {
+        // given
+        let expectedConvertedString = "かんじが まざっている ぶんしょう"
+        let data = """
+        {
+            "converted": "\(expectedConvertedString)",
+            "output_type": "hiragana",
+            "request_id": "labs.goo.ne.jp\\t1575471185\\t0"
+        }
+        """.data(using: .utf8)!
+
+        // when
+        let result = try whenConvert(data: data, statusCode: 200, error: nil)
+
+        // then
+        guard case let .success(convertedString) = result else {
+            XCTFail("The result is not a success")
+            return
+        }
+
+        XCTAssertEqual(convertedString, expectedConvertedString)
+    }
 }
 
 extension GooFuriganaConverterRemoteAPITests {
