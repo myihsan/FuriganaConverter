@@ -95,6 +95,19 @@ class GooFuriganaConverterRemoteAPI: FuriganaConverterRemoteAPI {
                 }
                 return
             }
+
+            guard let data = data else {
+                // Success but no response body
+                return
+            }
+
+            let decoder = JSONDecoder()
+            guard let gooFuriganaConverterResponse = try? decoder
+                .decode(GooFuriganaConverterResponse.self, from: data) else {
+                return
+            }
+
+            result = .success(gooFuriganaConverterResponse.converted)
         }
         task.resume()
         return task

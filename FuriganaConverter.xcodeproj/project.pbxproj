@@ -25,6 +25,7 @@
 		BBE8A404239824D500663E73 /* MockURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE8A403239824D500663E73 /* MockURLSession.swift */; };
 		BBE8A4072398263400663E73 /* PrivateInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BBE8A405239825AF00663E73 /* PrivateInfo.plist */; };
 		BBE8A40A23982B7B00663E73 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE8A40923982B7B00663E73 /* ErrorResponse.swift */; };
+		BBE8A40C23982EFE00663E73 /* GooFuriganaConverterResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE8A40B23982EFE00663E73 /* GooFuriganaConverterResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 		BBE8A403239824D500663E73 /* MockURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSession.swift; sourceTree = "<group>"; };
 		BBE8A405239825AF00663E73 /* PrivateInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = PrivateInfo.plist; sourceTree = "<group>"; };
 		BBE8A40923982B7B00663E73 /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
+		BBE8A40B23982EFE00663E73 /* GooFuriganaConverterResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GooFuriganaConverterResponse.swift; sourceTree = "<group>"; };
 		CB72FA2221E48E0F22612127 /* libPods-FuriganaConverter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FuriganaConverter.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F689D00C84499114531E57A7 /* Pods-FuriganaConverterUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FuriganaConverterUITests.debug.xcconfig"; path = "Target Support Files/Pods-FuriganaConverterUITests/Pods-FuriganaConverterUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		FA17C528C8660D2CA58EA13D /* Pods-FuriganaConverterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FuriganaConverterTests.release.xcconfig"; path = "Target Support Files/Pods-FuriganaConverterTests/Pods-FuriganaConverterTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				BBE8A40923982B7B00663E73 /* ErrorResponse.swift */,
+				BBE8A40B23982EFE00663E73 /* GooFuriganaConverterResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -467,6 +470,7 @@
 				BBE8A3B72398138F00663E73 /* SceneDelegate.swift in Sources */,
 				BBE8A3FB239821EA00663E73 /* GooFuriganaConverterRemoteAPI.swift in Sources */,
 				BBE8A3F7239821A300663E73 /* RemoteAPIError.swift in Sources */,
+				BBE8A40C23982EFE00663E73 /* GooFuriganaConverterResponse.swift in Sources */,
 				BBE8A40A23982B7B00663E73 /* ErrorResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
