@@ -14,6 +14,16 @@ class GooFuriganaConverterRemoteAPI: FuriganaConverterRemoteAPI {
 
     private let requestURL = URL(string: "https://labs.goo.ne.jp/api/hiragana")!
     private let appID: String
+    private static let unexpectedStatusCodes = [404, 405]
+    private static let unexpectedMessages = [
+        "Content-Type is empty",
+        "Invalid JSON",
+        "Invalid Content-Type",
+        "Invalid request parameter",
+        "Suspended app_id",
+        "Invalid app_id",
+        "Rate limit exceeded"
+    ]
 
     init(session: URLSession) {
         self.session = session
@@ -38,11 +48,38 @@ class GooFuriganaConverterRemoteAPI: FuriganaConverterRemoteAPI {
         // swiftlint:disable:next force_try
         request.httpBody = try!  JSONSerialization.data(withJSONObject: httpBodyJSONObject)
         let task = session.dataTask(with: request) { data, response, error in
+            var result = RemoteAPIResult.failure(.unknown)
+            defer {
+                completionHandler(result)
+            }
+
             guard let response = response as? HTTPURLResponse,
-                response.statusCode == 200,
                 error == nil else {
-                    completionHandler(.failure(.unknown))
+                return
+            }
+
+            let statusCode = response.statusCode
+            guard statusCode == 200 else {
+
+                if Self.unexpectedStatusCodes.contains(statusCode) {
+                    result = .failure(.unexpected)
                     return
+                }
+
+                guard let data = data else {
+                    return
+                }
+
+                let decoder = JSONDecoder()
+                guard let errorResponse = try? decoder.decode(ErrorResponse.self, from: data) else {
+                    return
+                }
+
+                if  Self.unexpectedMessages.contains(errorResponse.error.message) {
+                    result = .failure(.unexpected)
+                    return
+                }
+                return
             }
         }
         task.resume()
