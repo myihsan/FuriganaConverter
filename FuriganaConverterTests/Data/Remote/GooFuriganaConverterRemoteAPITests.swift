@@ -141,6 +141,18 @@ class GooFuriganaConverterRemoteAPITests: XCTestCase {
         // then
         XCTAssertEqual(result, .failure(.limitExceeded))
     }
+
+    func test_convert_givenFailureResponseWithTooLongError_callsCompletionWithTooLong() throws {
+        // given
+        let statusCode = 413
+        let data = errorData(code: statusCode, message: "Request to large")
+
+        // when
+        let result = try whenConvert(data: data, statusCode: statusCode, error: nil)
+
+        // then
+        XCTAssertEqual(result, .failure(.tooLong))
+    }
 }
 
 extension GooFuriganaConverterRemoteAPITests {
