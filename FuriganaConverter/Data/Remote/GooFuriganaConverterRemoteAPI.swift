@@ -21,7 +21,7 @@ class GooFuriganaConverterRemoteAPI: FuriganaConverterRemoteAPI {
         _ japaneseString: String,
         completionHandler: @escaping (Result<String, RemoteAPIError>) -> Void
     ) -> URLSessionDataTask {
-        let request = URLRequest(url: URL(string: "Wrong", relativeTo: requestURL)!)
+        let request = URLRequest(url: requestURL)
         return session.dataTask(with: request) { _, _, _ in }
     }
 }
