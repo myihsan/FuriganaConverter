@@ -14,6 +14,8 @@ class GooFuriganaConverterRemoteAPITests: XCTestCase {
     var session: URLSession!
     var sut: GooFuriganaConverterRemoteAPI!
 
+    let requestURL = URL(string: "https://example.com/api/hiragana")!
+
     override func setUp() {
         session = MockURLSession()
         sut = GooFuriganaConverterRemoteAPI(session: session)
@@ -72,5 +74,26 @@ class GooFuriganaConverterRemoteAPITests: XCTestCase {
 
         // then
         XCTAssertTrue(mockTask.calledResume)
+    }
+
+    func test_convert_givenFailureResponseWithUndecodableBody_callsCompletionWithUnknown() throws {
+        // given
+        let response = HTTPURLResponse(
+            url: requestURL,
+            statusCode: 500,
+            httpVersion: nil,
+            headerFields: nil
+        )
+
+        // when
+        var receivedResult: RemoteAPIResult?
+
+        let mockTask = try XCTUnwrap(sut.convert("") { result in
+            receivedResult = result
+            } as? MockURLSessionDataTask)
+        mockTask.completionHandler(nil, response, nil)
+
+        // then
+        XCTAssertEqual(receivedResult, .failure(.unknown))
     }
 }
