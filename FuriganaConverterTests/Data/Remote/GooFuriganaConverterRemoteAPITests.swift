@@ -97,6 +97,37 @@ class GooFuriganaConverterRemoteAPITests: XCTestCase {
         // then
         XCTAssertEqual(result, .failure(.unknown))
     }
+
+    func test_convert_givenFailureResponseWithUnexpectedMessage_callsCompletionWithUnexpected() throws {
+        let unexpectedError: [(code: Int, message: String)] = [
+            (400, "Content-Type is empty"),
+            (400, "Invalid JSON"),
+            (400, "Invalid Content-Type"),
+            (400, "Invalid request parameter"),
+            (400, "Suspended app_id"),
+            (400, "Invalid app_id"),
+            (404, "Not found:"),
+            (405, "Method not allowed.")
+        ]
+
+        try unexpectedError.forEach { code, message in
+            // given
+            let data = """
+            {
+                "error": {
+                    "code": \(code),
+                    "message": "\(message)"
+                }
+            }
+            """.data(using: .utf8)
+
+            // when
+            let result = try whenConvert(data: data, statusCode: code, error: nil)
+
+            // then
+            XCTAssertEqual(result, .failure(.unexpected))
+        }
+    }
 }
 
 extension GooFuriganaConverterRemoteAPITests {
