@@ -39,6 +39,7 @@ class GooFuriganaConverterRemoteAPI: FuriganaConverterRemoteAPI {
         completionHandler: @escaping (Result<String, RemoteAPIError>) -> Void
     ) -> URLSessionDataTask {
         var request = URLRequest(url: requestURL)
+        request.httpMethod = "POST"
         let httpBodyJSONObject = [
             "app_id": appID,
             "sentence": japaneseString,
