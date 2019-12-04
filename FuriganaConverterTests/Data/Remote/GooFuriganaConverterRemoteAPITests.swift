@@ -76,6 +76,20 @@ class GooFuriganaConverterRemoteAPITests: XCTestCase {
         XCTAssertTrue(mockTask.calledResume)
     }
 
+    func test_convert_givenError_callsCompletionWithUnknown() throws {
+        // given
+        let error = NSError(
+            domain: NSURLErrorDomain,
+            code: NSURLErrorCannotConnectToHost,
+            userInfo: nil)
+
+        // when
+        let result = try whenConvert(data: nil, statusCode: 200, error: error)
+
+        // then
+        XCTAssertEqual(result, .failure(.unknown))
+    }
+
     func test_convert_givenFailureResponseWithUndecodableBody_callsCompletionWithUnknown() throws {
         // when
         let result = try whenConvert(data: nil, statusCode: 500, error: nil)
