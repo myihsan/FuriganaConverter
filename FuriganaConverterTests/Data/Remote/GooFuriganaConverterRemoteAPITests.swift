@@ -92,7 +92,7 @@ class GooFuriganaConverterRemoteAPITests: XCTestCase {
             userInfo: nil)
 
         // when
-        let result = try whenConvert(data: nil, statusCode: 200, error: error)
+        let result = try whenConvert(error: error)
 
         // then
         XCTAssertEqual(result, .failure(.unknown))
@@ -100,7 +100,7 @@ class GooFuriganaConverterRemoteAPITests: XCTestCase {
 
     func test_convert_givenFailureResponseWithUndecodableBody_callsCompletionWithUnknown() throws {
         // when
-        let result = try whenConvert(data: nil, statusCode: 500, error: nil)
+        let result = try whenConvert(statusCode: 500)
 
         // then
         XCTAssertEqual(result, .failure(.unknown))
@@ -123,7 +123,7 @@ class GooFuriganaConverterRemoteAPITests: XCTestCase {
             let data = errorData(code: code, message: message)
 
             // when
-            let result = try whenConvert(data: data, statusCode: code, error: nil)
+            let result = try whenConvert(data: data, statusCode: code)
 
             // then
             XCTAssertEqual(result, .failure(.unexpected))
@@ -136,7 +136,7 @@ class GooFuriganaConverterRemoteAPITests: XCTestCase {
         let data = errorData(code: statusCode, message: "Rate limit exceeded")
 
         // when
-        let result = try whenConvert(data: data, statusCode: statusCode, error: nil)
+        let result = try whenConvert(data: data, statusCode: statusCode)
 
         // then
         XCTAssertEqual(result, .failure(.limitExceeded))
@@ -148,7 +148,7 @@ class GooFuriganaConverterRemoteAPITests: XCTestCase {
         let data = errorData(code: statusCode, message: "Request to large")
 
         // when
-        let result = try whenConvert(data: data, statusCode: statusCode, error: nil)
+        let result = try whenConvert(data: data, statusCode: statusCode)
 
         // then
         XCTAssertEqual(result, .failure(.tooLong))
@@ -166,7 +166,7 @@ class GooFuriganaConverterRemoteAPITests: XCTestCase {
         """.data(using: .utf8)!
 
         // when
-        let result = try whenConvert(data: data, statusCode: 200, error: nil)
+        let result = try whenConvert(data: data)
 
         // then
         guard case let .success(convertedString) = result else {
