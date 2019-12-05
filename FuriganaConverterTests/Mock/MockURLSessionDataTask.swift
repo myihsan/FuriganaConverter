@@ -16,9 +16,18 @@ class MockURLSessionDataTask: URLSessionDataTask {
 
     init(
         completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void,
-        request: URLRequest
+        request: URLRequest,
+        queue: DispatchQueue?
     ) {
-        self.completionHandler = completionHandler
+        if let queue = queue {
+            self.completionHandler = { data, response, error in
+                queue.async {
+                    completionHandler(data, response, error)
+                }
+            }
+        } else {
+            self.completionHandler = completionHandler
+        }
         self.request = request
     }
 

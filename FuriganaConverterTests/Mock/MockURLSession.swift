@@ -10,8 +10,14 @@ import Foundation
 
 class MockURLSession: URLSession {
 
+    private var queue: DispatchQueue?
+
     override init() {
         // Avoid deprecated warning
+    }
+
+    func givenNotMainQueue() {
+        queue = DispatchQueue(label: "dev.jierongli.FuriganaConverter")
     }
 
     override func dataTask(
@@ -20,7 +26,8 @@ class MockURLSession: URLSession {
     ) -> URLSessionDataTask {
         return MockURLSessionDataTask(
             completionHandler: completionHandler,
-            request: request
+            request: request,
+            queue: queue
         )
     }
 }

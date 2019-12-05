@@ -11,7 +11,7 @@ import XCTest
 
 class GooFuriganaConverterRemoteAPITests: XCTestCase {
 
-    var session: URLSession!
+    var session: MockURLSession!
     var sut: GooFuriganaConverterRemoteAPI!
 
     let requestURL = URL(string: "https://example.com/api/hiragana")!
@@ -92,7 +92,7 @@ class GooFuriganaConverterRemoteAPITests: XCTestCase {
             userInfo: nil)
 
         // when
-        let result = try whenConvert(error: error)
+        let result = try verifyConvertDispatchedToMainWhen(error: error)
 
         // then
         XCTAssertEqual(result, .failure(.unknown))
@@ -100,7 +100,7 @@ class GooFuriganaConverterRemoteAPITests: XCTestCase {
 
     func test_convert_givenFailureResponseWithUndecodableBody_callsCompletionWithUnknown() throws {
         // when
-        let result = try whenConvert(statusCode: 500)
+        let result = try verifyConvertDispatchedToMainWhen(statusCode: 500)
 
         // then
         XCTAssertEqual(result, .failure(.unknown))
@@ -123,7 +123,7 @@ class GooFuriganaConverterRemoteAPITests: XCTestCase {
             let data = errorData(code: code, message: message)
 
             // when
-            let result = try whenConvert(data: data, statusCode: code)
+            let result = try verifyConvertDispatchedToMainWhen(data: data, statusCode: code)
 
             // then
             XCTAssertEqual(result, .failure(.unexpected))
@@ -136,7 +136,7 @@ class GooFuriganaConverterRemoteAPITests: XCTestCase {
         let data = errorData(code: statusCode, message: "Rate limit exceeded")
 
         // when
-        let result = try whenConvert(data: data, statusCode: statusCode)
+        let result = try verifyConvertDispatchedToMainWhen(data: data, statusCode: statusCode)
 
         // then
         XCTAssertEqual(result, .failure(.limitExceeded))
@@ -148,7 +148,7 @@ class GooFuriganaConverterRemoteAPITests: XCTestCase {
         let data = errorData(code: statusCode, message: "Request to large")
 
         // when
-        let result = try whenConvert(data: data, statusCode: statusCode)
+        let result = try verifyConvertDispatchedToMainWhen(data: data, statusCode: statusCode)
 
         // then
         XCTAssertEqual(result, .failure(.tooLong))
@@ -166,7 +166,7 @@ class GooFuriganaConverterRemoteAPITests: XCTestCase {
         """.data(using: .utf8)!
 
         // when
-        let result = try whenConvert(data: data)
+        let result = try verifyConvertDispatchedToMainWhen(data: data)
 
         // then
         guard case let .success(convertedString) = result else {
@@ -182,7 +182,7 @@ class GooFuriganaConverterRemoteAPITests: XCTestCase {
         let data = "".data(using: .utf8)!
 
         // when
-        let result = try whenConvert(data: data)
+        let result = try verifyConvertDispatchedToMainWhen(data: data)
 
         // then
         XCTAssertEqual(result, .failure(.unknown))
@@ -191,11 +191,13 @@ class GooFuriganaConverterRemoteAPITests: XCTestCase {
 
 extension GooFuriganaConverterRemoteAPITests {
 
-    func whenConvert(
+    func verifyConvertDispatchedToMainWhen(
         data: Data? = nil,
         statusCode: Int = 200,
         error: Error? = nil
     ) throws -> RemoteAPIResult? {
+        session.givenNotMainQueue()
+
         let response = HTTPURLResponse(
             url: requestURL,
             statusCode: statusCode,
@@ -203,13 +205,21 @@ extension GooFuriganaConverterRemoteAPITests {
             headerFields: nil
         )
 
-        // when
+        let expectation = self.expectation(
+          description: "Completion wasn't called")
+        var thread: Thread!
         var receivedResult: RemoteAPIResult?
 
         let mockTask = try XCTUnwrap(sut.convert("") { result in
+            thread = Thread.current
             receivedResult = result
+            expectation.fulfill()
             } as? MockURLSessionDataTask)
         mockTask.completionHandler(data, response, error)
+
+        waitForExpectations(timeout: 0.2) { _ in
+            XCTAssert(thread.isMainThread)
+        }
 
         return receivedResult
     }
