@@ -102,9 +102,13 @@ struct ConverterRootView_Previews: PreviewProvider {
 
     static var previews: some View {
         ForEach(deviceNames, id: \.self) { deviceName in
-          ConverterRootViewRepresentable()
-            .previewDevice(PreviewDevice(rawValue: deviceName))
-            .previewDisplayName(deviceName)
+            ForEach(ColorScheme.allCases, id: \.self) { colorScheme in
+                ConverterRootViewRepresentable()
+                    .accentColor(.green)
+                    .environment(\.colorScheme, colorScheme)
+                    .previewDevice(PreviewDevice(rawValue: deviceName))
+                    .previewDisplayName("\(deviceName) (\(colorScheme))")
+            }
         }
     }
 }
