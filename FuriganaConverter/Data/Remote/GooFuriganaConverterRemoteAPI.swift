@@ -42,6 +42,7 @@ class GooFuriganaConverterRemoteAPI: FuriganaConverterRemoteAPI {
     ) -> URLSessionDataTask {
         var request = URLRequest(url: requestURL)
         request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         let httpBodyJSONObject = [
             "app_id": appID,
             "sentence": japaneseString,
