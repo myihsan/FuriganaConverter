@@ -16,8 +16,16 @@
 		BBE8A3BC2398138F00663E73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBE8A3BA2398138F00663E73 /* Main.storyboard */; };
 		BBE8A3BE2398139000663E73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBE8A3BD2398139000663E73 /* Assets.xcassets */; };
 		BBE8A3C12398139000663E73 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBE8A3BF2398139000663E73 /* LaunchScreen.storyboard */; };
-		BBE8A3F023981BD200663E73 /* FuriganaConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE8A3EF23981BD200663E73 /* FuriganaConverterTests.swift */; };
 		BBE8A3F223981C0600663E73 /* FuriganaConverterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE8A3F123981C0600663E73 /* FuriganaConverterUITests.swift */; };
+		BBE8A3F7239821A300663E73 /* RemoteAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE8A3F6239821A300663E73 /* RemoteAPIError.swift */; };
+		BBE8A3F9239821BD00663E73 /* FuriganaConverterRemoteAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE8A3F8239821BD00663E73 /* FuriganaConverterRemoteAPI.swift */; };
+		BBE8A3FB239821EA00663E73 /* GooFuriganaConverterRemoteAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE8A3FA239821EA00663E73 /* GooFuriganaConverterRemoteAPI.swift */; };
+		BBE8A3FD2398222900663E73 /* GooFuriganaConverterRemoteAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE8A3FC2398222900663E73 /* GooFuriganaConverterRemoteAPITests.swift */; };
+		BBE8A402239824A300663E73 /* MockURLSessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE8A401239824A300663E73 /* MockURLSessionDataTask.swift */; };
+		BBE8A404239824D500663E73 /* MockURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE8A403239824D500663E73 /* MockURLSession.swift */; };
+		BBE8A4072398263400663E73 /* PrivateInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BBE8A405239825AF00663E73 /* PrivateInfo.plist */; };
+		BBE8A40A23982B7B00663E73 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE8A40923982B7B00663E73 /* ErrorResponse.swift */; };
+		BBE8A40C23982EFE00663E73 /* GooFuriganaConverterResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE8A40B23982EFE00663E73 /* GooFuriganaConverterResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,8 +64,16 @@
 		BBE8A3CD2398139000663E73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BBE8A3D22398139000663E73 /* FuriganaConverterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FuriganaConverterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBE8A3D82398139000663E73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BBE8A3EF23981BD200663E73 /* FuriganaConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuriganaConverterTests.swift; sourceTree = "<group>"; };
 		BBE8A3F123981C0600663E73 /* FuriganaConverterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuriganaConverterUITests.swift; sourceTree = "<group>"; };
+		BBE8A3F6239821A300663E73 /* RemoteAPIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteAPIError.swift; sourceTree = "<group>"; };
+		BBE8A3F8239821BD00663E73 /* FuriganaConverterRemoteAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuriganaConverterRemoteAPI.swift; sourceTree = "<group>"; };
+		BBE8A3FA239821EA00663E73 /* GooFuriganaConverterRemoteAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GooFuriganaConverterRemoteAPI.swift; sourceTree = "<group>"; };
+		BBE8A3FC2398222900663E73 /* GooFuriganaConverterRemoteAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GooFuriganaConverterRemoteAPITests.swift; sourceTree = "<group>"; };
+		BBE8A401239824A300663E73 /* MockURLSessionDataTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSessionDataTask.swift; sourceTree = "<group>"; };
+		BBE8A403239824D500663E73 /* MockURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSession.swift; sourceTree = "<group>"; };
+		BBE8A405239825AF00663E73 /* PrivateInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = PrivateInfo.plist; sourceTree = "<group>"; };
+		BBE8A40923982B7B00663E73 /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
+		BBE8A40B23982EFE00663E73 /* GooFuriganaConverterResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GooFuriganaConverterResponse.swift; sourceTree = "<group>"; };
 		CB72FA2221E48E0F22612127 /* libPods-FuriganaConverter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FuriganaConverter.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F689D00C84499114531E57A7 /* Pods-FuriganaConverterUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FuriganaConverterUITests.debug.xcconfig"; path = "Target Support Files/Pods-FuriganaConverterUITests/Pods-FuriganaConverterUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		FA17C528C8660D2CA58EA13D /* Pods-FuriganaConverterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FuriganaConverterTests.release.xcconfig"; path = "Target Support Files/Pods-FuriganaConverterTests/Pods-FuriganaConverterTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -146,6 +162,8 @@
 				BBE8A3BD2398139000663E73 /* Assets.xcassets */,
 				BBE8A3BF2398139000663E73 /* LaunchScreen.storyboard */,
 				BBE8A3C22398139000663E73 /* Info.plist */,
+				BBE8A405239825AF00663E73 /* PrivateInfo.plist */,
+				BBE8A3F42398218F00663E73 /* Data */,
 			);
 			path = FuriganaConverter;
 			sourceTree = "<group>";
@@ -153,8 +171,9 @@
 		BBE8A3CA2398139000663E73 /* FuriganaConverterTests */ = {
 			isa = PBXGroup;
 			children = (
-				BBE8A3EF23981BD200663E73 /* FuriganaConverterTests.swift */,
+				BBE8A4002398248B00663E73 /* Mock */,
 				BBE8A3CD2398139000663E73 /* Info.plist */,
+				BBE8A3FE2398223900663E73 /* Data */,
 			);
 			path = FuriganaConverterTests;
 			sourceTree = "<group>";
@@ -166,6 +185,59 @@
 				BBE8A3D82398139000663E73 /* Info.plist */,
 			);
 			path = FuriganaConverterUITests;
+			sourceTree = "<group>";
+		};
+		BBE8A3F42398218F00663E73 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				BBE8A3F52398219600663E73 /* Remote */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		BBE8A3F52398219600663E73 /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+				BBE8A3F6239821A300663E73 /* RemoteAPIError.swift */,
+				BBE8A3F8239821BD00663E73 /* FuriganaConverterRemoteAPI.swift */,
+				BBE8A3FA239821EA00663E73 /* GooFuriganaConverterRemoteAPI.swift */,
+				BBE8A40823982B6B00663E73 /* Response */,
+			);
+			path = Remote;
+			sourceTree = "<group>";
+		};
+		BBE8A3FE2398223900663E73 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				BBE8A3FF2398223F00663E73 /* Remote */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		BBE8A3FF2398223F00663E73 /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+				BBE8A3FC2398222900663E73 /* GooFuriganaConverterRemoteAPITests.swift */,
+			);
+			path = Remote;
+			sourceTree = "<group>";
+		};
+		BBE8A4002398248B00663E73 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				BBE8A401239824A300663E73 /* MockURLSessionDataTask.swift */,
+				BBE8A403239824D500663E73 /* MockURLSession.swift */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
+		BBE8A40823982B6B00663E73 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				BBE8A40923982B7B00663E73 /* ErrorResponse.swift */,
+				BBE8A40B23982EFE00663E73 /* GooFuriganaConverterResponse.swift */,
+			);
+			path = Response;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -280,6 +352,7 @@
 			files = (
 				BBE8A3C12398139000663E73 /* LaunchScreen.storyboard in Resources */,
 				BBE8A3BE2398139000663E73 /* Assets.xcassets in Resources */,
+				BBE8A4072398263400663E73 /* PrivateInfo.plist in Resources */,
 				BBE8A3BC2398138F00663E73 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -392,8 +465,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				BBE8A3B92398138F00663E73 /* ViewController.swift in Sources */,
+				BBE8A3F9239821BD00663E73 /* FuriganaConverterRemoteAPI.swift in Sources */,
 				BBE8A3B52398138F00663E73 /* AppDelegate.swift in Sources */,
 				BBE8A3B72398138F00663E73 /* SceneDelegate.swift in Sources */,
+				BBE8A3FB239821EA00663E73 /* GooFuriganaConverterRemoteAPI.swift in Sources */,
+				BBE8A3F7239821A300663E73 /* RemoteAPIError.swift in Sources */,
+				BBE8A40C23982EFE00663E73 /* GooFuriganaConverterResponse.swift in Sources */,
+				BBE8A40A23982B7B00663E73 /* ErrorResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,7 +479,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BBE8A3F023981BD200663E73 /* FuriganaConverterTests.swift in Sources */,
+				BBE8A404239824D500663E73 /* MockURLSession.swift in Sources */,
+				BBE8A3FD2398222900663E73 /* GooFuriganaConverterRemoteAPITests.swift in Sources */,
+				BBE8A402239824A300663E73 /* MockURLSessionDataTask.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
