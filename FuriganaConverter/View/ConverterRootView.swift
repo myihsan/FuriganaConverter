@@ -23,7 +23,7 @@ class ConverterRootView: NiblessView {
     }()
     private let convertButtonItem: UIBarButtonItem = {
         let buttonItem = UIBarButtonItem(
-            title: "Convert",
+            title: L10n.convert,
             style: .done,
             target: nil,
             action: nil

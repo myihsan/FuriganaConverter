@@ -6,4 +6,10 @@ plist:
     - templateName: runtime-swift4
       output: PrivateInfoPlist.swift
       params:
-        enumName: PrivateInfoPlist 
+        enumName: PrivateInfoPlist
+strings:
+  inputs: Base.lproj
+  filter: .+\.strings$
+  outputs:
+    templateName: structured-swift4
+    output: Strings.swift
