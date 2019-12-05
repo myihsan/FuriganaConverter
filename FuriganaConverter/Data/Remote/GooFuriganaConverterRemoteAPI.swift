@@ -65,36 +65,7 @@ class GooFuriganaConverterRemoteAPI: FuriganaConverterRemoteAPI {
 
             let statusCode = response.statusCode
             guard statusCode == 200 else {
-
-                if Self.unexpectedStatusCodes.contains(statusCode) {
-                    result = .failure(.unexpected)
-                    return
-                }
-
-                guard let data = data else {
-                    return
-                }
-
-                let decoder = JSONDecoder()
-                guard let errorResponse = try? decoder.decode(ErrorResponse.self, from: data) else {
-                    return
-                }
-
-                let message = errorResponse.error.message
-                if message == Self.limitExceededMessage {
-                    result = .failure(.limitExceeded)
-                    return
-                }
-
-                if message == Self.tooLongMessage {
-                    result = .failure(.tooLong)
-                    return
-                }
-
-                if  Self.unexpectedMessages.contains(message) {
-                    result = .failure(.unexpected)
-                    return
-                }
+                self.handleFailure(statusCode: statusCode, data: data, result: &result)
                 return
             }
 
@@ -113,5 +84,37 @@ class GooFuriganaConverterRemoteAPI: FuriganaConverterRemoteAPI {
         }
         task.resume()
         return task
+    }
+
+    private func handleFailure(statusCode: Int, data: Data?, result: inout RemoteAPIResult) {
+        if Self.unexpectedStatusCodes.contains(statusCode) {
+            result = .failure(.unexpected)
+            return
+        }
+
+        guard let data = data else {
+            return
+        }
+
+        let decoder = JSONDecoder()
+        guard let errorResponse = try? decoder.decode(ErrorResponse.self, from: data) else {
+            return
+        }
+
+        let message = errorResponse.error.message
+        if message == Self.limitExceededMessage {
+            result = .failure(.limitExceeded)
+            return
+        }
+
+        if message == Self.tooLongMessage {
+            result = .failure(.tooLong)
+            return
+        }
+
+        if  Self.unexpectedMessages.contains(message) {
+            result = .failure(.unexpected)
+            return
+        }
     }
 }
