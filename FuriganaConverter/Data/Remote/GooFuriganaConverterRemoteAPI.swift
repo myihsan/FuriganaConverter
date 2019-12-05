@@ -53,7 +53,9 @@ class GooFuriganaConverterRemoteAPI: FuriganaConverterRemoteAPI {
         let task = session.dataTask(with: request) { data, response, error in
             var result = RemoteAPIResult.failure(.unknown)
             defer {
-                completionHandler(result)
+                DispatchQueue.main.async {
+                    completionHandler(result)
+                }
             }
 
             guard let response = response as? HTTPURLResponse,
