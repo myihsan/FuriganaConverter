@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import SnapKit
 
-class ConverterRootView: UIView {}
+class ConverterRootView: NiblessView {}
 
 #if canImport(SwiftUI) && DEBUG
 import SwiftUI
