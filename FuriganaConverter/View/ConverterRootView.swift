@@ -35,6 +35,9 @@ class ConverterRootView: NiblessView {
 
     override init(frame: CGRect = .zero) {
         super.init(frame: frame)
+
+        backgroundColor = .systemBackground
+
         constructHierarchy()
         activateConstraints()
     }
