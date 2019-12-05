@@ -90,10 +90,19 @@ struct ConverterRootViewRepresentable: UIViewRepresentable {
     func updateUIView(_ uiView: UIView, context: Context) {}
 }
 
+let deviceNames: [String] = [
+    "iPhone 11 Pro Max",
+    "iPhone SE"
+]
+
 struct ConverterRootView_Previews: PreviewProvider {
 
     static var previews: some View {
-        ConverterRootViewRepresentable()
+        ForEach(deviceNames, id: \.self) { deviceName in
+          ConverterRootViewRepresentable()
+            .previewDevice(PreviewDevice(rawValue: deviceName))
+            .previewDisplayName(deviceName)
+        }
     }
 }
 #endif
