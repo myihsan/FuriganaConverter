@@ -12,6 +12,26 @@ import SnapKit
 class ConverterRootView: NiblessView {
 
     private let navigationBar = UINavigationBar()
+    private let keyboardButtonItem: UIBarButtonItem = {
+        let buttonItem = UIBarButtonItem(
+            image: UIImage(systemName: "keyboard")!,
+            style: .plain,
+            target: nil,
+            action: nil
+        )
+        return buttonItem
+    }()
+    private let convertButtonItem: UIBarButtonItem = {
+        let buttonItem = UIBarButtonItem(
+            title: "Convert",
+            style: .done,
+            target: nil,
+            action: nil
+        )
+        buttonItem.isEnabled = false
+        return buttonItem
+    }()
+    private let toolbar = UIToolbar()
 
     override init(frame: CGRect = .zero) {
         super.init(frame: frame)
@@ -21,10 +41,16 @@ class ConverterRootView: NiblessView {
 
     private func constructHierarchy() {
         addSubview(navigationBar)
+        addSubview(toolbar)
+
+        let flexibleSpace =
+            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        toolbar.items = [keyboardButtonItem, flexibleSpace, convertButtonItem]
     }
 
     private func activateConstraints() {
         activeNavigationBarConstraints()
+        activeToolbarConstraints()
     }
 
     private func activeNavigationBarConstraints() {
@@ -33,6 +59,14 @@ class ConverterRootView: NiblessView {
             make.top.equalTo(safeAreaLayoutGuide.snp.top)
             make.leading.equalTo(self)
             make.trailing.equalTo(self)
+        }
+    }
+
+    private func activeToolbarConstraints() {
+        toolbar.snp.makeConstraints { make in
+            make.leading.equalTo(self)
+            make.trailing.equalTo(self)
+            make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom)
         }
     }
 }
