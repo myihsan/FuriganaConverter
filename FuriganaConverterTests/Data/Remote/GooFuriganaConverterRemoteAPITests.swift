@@ -53,6 +53,15 @@ class GooFuriganaConverterRemoteAPITests: XCTestCase {
         XCTAssertEqual(mockTask.request.httpMethod, "POST")
     }
 
+    func test_convert_setsContentTypeToJSON() throws {
+        // when
+        let mockTask = try XCTUnwrap(sut.convert("") { _ in } as? MockURLSessionDataTask)
+
+        // then
+        let contentType = mockTask.request.allHTTPHeaderFields?["Content-Type"]
+        XCTAssertEqual(contentType, "application/json")
+    }
+
     func test_convert_setsExpectedBody() throws {
         // given
         let privateInfosPath = Bundle.main.path(forResource: "PrivateInfo", ofType: "plist")!
