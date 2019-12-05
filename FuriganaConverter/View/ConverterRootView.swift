@@ -9,7 +9,40 @@
 import UIKit
 import SnapKit
 
-class ConverterRootView: NiblessView {}
+class ConverterRootView: NiblessView {
+
+    private let navigationBar = UINavigationBar()
+
+    override init(frame: CGRect = .zero) {
+        super.init(frame: frame)
+        constructHierarchy()
+        activateConstraints()
+    }
+
+    private func constructHierarchy() {
+        addSubview(navigationBar)
+    }
+
+    private func activateConstraints() {
+        activeNavigationBarConstraints()
+    }
+
+    private func activeNavigationBarConstraints() {
+        navigationBar.delegate = self
+        navigationBar.snp.makeConstraints { make in
+            make.top.equalTo(safeAreaLayoutGuide.snp.top)
+            make.leading.equalTo(self)
+            make.trailing.equalTo(self)
+        }
+    }
+}
+
+extension ConverterRootView: UINavigationBarDelegate {
+
+    func position(for bar: UIBarPositioning) -> UIBarPosition {
+        return .topAttached
+    }
+}
 
 #if canImport(SwiftUI) && DEBUG
 import SwiftUI
