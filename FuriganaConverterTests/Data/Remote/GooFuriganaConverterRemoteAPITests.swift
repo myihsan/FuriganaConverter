@@ -34,28 +34,28 @@ class GooFuriganaConverterRemoteAPITests: XCTestCase {
         XCTAssertEqual(sut.session, session)
     }
 
-    func test_init_setsRequestURL() throws {
+    func test_init_setsRequestURL() {
         // given
         let actualRequestURL = URL(string: "https://labs.goo.ne.jp/api/hiragana")!
 
         // when
-        let mockTask = try XCTUnwrap(sut.convert("") { _ in } as? MockURLSessionDataTask)
+        let mockTask = sut.convert("") { _ in } as! MockURLSessionDataTask // swiftlint:disable:this force_cast
 
         // then
         XCTAssertEqual(mockTask.request.url, actualRequestURL)
     }
 
-    func test_convert_callsByPOST() throws {
+    func test_convert_callsByPOST() {
         // when
-        let mockTask = try XCTUnwrap(sut.convert("") { _ in } as? MockURLSessionDataTask)
+        let mockTask = sut.convert("") { _ in } as! MockURLSessionDataTask // swiftlint:disable:this force_cast
 
         // then
         XCTAssertEqual(mockTask.request.httpMethod, "POST")
     }
 
-    func test_convert_setsContentTypeToJSON() throws {
+    func test_convert_setsContentTypeToJSON() {
         // when
-        let mockTask = try XCTUnwrap(sut.convert("") { _ in } as? MockURLSessionDataTask)
+        let mockTask = sut.convert("") { _ in } as! MockURLSessionDataTask // swiftlint:disable:this force_cast
 
         // then
         let contentType = mockTask.request.allHTTPHeaderFields?["Content-Type"]
@@ -77,23 +77,24 @@ class GooFuriganaConverterRemoteAPITests: XCTestCase {
         ]
 
         // when
-        let mockTask = try XCTUnwrap(sut.convert(japaneseString) { _ in } as? MockURLSessionDataTask)
-        let httpBody = try  XCTUnwrap(mockTask.request.httpBody)
+        let mockTask = sut.convert(japaneseString) { _ in } as! MockURLSessionDataTask
+        // swiftlint:disable:previous force_cast
+        let httpBody = try XCTUnwrap(mockTask.request.httpBody)
         let httpBodyJSONObject = try JSONSerialization.jsonObject(with: httpBody) as? [String: String]
 
         // then
         XCTAssertEqual(httpBodyJSONObject, expectedBodyJSONObject)
     }
 
-    func test_convert_callsResumesOnTask() throws {
+    func test_convert_callsResumesOnTask() {
         // when
-        let mockTask = try XCTUnwrap(sut.convert("") { _ in } as? MockURLSessionDataTask)
+        let mockTask = sut.convert("") { _ in } as! MockURLSessionDataTask // swiftlint:disable:this force_cast
 
         // then
         XCTAssertTrue(mockTask.calledResume)
     }
 
-    func test_convert_givenError_callsCompletionWithUnknown() throws {
+    func test_convert_givenError_callsCompletionWithUnknown() {
         // given
         let error = NSError(
             domain: NSURLErrorDomain,
@@ -101,21 +102,21 @@ class GooFuriganaConverterRemoteAPITests: XCTestCase {
             userInfo: nil)
 
         // when
-        let result = try verifyConvertDispatchedToMainWhen(error: error)
+        let result = verifyConvertDispatchedToMainWhen(error: error)
 
         // then
         XCTAssertEqual(result, .failure(.unknown))
     }
 
-    func test_convert_givenFailureResponseWithUndecodableBody_callsCompletionWithUnknown() throws {
+    func test_convert_givenFailureResponseWithUndecodableBody_callsCompletionWithUnknown() {
         // when
-        let result = try verifyConvertDispatchedToMainWhen(statusCode: 500)
+        let result = verifyConvertDispatchedToMainWhen(statusCode: 500)
 
         // then
         XCTAssertEqual(result, .failure(.unknown))
     }
 
-    func test_convert_givenFailureResponseWithUnexpectedMessage_callsCompletionWithUnexpected() throws {
+    func test_convert_givenFailureResponseWithUnexpectedMessage_callsCompletionWithUnexpected() {
         let unexpectedError: [(code: Int, message: String)] = [
             (400, "Content-Type is empty"),
             (400, "Invalid JSON"),
@@ -127,43 +128,43 @@ class GooFuriganaConverterRemoteAPITests: XCTestCase {
             (405, "Method not allowed.")
         ]
 
-        try unexpectedError.forEach { code, message in
+        unexpectedError.forEach { code, message in
             // given
             let data = errorData(code: code, message: message)
 
             // when
-            let result = try verifyConvertDispatchedToMainWhen(data: data, statusCode: code)
+            let result = verifyConvertDispatchedToMainWhen(data: data, statusCode: code)
 
             // then
             XCTAssertEqual(result, .failure(.unexpected))
         }
     }
 
-    func test_convert_givenFailureResponseWithLimitExceededError_callsCompletionWithlimitExceeded() throws {
+    func test_convert_givenFailureResponseWithLimitExceededError_callsCompletionWithlimitExceeded() {
         // given
         let statusCode = 400
         let data = errorData(code: statusCode, message: "Rate limit exceeded")
 
         // when
-        let result = try verifyConvertDispatchedToMainWhen(data: data, statusCode: statusCode)
+        let result = verifyConvertDispatchedToMainWhen(data: data, statusCode: statusCode)
 
         // then
         XCTAssertEqual(result, .failure(.limitExceeded))
     }
 
-    func test_convert_givenFailureResponseWithTooLongError_callsCompletionWithTooLong() throws {
+    func test_convert_givenFailureResponseWithTooLongError_callsCompletionWithTooLong() {
         // given
         let statusCode = 413
         let data = errorData(code: statusCode, message: "Request to large")
 
         // when
-        let result = try verifyConvertDispatchedToMainWhen(data: data, statusCode: statusCode)
+        let result = verifyConvertDispatchedToMainWhen(data: data, statusCode: statusCode)
 
         // then
         XCTAssertEqual(result, .failure(.tooLong))
     }
 
-    func test_convert_givenValidJSON_callsCompletionWithConvertedString() throws {
+    func test_convert_givenValidJSON_callsCompletionWithConvertedString() {
         // given
         let expectedConvertedString = "かんじが まざっている ぶんしょう"
         let data = """
@@ -175,7 +176,7 @@ class GooFuriganaConverterRemoteAPITests: XCTestCase {
         """.data(using: .utf8)!
 
         // when
-        let result = try verifyConvertDispatchedToMainWhen(data: data)
+        let result = verifyConvertDispatchedToMainWhen(data: data)
 
         // then
         guard case let .success(convertedString) = result else {
@@ -186,12 +187,12 @@ class GooFuriganaConverterRemoteAPITests: XCTestCase {
         XCTAssertEqual(convertedString, expectedConvertedString)
     }
 
-    func test_convert_givenInValidJSON_callsCompletionWithUnknown() throws {
+    func test_convert_givenInValidJSON_callsCompletionWithUnknown() {
         // given
         let data = "".data(using: .utf8)!
 
         // when
-        let result = try verifyConvertDispatchedToMainWhen(data: data)
+        let result = verifyConvertDispatchedToMainWhen(data: data)
 
         // then
         XCTAssertEqual(result, .failure(.unknown))
@@ -204,7 +205,7 @@ extension GooFuriganaConverterRemoteAPITests {
         data: Data? = nil,
         statusCode: Int = 200,
         error: Error? = nil
-    ) throws -> RemoteAPIResult? {
+    ) -> RemoteAPIResult? {
         session.givenNotMainQueue()
 
         let response = HTTPURLResponse(
@@ -219,11 +220,12 @@ extension GooFuriganaConverterRemoteAPITests {
         var thread: Thread!
         var receivedResult: RemoteAPIResult?
 
-        let mockTask = try XCTUnwrap(sut.convert("") { result in
+        let mockTask = sut.convert("") { result in
             thread = Thread.current
             receivedResult = result
             expectation.fulfill()
-            } as? MockURLSessionDataTask)
+            } as! MockURLSessionDataTask
+        // swiftlint:disable:previous force_cast
         mockTask.completionHandler(data, response, error)
 
         waitForExpectations(timeout: 0.2) { _ in
