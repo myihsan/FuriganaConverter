@@ -8,10 +8,24 @@
 
 import UIKit
 import SnapKit
+import UITextView_Placeholder
 
 class ConverterRootView: NiblessView {
 
     private let navigationBar = UINavigationBar()
+    private let inputTextView: UITextView = {
+        let textView = UITextView()
+        let font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.title2)
+        let placeholderTextView: UITextView! = textView.placeholderTextView
+        textView.font = font
+        placeholderTextView.font = font
+        let contentInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+        textView.textContainerInset = contentInset
+        placeholderTextView.textContainerInset = contentInset
+        textView.placeholder = L10n.typeTheTextToTranslate
+        textView.showsVerticalScrollIndicator = false
+        return textView
+    }()
     private let keyboardButtonItem: UIBarButtonItem = {
         let buttonItem = UIBarButtonItem(
             image: UIImage(systemName: "keyboard")!,
@@ -43,6 +57,7 @@ class ConverterRootView: NiblessView {
     }
 
     private func constructHierarchy() {
+        addSubview(inputTextView)
         addSubview(navigationBar)
         addSubview(toolbar)
 
@@ -54,6 +69,7 @@ class ConverterRootView: NiblessView {
     private func activateConstraints() {
         activeNavigationBarConstraints()
         activeToolbarConstraints()
+        activeInputTextViewConstraints()
     }
 
     private func activeNavigationBarConstraints() {
@@ -62,6 +78,15 @@ class ConverterRootView: NiblessView {
             make.top.equalTo(safeAreaLayoutGuide.snp.top)
             make.leading.equalTo(self)
             make.trailing.equalTo(self)
+        }
+    }
+
+    private func activeInputTextViewConstraints() {
+        inputTextView.snp.makeConstraints { make in
+            make.top.equalTo(navigationBar.snp.bottom)
+            make.leading.equalTo(safeAreaLayoutGuide)
+            make.trailing.equalTo(safeAreaLayoutGuide)
+            make.bottom.equalTo(snp.centerY)
         }
     }
 

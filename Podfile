@@ -4,6 +4,7 @@ target 'FuriganaConverter' do
     pod 'SwiftLint'
     pod 'SwiftGen'
     pod 'SnapKit'
+    pod 'UITextView+Placeholder', :modular_headers => true
 
     target 'FuriganaConverterTests' do
         inherit! :search_paths

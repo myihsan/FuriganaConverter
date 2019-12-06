@@ -2,23 +2,27 @@ PODS:
   - SnapKit (5.0.1)
   - SwiftGen (6.1.0)
   - SwiftLint (0.37.0)
+  - "UITextView+Placeholder (1.3.3)"
 
 DEPENDENCIES:
   - SnapKit
   - SwiftGen
   - SwiftLint
+  - "UITextView+Placeholder"
 
 SPEC REPOS:
   trunk:
     - SnapKit
     - SwiftGen
     - SwiftLint
+    - "UITextView+Placeholder"
 
 SPEC CHECKSUMS:
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SwiftGen: f872ca75cbd17bf7103c17f13dcfa0d9a15667b0
   SwiftLint: c078a14d7d7ade75e5507795d185e3da41d844d2
+  "UITextView+Placeholder": c407b27599ea23cca425946fee3cf1db5d547008
 
-PODFILE CHECKSUM: 22ca84f41da79e50c6511dc10b0cbe273c3bba18
+PODFILE CHECKSUM: b77e82ccd321366676f3abdf328a8ee88afcb5d7
 
 COCOAPODS: 1.8.4
