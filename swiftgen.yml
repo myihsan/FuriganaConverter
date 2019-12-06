@@ -1,0 +1,9 @@
+input_dir: FuriganaConverter
+output_dir: FuriganaConverter/Generated
+plist:
+  - inputs: PrivateInfo.plist
+    outputs:
+    - templateName: runtime-swift4
+      output: PrivateInfoPlist.swift
+      params:
+        enumName: PrivateInfoPlist 

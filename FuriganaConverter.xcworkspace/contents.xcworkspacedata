@@ -10,6 +10,9 @@
       <FileRef
          location = "group:Podfile">
       </FileRef>
+      <FileRef
+         location = "group:swiftgen.yml">
+      </FileRef>
    </Group>
    <FileRef
       location = "group:FuriganaConverter.xcodeproj">

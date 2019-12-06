@@ -29,11 +29,7 @@ class GooFuriganaConverterRemoteAPI: FuriganaConverterRemoteAPI {
 
     init(session: URLSession) {
         self.session = session
-        let privateInfosPath = Bundle.main.path(forResource: "PrivateInfo", ofType: "plist")!
-        let privateInfos = NSDictionary(contentsOfFile: privateInfosPath)!
-        // Invalid app_id is better then crash
-        // if there is a proper alert like "Please contact the developer.".
-        appID = privateInfos["AppID"] as? String ?? ""
+        appID = PrivateInfoPlist.appID
     }
 
     func convert(

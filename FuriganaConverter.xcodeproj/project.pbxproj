@@ -10,6 +10,7 @@
 		37E81342BD21C40CAE1209CD /* libPods-FuriganaConverterTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07AB264A526A138C973F4346 /* libPods-FuriganaConverterTests.a */; };
 		496E7E3BFEDB078A894C3520 /* libPods-FuriganaConverterUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AC9D3F9ABB813AEF2A1D918 /* libPods-FuriganaConverterUITests.a */; };
 		91F4C4D8FB2A5DD6B654A1A7 /* libPods-FuriganaConverter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB72FA2221E48E0F22612127 /* libPods-FuriganaConverter.a */; };
+		BB97E08A239A85B800358A90 /* PrivateInfoPlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB97E089239A85B800358A90 /* PrivateInfoPlist.swift */; };
 		BBE8A3B52398138F00663E73 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE8A3B42398138F00663E73 /* AppDelegate.swift */; };
 		BBE8A3B72398138F00663E73 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE8A3B62398138F00663E73 /* SceneDelegate.swift */; };
 		BBE8A3B92398138F00663E73 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE8A3B82398138F00663E73 /* ViewController.swift */; };
@@ -52,6 +53,7 @@
 		3AC9D3F9ABB813AEF2A1D918 /* libPods-FuriganaConverterUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FuriganaConverterUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		425D74E59DF6DE29BBB9CB33 /* Pods-FuriganaConverter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FuriganaConverter.debug.xcconfig"; path = "Target Support Files/Pods-FuriganaConverter/Pods-FuriganaConverter.debug.xcconfig"; sourceTree = "<group>"; };
 		732A8E32FBE5CCAAFB7FDCC5 /* Pods-FuriganaConverter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FuriganaConverter.release.xcconfig"; path = "Target Support Files/Pods-FuriganaConverter/Pods-FuriganaConverter.release.xcconfig"; sourceTree = "<group>"; };
+		BB97E089239A85B800358A90 /* PrivateInfoPlist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivateInfoPlist.swift; sourceTree = "<group>"; };
 		BBE8A3B12398138F00663E73 /* FuriganaConverter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FuriganaConverter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBE8A3B42398138F00663E73 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BBE8A3B62398138F00663E73 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -130,6 +132,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		BB97E086239A82A800358A90 /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				BB97E089239A85B800358A90 /* PrivateInfoPlist.swift */,
+			);
+			path = Generated;
+			sourceTree = "<group>";
+		};
 		BBE8A3A82398138F00663E73 = {
 			isa = PBXGroup;
 			children = (
@@ -164,6 +174,7 @@
 				BBE8A3C22398139000663E73 /* Info.plist */,
 				BBE8A405239825AF00663E73 /* PrivateInfo.plist */,
 				BBE8A3F42398218F00663E73 /* Data */,
+				BB97E086239A82A800358A90 /* Generated */,
 			);
 			path = FuriganaConverter;
 			sourceTree = "<group>";
@@ -248,10 +259,11 @@
 			buildConfigurationList = BBE8A3DB2398139000663E73 /* Build configuration list for PBXNativeTarget "FuriganaConverter" */;
 			buildPhases = (
 				42FCE86BFFCBBAC756950A16 /* [CP] Check Pods Manifest.lock */,
+				BB97E090239A8F3F00358A90 /* SwiftGen */,
 				BBE8A3AD2398138F00663E73 /* Sources */,
 				BBE8A3AE2398138F00663E73 /* Frameworks */,
 				BBE8A3AF2398138F00663E73 /* Resources */,
-				BBE8A3F3239820CA00663E73 /* ShellScript */,
+				BBE8A3F3239820CA00663E73 /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -440,7 +452,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		BBE8A3F3239820CA00663E73 /* ShellScript */ = {
+		BB97E090239A8F3F00358A90 /* SwiftGen */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -449,6 +461,25 @@
 			);
 			inputPaths = (
 			);
+			name = SwiftGen;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which \"$PODS_ROOT/SwiftGen/bin/swiftgen\" >/dev/null; then\n    \"$PODS_ROOT/SwiftGen/bin/swiftgen\"\nelse\n    echo \"warning: SwiftGen not installed, download it from https://github.com/SwiftGen/SwiftGen\"\nfi\n";
+		};
+		BBE8A3F3239820CA00663E73 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -466,6 +497,7 @@
 			files = (
 				BBE8A3B92398138F00663E73 /* ViewController.swift in Sources */,
 				BBE8A3F9239821BD00663E73 /* FuriganaConverterRemoteAPI.swift in Sources */,
+				BB97E08A239A85B800358A90 /* PrivateInfoPlist.swift in Sources */,
 				BBE8A3B52398138F00663E73 /* AppDelegate.swift in Sources */,
 				BBE8A3B72398138F00663E73 /* SceneDelegate.swift in Sources */,
 				BBE8A3FB239821EA00663E73 /* GooFuriganaConverterRemoteAPI.swift in Sources */,
