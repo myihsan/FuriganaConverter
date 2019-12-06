@@ -15,6 +15,8 @@ import RxCocoa
 
 class ConverterRootView: NiblessView {
 
+    weak var eventResponder: ConverterEventResponder?
+
     private let navigationBar = UINavigationBar()
     private let inputTextView: UITextView = {
         let textView = UITextView()
@@ -76,6 +78,7 @@ class ConverterRootView: NiblessView {
 
         keyboardButtonItem.action = #selector(toggleKeyboard)
         clearButtonItem.action = #selector(clearInputText)
+        convertButtonItem.action = #selector(convertInputText)
     }
 
     private func setupTextView(_ textView: UITextView) {
@@ -198,12 +201,25 @@ class ConverterRootView: NiblessView {
         self.clearButtonItem.isEnabled = false
         self.convertButtonItem.isEnabled = false
     }
+
+    @objc
+    private func convertInputText() {
+        eventResponder?.convert(inputTextView.text)
+        inputTextView.resignFirstResponder()
+    }
 }
 
 extension ConverterRootView: UINavigationBarDelegate {
 
     func position(for bar: UIBarPositioning) -> UIBarPosition {
         return .topAttached
+    }
+}
+
+extension ConverterRootView: ConverterUserInterface {
+
+    func setResult(_ result: String) {
+        resultTextView.text = result
     }
 }
 

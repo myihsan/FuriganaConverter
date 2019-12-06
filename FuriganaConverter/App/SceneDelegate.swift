@@ -21,7 +21,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
         let window = UIWindow(windowScene: windowScene)
         window.tintColor = UIColor.systemGreen
-        let convertorViewController = ConvertorViewController()
+        let dependencyContainer = AppDependencyContainer()
+        let convertorViewController = dependencyContainer.makeConvertorViewController()
         window.rootViewController = convertorViewController
         window.makeKeyAndVisible()
         self.window = window
