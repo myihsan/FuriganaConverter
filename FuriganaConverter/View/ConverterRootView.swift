@@ -11,6 +11,7 @@ import SnapKit
 import UITextView_Placeholder
 import RxKeyboard
 import RxSwift
+import RxCocoa
 
 class ConverterRootView: NiblessView {
 
@@ -58,7 +59,9 @@ class ConverterRootView: NiblessView {
 
         constructHierarchy()
         activateConstraints()
-        updateConstrainsAlongWithKeyboard()
+        updateViewsAlongWithKeyboard()
+
+        keyboardButtonItem.action = #selector(toggleKeyboard)
     }
 
     private func constructHierarchy() {
@@ -103,7 +106,7 @@ class ConverterRootView: NiblessView {
         }
     }
 
-    func updateConstrainsAlongWithKeyboard() {
+    func updateViewsAlongWithKeyboard() {
         RxKeyboard.instance.visibleHeight
             .drive(onNext: { [weak self] keyboardVisibleHeight in
                 guard let self = self else {
@@ -124,6 +127,26 @@ class ConverterRootView: NiblessView {
                 }
             })
             .disposed(by: disposeBag)
+
+        inputTextView.rx.didBeginEditing
+            .subscribe { _ in
+                self.keyboardButtonItem.image = UIImage(systemName: "keyboard.chevron.compact.down")
+            }
+            .disposed(by: disposeBag)
+        inputTextView.rx.didEndEditing
+            .subscribe { _ in
+                self.keyboardButtonItem.image = UIImage(systemName: "keyboard")
+            }
+            .disposed(by: disposeBag)
+    }
+
+    @objc
+    private func toggleKeyboard() {
+        if inputTextView.isFirstResponder {
+            inputTextView.resignFirstResponder()
+        } else {
+            inputTextView.becomeFirstResponder()
+        }
     }
 }
 
