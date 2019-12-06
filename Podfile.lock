@@ -1,10 +1,20 @@
 PODS:
+  - RxCocoa (5.0.1):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxKeyboard (1.0.0):
+    - RxCocoa (~> 5.0)
+    - RxSwift (~> 5.0)
+  - RxRelay (5.0.1):
+    - RxSwift (~> 5)
+  - RxSwift (5.0.1)
   - SnapKit (5.0.1)
   - SwiftGen (6.1.0)
   - SwiftLint (0.37.0)
   - "UITextView+Placeholder (1.3.3)"
 
 DEPENDENCIES:
+  - RxKeyboard
   - SnapKit
   - SwiftGen
   - SwiftLint
@@ -12,17 +22,25 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - RxCocoa
+    - RxKeyboard
+    - RxRelay
+    - RxSwift
     - SnapKit
     - SwiftGen
     - SwiftLint
     - "UITextView+Placeholder"
 
 SPEC CHECKSUMS:
+  RxCocoa: e741b9749968e8a143e2b787f1dfbff2b63d0a5c
+  RxKeyboard: 6683c4344304a00f943c158bd8a43ce5469c82a7
+  RxRelay: 89d54507f4fd4d969e6ec1d4bd7f3673640b4640
+  RxSwift: e2dc62b366a3adf6a0be44ba9f405efd4c94e0c4
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SwiftGen: f872ca75cbd17bf7103c17f13dcfa0d9a15667b0
   SwiftLint: c078a14d7d7ade75e5507795d185e3da41d844d2
   "UITextView+Placeholder": c407b27599ea23cca425946fee3cf1db5d547008
 
-PODFILE CHECKSUM: b77e82ccd321366676f3abdf328a8ee88afcb5d7
+PODFILE CHECKSUM: 1a9ea8447693dcd7e597d4e8539148d9b1573ff1
 
 COCOAPODS: 1.8.4

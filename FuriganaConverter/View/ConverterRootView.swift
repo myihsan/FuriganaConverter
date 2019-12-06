@@ -9,6 +9,8 @@
 import UIKit
 import SnapKit
 import UITextView_Placeholder
+import RxKeyboard
+import RxSwift
 
 class ConverterRootView: NiblessView {
 
@@ -47,6 +49,8 @@ class ConverterRootView: NiblessView {
     }()
     private let toolbar = UIToolbar()
 
+    private let disposeBag = DisposeBag()
+
     override init(frame: CGRect = .zero) {
         super.init(frame: frame)
 
@@ -54,6 +58,7 @@ class ConverterRootView: NiblessView {
 
         constructHierarchy()
         activateConstraints()
+        updateConstrainsAlongWithKeyboard()
     }
 
     private func constructHierarchy() {
@@ -96,6 +101,29 @@ class ConverterRootView: NiblessView {
             make.trailing.equalTo(self)
             make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom)
         }
+    }
+
+    func updateConstrainsAlongWithKeyboard() {
+        RxKeyboard.instance.visibleHeight
+            .drive(onNext: { [weak self] keyboardVisibleHeight in
+                guard let self = self else {
+                    return
+                }
+                self.toolbar.snp.updateConstraints { make in
+                    let offset: CGFloat
+                    if keyboardVisibleHeight == 0 {
+                        offset = 0
+                    } else {
+                        offset = self.safeAreaInsets.bottom - keyboardVisibleHeight
+                    }
+                    make.bottom.equalTo(self.safeAreaLayoutGuide.snp.bottom).offset(offset)
+                }
+                self.setNeedsLayout()
+                UIView.animate(withDuration: 0) {
+                    self.layoutIfNeeded()
+                }
+            })
+            .disposed(by: disposeBag)
     }
 }
 
