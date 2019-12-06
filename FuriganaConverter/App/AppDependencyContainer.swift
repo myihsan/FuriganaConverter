@@ -10,7 +10,8 @@ class AppDependencyContainer {
 
     func makeConvertorViewController() -> ConvertorViewController {
         let userInterface = ConverterRootView()
-        let viewController = ConvertorViewController(userInterface: userInterface)
+        let remoteAPI = GooFuriganaConverterRemoteAPI(session: .shared)
+        let viewController = ConvertorViewController(userInterface: userInterface, remoteAPI: remoteAPI)
         userInterface.eventResponder = viewController
         return viewController
     }

@@ -11,9 +11,11 @@ import UIKit
 class ConvertorViewController: NiblessViewController {
 
     private let userInterface: ConverterUserInterfaceView
+    private let remoteAPI: FuriganaConverterRemoteAPI
 
-    init(userInterface: ConverterUserInterfaceView) {
+    init(userInterface: ConverterUserInterfaceView, remoteAPI: FuriganaConverterRemoteAPI) {
         self.userInterface = userInterface
+        self.remoteAPI = remoteAPI
         super.init()
     }
 
@@ -24,5 +26,14 @@ class ConvertorViewController: NiblessViewController {
 
 extension ConvertorViewController: ConverterEventResponder {
 
-    func convert(_ japaneseString: String) {}
+    func convert(_ japaneseString: String) {
+        remoteAPI.convert(japaneseString) { result in
+            switch result {
+            case let .success(convertedString):
+                self.userInterface.setResult(convertedString)
+            case let .failure(error):
+                error
+            }
+        }
+    }
 }

@@ -19,6 +19,8 @@
 		BB97E098239ACD6200358A90 /* AppDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB97E097239ACD6200358A90 /* AppDependencyContainer.swift */; };
 		BB97E09A239ACF0A00358A90 /* ConverterUserInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB97E099239ACF0A00358A90 /* ConverterUserInterface.swift */; };
 		BB97E09C239ACFC200358A90 /* NiblessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB97E09B239ACFC200358A90 /* NiblessViewController.swift */; };
+		BBE83993239B73E900A90DEB /* ConverterViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE83992239B73E900A90DEB /* ConverterViewControllerTests.swift */; };
+		BBE83995239B74B000A90DEB /* MockFuriganaConverterRemoteAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE83994239B74B000A90DEB /* MockFuriganaConverterRemoteAPI.swift */; };
 		BBE8A3B52398138F00663E73 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE8A3B42398138F00663E73 /* AppDelegate.swift */; };
 		BBE8A3B72398138F00663E73 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE8A3B62398138F00663E73 /* SceneDelegate.swift */; };
 		BBE8A3B92398138F00663E73 /* ConvertorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE8A3B82398138F00663E73 /* ConvertorViewController.swift */; };
@@ -71,6 +73,8 @@
 		BB97E097239ACD6200358A90 /* AppDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependencyContainer.swift; sourceTree = "<group>"; };
 		BB97E099239ACF0A00358A90 /* ConverterUserInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterUserInterface.swift; sourceTree = "<group>"; };
 		BB97E09B239ACFC200358A90 /* NiblessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NiblessViewController.swift; sourceTree = "<group>"; };
+		BBE83992239B73E900A90DEB /* ConverterViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterViewControllerTests.swift; sourceTree = "<group>"; };
+		BBE83994239B74B000A90DEB /* MockFuriganaConverterRemoteAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFuriganaConverterRemoteAPI.swift; sourceTree = "<group>"; };
 		BBE8A3B12398138F00663E73 /* FuriganaConverter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FuriganaConverter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBE8A3B42398138F00663E73 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BBE8A3B62398138F00663E73 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -188,6 +192,14 @@
 			path = App;
 			sourceTree = "<group>";
 		};
+		BBE83991239B73D200A90DEB /* App */ = {
+			isa = PBXGroup;
+			children = (
+				BBE83992239B73E900A90DEB /* ConverterViewControllerTests.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
 		BBE8A3A82398138F00663E73 = {
 			isa = PBXGroup;
 			children = (
@@ -229,8 +241,9 @@
 		BBE8A3CA2398139000663E73 /* FuriganaConverterTests */ = {
 			isa = PBXGroup;
 			children = (
-				BBE8A4002398248B00663E73 /* Mock */,
 				BBE8A3CD2398139000663E73 /* Info.plist */,
+				BBE8A4002398248B00663E73 /* Mock */,
+				BBE83991239B73D200A90DEB /* App */,
 				BBE8A3FE2398223900663E73 /* Data */,
 			);
 			path = FuriganaConverterTests;
@@ -285,6 +298,7 @@
 			children = (
 				BBE8A401239824A300663E73 /* MockURLSessionDataTask.swift */,
 				BBE8A403239824D500663E73 /* MockURLSession.swift */,
+				BBE83994239B74B000A90DEB /* MockFuriganaConverterRemoteAPI.swift */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
@@ -566,9 +580,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBE83995239B74B000A90DEB /* MockFuriganaConverterRemoteAPI.swift in Sources */,
 				BBE8A404239824D500663E73 /* MockURLSession.swift in Sources */,
 				BBE8A3FD2398222900663E73 /* GooFuriganaConverterRemoteAPITests.swift in Sources */,
 				BBE8A402239824A300663E73 /* MockURLSessionDataTask.swift in Sources */,
+				BBE83993239B73E900A90DEB /* ConverterViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
