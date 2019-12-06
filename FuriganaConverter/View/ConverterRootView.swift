@@ -18,15 +18,13 @@ class ConverterRootView: NiblessView {
     private let navigationBar = UINavigationBar()
     private let inputTextView: UITextView = {
         let textView = UITextView()
-        let font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.title2)
-        let placeholderTextView: UITextView! = textView.placeholderTextView
-        textView.font = font
-        placeholderTextView.font = font
-        let contentInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
-        textView.textContainerInset = contentInset
-        placeholderTextView.textContainerInset = contentInset
         textView.placeholder = L10n.typeTheTextToTranslate
-        textView.showsVerticalScrollIndicator = false
+        return textView
+    }()
+    private let resultTextView: UITextView = {
+        let textView = UITextView()
+        textView.placeholder = L10n.convertingResult
+        textView.isEditable = false
         return textView
     }()
     private let keyboardButtonItem: UIBarButtonItem = {
@@ -66,6 +64,10 @@ class ConverterRootView: NiblessView {
         super.init(frame: frame)
 
         backgroundColor = .systemBackground
+        setupTextView(inputTextView)
+        setupTextView(inputTextView.placeholderTextView)
+        setupTextView(resultTextView)
+        setupTextView(resultTextView.placeholderTextView)
 
         constructHierarchy()
         activateConstraints()
@@ -76,8 +78,15 @@ class ConverterRootView: NiblessView {
         clearButtonItem.action = #selector(clearInputText)
     }
 
+    private func setupTextView(_ textView: UITextView) {
+        textView.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.title2)
+        textView.textContainerInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+        textView.showsVerticalScrollIndicator = false
+    }
+
     private func constructHierarchy() {
         addSubview(inputTextView)
+        addSubview(resultTextView)
         addSubview(navigationBar)
         addSubview(toolbar)
 
@@ -92,6 +101,7 @@ class ConverterRootView: NiblessView {
         activeNavigationBarConstraints()
         activeToolbarConstraints()
         activeInputTextViewConstraints()
+        activeResultTextViewConstraints()
     }
 
     private func activeNavigationBarConstraints() {
@@ -109,6 +119,15 @@ class ConverterRootView: NiblessView {
             make.leading.equalTo(safeAreaLayoutGuide)
             make.trailing.equalTo(safeAreaLayoutGuide)
             make.bottom.equalTo(snp.centerY)
+        }
+    }
+
+    private func activeResultTextViewConstraints() {
+        resultTextView.snp.makeConstraints { make in
+            make.top.equalTo(snp.centerY)
+            make.leading.equalTo(safeAreaLayoutGuide)
+            make.trailing.equalTo(safeAreaLayoutGuide)
+            make.bottom.equalTo(toolbar.snp.top)
         }
     }
 
