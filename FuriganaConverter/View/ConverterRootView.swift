@@ -60,6 +60,7 @@ class ConverterRootView: NiblessView {
         constructHierarchy()
         activateConstraints()
         updateViewsAlongWithKeyboard()
+        updateConvertButtonItemAlongWithInputTextView()
 
         keyboardButtonItem.action = #selector(toggleKeyboard)
     }
@@ -136,6 +137,14 @@ class ConverterRootView: NiblessView {
         inputTextView.rx.didEndEditing
             .subscribe { _ in
                 self.keyboardButtonItem.image = UIImage(systemName: "keyboard")
+            }
+            .disposed(by: disposeBag)
+    }
+
+    func updateConvertButtonItemAlongWithInputTextView() {
+        inputTextView.rx.didChange
+            .subscribe { _ in
+                self.convertButtonItem.isEnabled = self.inputTextView.text.isEmpty == false
             }
             .disposed(by: disposeBag)
     }
