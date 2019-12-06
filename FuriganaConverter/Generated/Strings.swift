@@ -11,6 +11,8 @@ import Foundation
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name
 internal enum L10n {
+  /// Clear
+  internal static let clear = L10n.tr("Localizable", "Clear")
   /// Convert
   internal static let convert = L10n.tr("Localizable", "Convert")
   /// Type the text to translate

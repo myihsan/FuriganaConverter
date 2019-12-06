@@ -38,6 +38,16 @@ class ConverterRootView: NiblessView {
         )
         return buttonItem
     }()
+    private let clearButtonItem: UIBarButtonItem = {
+        let buttonItem = UIBarButtonItem(
+            title: L10n.clear,
+            style: .plain,
+            target: nil,
+            action: nil
+        )
+        buttonItem.isEnabled = false
+        return buttonItem
+    }()
     private let convertButtonItem: UIBarButtonItem = {
         let buttonItem = UIBarButtonItem(
             title: L10n.convert,
@@ -60,9 +70,10 @@ class ConverterRootView: NiblessView {
         constructHierarchy()
         activateConstraints()
         updateViewsAlongWithKeyboard()
-        updateConvertButtonItemAlongWithInputTextView()
+        updateButtonsAlongWithInputTextView()
 
         keyboardButtonItem.action = #selector(toggleKeyboard)
+        clearButtonItem.action = #selector(clearInputText)
     }
 
     private func constructHierarchy() {
@@ -72,7 +83,9 @@ class ConverterRootView: NiblessView {
 
         let flexibleSpace =
             UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        toolbar.items = [keyboardButtonItem, flexibleSpace, convertButtonItem]
+        let fixedSpace = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
+        fixedSpace.width = 16
+        toolbar.items = [keyboardButtonItem, fixedSpace, clearButtonItem, flexibleSpace, convertButtonItem]
     }
 
     private func activateConstraints() {
@@ -107,7 +120,7 @@ class ConverterRootView: NiblessView {
         }
     }
 
-    func updateViewsAlongWithKeyboard() {
+    private func updateViewsAlongWithKeyboard() {
         RxKeyboard.instance.visibleHeight
             .drive(onNext: { [weak self] keyboardVisibleHeight in
                 guard let self = self else {
@@ -141,10 +154,12 @@ class ConverterRootView: NiblessView {
             .disposed(by: disposeBag)
     }
 
-    func updateConvertButtonItemAlongWithInputTextView() {
+    private func updateButtonsAlongWithInputTextView() {
         inputTextView.rx.didChange
             .subscribe { _ in
-                self.convertButtonItem.isEnabled = self.inputTextView.text.isEmpty == false
+                let isNotEmpty = self.inputTextView.text.isEmpty == false
+                self.clearButtonItem.isEnabled = isNotEmpty
+                self.convertButtonItem.isEnabled = isNotEmpty
             }
             .disposed(by: disposeBag)
     }
@@ -156,6 +171,13 @@ class ConverterRootView: NiblessView {
         } else {
             inputTextView.becomeFirstResponder()
         }
+    }
+
+    @objc
+    private func clearInputText() {
+        inputTextView.text = nil
+        self.clearButtonItem.isEnabled = false
+        self.convertButtonItem.isEnabled = false
     }
 }
 
