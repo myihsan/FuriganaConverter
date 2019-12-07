@@ -122,6 +122,9 @@ class ConverterRootView: NiblessView {
             make.leading.equalTo(safeAreaLayoutGuide)
             make.trailing.equalTo(safeAreaLayoutGuide)
             make.bottom.equalTo(snp.centerY)
+                 // Ignore if it is not possible when the keyboard is showing
+                .priority(.medium)
+            make.bottom.lessThanOrEqualTo(toolbar.snp.top)
         }
     }
 
@@ -131,6 +134,8 @@ class ConverterRootView: NiblessView {
             make.leading.equalTo(safeAreaLayoutGuide)
             make.trailing.equalTo(safeAreaLayoutGuide)
             make.bottom.equalTo(toolbar.snp.top)
+                // Ignore if it is not possible when the keyboard is showing
+                .priority(.medium)
         }
     }
 
