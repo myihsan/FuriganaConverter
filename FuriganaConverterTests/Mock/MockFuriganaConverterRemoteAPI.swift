@@ -12,11 +12,13 @@ import Foundation
 class MockFuriganaConverterRemoteAPI: FuriganaConverterRemoteAPI {
 
     var result = RemoteAPIResult.failure(.unknown)
+    var convertCallCount = 0
 
     func convert(
         _ japaneseString: String,
         completionHandler: @escaping (RemoteAPIResult) -> Void
     ) -> URLSessionDataTask {
+        convertCallCount += 1
         completionHandler(result)
         return MockURLSessionDataTask()
     }

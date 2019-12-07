@@ -34,6 +34,36 @@ class ConverterViewControllerTests: XCTestCase {
         XCTAssertTrue((sut as AnyObject) is ConverterEventResponder)
     }
 
+    func test_convert_callsRemoteAPI() {
+        // when
+        sut.convert("")
+
+        // then
+        XCTAssertEqual(remoteAPI.convertCallCount, 1)
+    }
+
+    func test_convert_callsRemoteAPI_onceIn300Millisecond() {
+        let convertBefore300MillisecondExpetation = expectation(description: "Before")
+        let convertAfter300MillisecondExpetation = expectation(description: "After")
+
+        // when
+        sut.convert("")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            self.sut.convert("")
+            convertBefore300MillisecondExpetation.fulfill()
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            self.sut.convert("")
+            convertAfter300MillisecondExpetation.fulfill()
+        }
+
+        // then
+        wait(for: [convertBefore300MillisecondExpetation], timeout: 0.2)
+        XCTAssertEqual(self.remoteAPI.convertCallCount, 1)
+        wait(for: [convertAfter300MillisecondExpetation], timeout: 0.1)
+        XCTAssertEqual(self.remoteAPI.convertCallCount, 2)
+    }
+
     func test_convert_givenSuccess_callsSetResult() {
         // given
         let expectedResult = "かんじが まざっている ぶんしょう"
