@@ -10,7 +10,9 @@ import UIKit
 
 typealias ConverterUserInterfaceView = ConverterUserInterface & UIView
 
-protocol ConverterUserInterface {
+protocol ConverterUserInterface: class {
+
+    var selectedType: ConverterOutputType { get set }
 
     func setResult(_ result: String)
 }

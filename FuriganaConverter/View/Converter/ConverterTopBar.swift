@@ -14,7 +14,6 @@ class ConverterTopBar: UINavigationBar {
 
     let typeSegmentedControl: UISegmentedControl = {
         let segmentedControl = UISegmentedControl(items: [L10n.hinagara, L10n.katakana])
-        segmentedControl.selectedSegmentIndex = 0
         return segmentedControl
     }()
     let settingButtonItem: UIBarButtonItem = {

@@ -76,14 +76,7 @@ class ConverterRootView: NiblessView {
         activateConstraints()
         updateViewsAlongWithKeyboard()
         updateButtonsAlongWithInputTextView()
-
-        keyboardButtonItem.target = self
-        keyboardButtonItem.action = #selector(toggleKeyboard)
-        clearButtonItem.target = self
-        clearButtonItem.action = #selector(clearInputText)
-        convertButtonItem.target = self
-        convertButtonItem.action = #selector(convertInputText)
-        resultView.shareButton.addTarget(self, action: #selector(shareResult), for: .touchUpInside)
+        setActionsForControls()
     }
 
     private func setupTextView(_ textView: UITextView) {
@@ -112,6 +105,17 @@ class ConverterRootView: NiblessView {
         activeSeparatorViewConstrains()
         activeInputTextViewConstraints()
         activeResultTextViewConstraints()
+    }
+
+    private func setActionsForControls() {
+        topBar.typeSegmentedControl.addTarget(self, action: #selector(selectedTypeChanged), for: .valueChanged)
+        keyboardButtonItem.target = self
+        keyboardButtonItem.action = #selector(toggleKeyboard)
+        clearButtonItem.target = self
+        clearButtonItem.action = #selector(clearInputText)
+        convertButtonItem.target = self
+        convertButtonItem.action = #selector(convertInputText)
+        resultView.shareButton.addTarget(self, action: #selector(shareResult), for: .touchUpInside)
     }
 
     private func activeNavigationBarConstraints() {
@@ -207,6 +211,13 @@ class ConverterRootView: NiblessView {
     }
 
     @objc
+    private func selectedTypeChanged() {
+        let selectedType: ConverterOutputType =
+            topBar.typeSegmentedControl.selectedSegmentIndex == 0 ? .hiragana : .katakana
+        eventResponder?.didSelect(selectedType)
+    }
+
+    @objc
     private func toggleKeyboard() {
         if inputTextView.isFirstResponder {
             inputTextView.resignFirstResponder()
@@ -242,6 +253,15 @@ extension ConverterRootView: UINavigationBarDelegate {
 }
 
 extension ConverterRootView: ConverterUserInterface {
+
+    var selectedType: ConverterOutputType {
+        get {
+            topBar.typeSegmentedControl.selectedSegmentIndex == 0 ? .hiragana : .katakana
+        }
+        set {
+            topBar.typeSegmentedControl.selectedSegmentIndex = newValue == .hiragana ? 0 : 1
+        }
+    }
 
     func setResult(_ result: String) {
         resultView.resultTextView.text = result

@@ -11,6 +11,8 @@ import RxSwift
 
 class ConvertorViewController: NiblessViewController {
 
+    private static let selectedTypeRawValueUserDefaultsKey = "SelectedType"
+
     private let userInterface: ConverterUserInterfaceView
     private let remoteAPI: FuriganaConverterRemoteAPI
 
@@ -23,11 +25,21 @@ class ConvertorViewController: NiblessViewController {
         self.remoteAPI = remoteAPI
         super.init()
 
+        recoverSelectedType()
         subscribeToConverterEvent()
     }
 
     override func loadView() {
         view = userInterface
+    }
+
+    private func recoverSelectedType() {
+        if let selectedTypeRawValue = UserDefaults.standard.string(forKey: Self.selectedTypeRawValueUserDefaultsKey),
+            let selectedType = ConverterOutputType(rawValue: selectedTypeRawValue) {
+            userInterface.selectedType = selectedType
+        } else {
+            userInterface.selectedType = .hiragana
+        }
     }
 }
 
@@ -41,6 +53,10 @@ extension ConvertorViewController: ConverterEventResponder {
         let activityItems = [convertedString]
         let activityViewContriller = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
         present(activityViewContriller, animated: true)
+    }
+
+    func didSelect(_ type: ConverterOutputType) {
+        UserDefaults.standard.set(type.rawValue, forKey: Self.selectedTypeRawValueUserDefaultsKey)
     }
 
     private func subscribeToConverterEvent() {

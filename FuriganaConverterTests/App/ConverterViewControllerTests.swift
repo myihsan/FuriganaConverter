@@ -13,6 +13,7 @@ class ConverterViewControllerTests: XCTestCase {
 
     class MockConverterUserInterfaceView: UIView, ConverterUserInterface {
 
+        var selectedType: ConverterOutputType = .hiragana
         var result: String?
 
         func setResult(_ result: String) {
