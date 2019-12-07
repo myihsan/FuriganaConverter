@@ -17,6 +17,14 @@ class ConverterTopBar: UINavigationBar {
         segmentedControl.selectedSegmentIndex = 0
         return segmentedControl
     }()
+    let settingButtonItem: UIBarButtonItem = {
+        let buttonItem = UIBarButtonItem(
+            image: UIImage(systemName: "slider.horizontal.3"),
+            style: .plain,
+            target: nil,
+            action: nil)
+        return buttonItem
+    }()
     private let navigationItem = UINavigationItem()
 
     override init(frame: CGRect = .zero) {
@@ -29,6 +37,8 @@ class ConverterTopBar: UINavigationBar {
     func constructHierarchy() {
         // Add directly to controller the size with constraints
         addSubview(typeSegmentedControl)
+        navigationItem.rightBarButtonItem = settingButtonItem
+        items = [navigationItem]
     }
 
     func activateConstraints() {
