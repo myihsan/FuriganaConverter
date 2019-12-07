@@ -31,6 +31,12 @@ class ConverterViewControllerTests: XCTestCase {
         sut = ConvertorViewController(userInterface: userInterface, remoteAPI: remoteAPI)
     }
 
+    override func tearDown() {
+        userInterface = nil
+        remoteAPI = nil
+        sut = nil
+    }
+
     func test_conformsToConverterEventResponder() {
         XCTAssertTrue((sut as AnyObject) is ConverterEventResponder)
     }
