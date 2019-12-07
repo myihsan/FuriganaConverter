@@ -20,9 +20,16 @@ class ConvertorViewController: NiblessViewController {
     private let disposeBag = DisposeBag()
     private var convertTask: URLSessionDataTask?
 
-    init(userInterface: ConverterUserInterfaceView, remoteAPI: FuriganaConverterRemoteAPI) {
+    private let coreDataStack: CoreDataStack
+
+    init(
+        userInterface: ConverterUserInterfaceView,
+        remoteAPI: FuriganaConverterRemoteAPI,
+        coreDataStack: CoreDataStack
+    ) {
         self.userInterface = userInterface
         self.remoteAPI = remoteAPI
+        self.coreDataStack = coreDataStack
         super.init()
 
         recoverSelectedType()
