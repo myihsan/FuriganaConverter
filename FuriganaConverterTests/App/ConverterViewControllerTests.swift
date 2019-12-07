@@ -59,9 +59,9 @@ class ConverterViewControllerTests: XCTestCase {
         }
 
         // then
-        wait(for: [convertBefore300MillisecondExpetation], timeout: 0.2)
+        wait(for: [convertBefore300MillisecondExpetation], timeout: 0.25)
         XCTAssertEqual(self.remoteAPI.convertCallCount, 1)
-        wait(for: [convertAfter300MillisecondExpetation], timeout: 0.1)
+        wait(for: [convertAfter300MillisecondExpetation], timeout: 0.15)
         XCTAssertEqual(self.remoteAPI.convertCallCount, 2)
     }
 
