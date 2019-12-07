@@ -77,8 +77,11 @@ class ConverterRootView: NiblessView {
         updateViewsAlongWithKeyboard()
         updateButtonsAlongWithInputTextView()
 
+        keyboardButtonItem.target = self
         keyboardButtonItem.action = #selector(toggleKeyboard)
+        clearButtonItem.target = self
         clearButtonItem.action = #selector(clearInputText)
+        convertButtonItem.target = self
         convertButtonItem.action = #selector(convertInputText)
         resultView.shareButton.addTarget(self, action: #selector(shareResult), for: .touchUpInside)
     }
