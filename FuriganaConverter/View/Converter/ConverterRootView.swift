@@ -23,6 +23,11 @@ class ConverterRootView: NiblessView {
         textView.placeholder = L10n.typeTheTextToTranslate
         return textView
     }()
+    private let separatorView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .systemGray5
+        return view
+    }()
     private let resultView = ConvertingResultView()
     private let keyboardButtonItem: UIBarButtonItem = {
         let buttonItem = UIBarButtonItem(
@@ -86,6 +91,7 @@ class ConverterRootView: NiblessView {
     private func constructHierarchy() {
         addSubview(inputTextView)
         addSubview(resultView)
+        addSubview(separatorView)
         addSubview(navigationBar)
         addSubview(toolbar)
 
@@ -99,6 +105,7 @@ class ConverterRootView: NiblessView {
     private func activateConstraints() {
         activeNavigationBarConstraints()
         activeToolbarConstraints()
+        activeSeparatorViewConstrains()
         activeInputTextViewConstraints()
         activeResultTextViewConstraints()
     }
@@ -112,12 +119,21 @@ class ConverterRootView: NiblessView {
         }
     }
 
+    private func activeSeparatorViewConstrains() {
+        separatorView.snp.makeConstraints { make in
+            make.height.equalTo(1)
+            make.bottom.equalTo(snp.centerY).offset(-44)
+            make.leading.equalTo(safeAreaLayoutGuide)
+            make.trailing.equalTo(safeAreaLayoutGuide)
+        }
+    }
+
     private func activeInputTextViewConstraints() {
         inputTextView.snp.makeConstraints { make in
             make.top.equalTo(navigationBar.snp.bottom)
             make.leading.equalTo(safeAreaLayoutGuide)
             make.trailing.equalTo(safeAreaLayoutGuide)
-            make.bottom.equalTo(snp.centerY)
+            make.bottom.equalTo(separatorView.snp.top)
                  // Ignore if it is not possible when the keyboard is showing
                 .priority(.medium)
             make.bottom.lessThanOrEqualTo(toolbar.snp.top)
@@ -126,7 +142,7 @@ class ConverterRootView: NiblessView {
 
     private func activeResultTextViewConstraints() {
         resultView.snp.makeConstraints { make in
-            make.top.equalTo(snp.centerY)
+            make.top.equalTo(separatorView.snp.bottom)
             make.leading.equalTo(safeAreaLayoutGuide)
             make.trailing.equalTo(safeAreaLayoutGuide)
             make.bottom.equalTo(toolbar.snp.top)
