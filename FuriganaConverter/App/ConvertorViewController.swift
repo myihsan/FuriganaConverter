@@ -67,7 +67,10 @@ extension ConvertorViewController: ConverterEventResponder {
                 if let convertTask = self.convertTask {
                     convertTask.cancel()
                 }
-                self.convertTask = self.remoteAPI.convert(japaneseString) { result in
+                self.convertTask = self.remoteAPI.convert(japaneseString) { [weak self] result in
+                    guard let self = self else {
+                        return
+                    }
                     switch result {
                     case let .success(convertedString):
                         self.userInterface.setResult(convertedString)
