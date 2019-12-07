@@ -23,12 +23,7 @@ class ConverterRootView: NiblessView {
         textView.placeholder = L10n.typeTheTextToTranslate
         return textView
     }()
-    private let resultTextView: UITextView = {
-        let textView = UITextView()
-        textView.placeholder = L10n.convertingResult
-        textView.isEditable = false
-        return textView
-    }()
+    private let resultView = ConvertingResultView()
     private let keyboardButtonItem: UIBarButtonItem = {
         let buttonItem = UIBarButtonItem(
             image: UIImage(systemName: "keyboard")!,
@@ -68,6 +63,7 @@ class ConverterRootView: NiblessView {
         backgroundColor = .systemBackground
         setupTextView(inputTextView)
         setupTextView(inputTextView.placeholderTextView)
+        let resultTextView = resultView.resultTextView
         setupTextView(resultTextView)
         setupTextView(resultTextView.placeholderTextView)
 
@@ -89,7 +85,7 @@ class ConverterRootView: NiblessView {
 
     private func constructHierarchy() {
         addSubview(inputTextView)
-        addSubview(resultTextView)
+        addSubview(resultView)
         addSubview(navigationBar)
         addSubview(toolbar)
 
@@ -129,7 +125,7 @@ class ConverterRootView: NiblessView {
     }
 
     private func activeResultTextViewConstraints() {
-        resultTextView.snp.makeConstraints { make in
+        resultView.snp.makeConstraints { make in
             make.top.equalTo(snp.centerY)
             make.leading.equalTo(safeAreaLayoutGuide)
             make.trailing.equalTo(safeAreaLayoutGuide)
@@ -224,7 +220,7 @@ extension ConverterRootView: UINavigationBarDelegate {
 extension ConverterRootView: ConverterUserInterface {
 
     func setResult(_ result: String) {
-        resultTextView.text = result
+        resultView.resultTextView.text = result
     }
 }
 
