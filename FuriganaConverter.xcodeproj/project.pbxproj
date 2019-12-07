@@ -22,6 +22,7 @@
 		BBE83993239B73E900A90DEB /* ConverterViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE83992239B73E900A90DEB /* ConverterViewControllerTests.swift */; };
 		BBE83995239B74B000A90DEB /* MockFuriganaConverterRemoteAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE83994239B74B000A90DEB /* MockFuriganaConverterRemoteAPI.swift */; };
 		BBE83997239B853300A90DEB /* ConvertingResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE83996239B853300A90DEB /* ConvertingResultView.swift */; };
+		BBE83999239B99C300A90DEB /* ConverterTopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE83998239B99C300A90DEB /* ConverterTopBar.swift */; };
 		BBE8A3B52398138F00663E73 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE8A3B42398138F00663E73 /* AppDelegate.swift */; };
 		BBE8A3B72398138F00663E73 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE8A3B62398138F00663E73 /* SceneDelegate.swift */; };
 		BBE8A3B92398138F00663E73 /* ConvertorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE8A3B82398138F00663E73 /* ConvertorViewController.swift */; };
@@ -77,6 +78,7 @@
 		BBE83992239B73E900A90DEB /* ConverterViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterViewControllerTests.swift; sourceTree = "<group>"; };
 		BBE83994239B74B000A90DEB /* MockFuriganaConverterRemoteAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFuriganaConverterRemoteAPI.swift; sourceTree = "<group>"; };
 		BBE83996239B853300A90DEB /* ConvertingResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertingResultView.swift; sourceTree = "<group>"; };
+		BBE83998239B99C300A90DEB /* ConverterTopBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterTopBar.swift; sourceTree = "<group>"; };
 		BBE8A3B12398138F00663E73 /* FuriganaConverter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FuriganaConverter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBE8A3B42398138F00663E73 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BBE8A3B62398138F00663E73 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 				BB97E07A23993BD000358A90 /* ConverterRootView.swift */,
 				BB97E094239AC95900358A90 /* ConverterEventResponder.swift */,
 				BBE83996239B853300A90DEB /* ConvertingResultView.swift */,
+				BBE83998239B99C300A90DEB /* ConverterTopBar.swift */,
 			);
 			path = Converter;
 			sourceTree = "<group>";
@@ -576,6 +579,7 @@
 				BB97E098239ACD6200358A90 /* AppDependencyContainer.swift in Sources */,
 				BBE8A40C23982EFE00663E73 /* GooFuriganaConverterResponse.swift in Sources */,
 				BB97E08F239A8E3700358A90 /* Strings.swift in Sources */,
+				BBE83999239B99C300A90DEB /* ConverterTopBar.swift in Sources */,
 				BBE8A40A23982B7B00663E73 /* ErrorResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

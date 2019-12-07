@@ -17,7 +17,7 @@ class ConverterRootView: NiblessView {
 
     weak var eventResponder: ConverterEventResponder?
 
-    private let navigationBar = UINavigationBar()
+    private let topBar = ConverterTopBar()
     private let inputTextView: UITextView = {
         let textView = UITextView()
         textView.placeholder = L10n.typeTheTextToTranslate
@@ -93,7 +93,7 @@ class ConverterRootView: NiblessView {
         addSubview(inputTextView)
         addSubview(resultView)
         addSubview(separatorView)
-        addSubview(navigationBar)
+        addSubview(topBar)
         addSubview(toolbar)
 
         let flexibleSpace =
@@ -112,8 +112,7 @@ class ConverterRootView: NiblessView {
     }
 
     private func activeNavigationBarConstraints() {
-        navigationBar.delegate = self
-        navigationBar.snp.makeConstraints { make in
+        topBar.snp.makeConstraints { make in
             make.top.equalTo(safeAreaLayoutGuide.snp.top)
             make.leading.equalTo(self)
             make.trailing.equalTo(self)
@@ -131,7 +130,7 @@ class ConverterRootView: NiblessView {
 
     private func activeInputTextViewConstraints() {
         inputTextView.snp.makeConstraints { make in
-            make.top.equalTo(navigationBar.snp.bottom)
+            make.top.equalTo(topBar.snp.bottom)
             make.leading.equalTo(safeAreaLayoutGuide)
             make.trailing.equalTo(safeAreaLayoutGuide)
             make.bottom.equalTo(separatorView.snp.top)
