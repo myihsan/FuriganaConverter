@@ -41,6 +41,8 @@ class ConvertingResultView: NiblessView {
 
         constructHierarchy()
         activateConstraints()
+
+        copyButton.addTarget(self, action: #selector(copyResult), for: .touchUpInside)
     }
 
     private func constructHierarchy() {
@@ -71,6 +73,11 @@ class ConvertingResultView: NiblessView {
             make.trailing.equalTo(self)
             make.bottom.equalTo(self)
         }
+    }
+
+    @objc
+    private func copyResult() {
+        UIPasteboard.general.string = resultTextView.text
     }
 }
 
