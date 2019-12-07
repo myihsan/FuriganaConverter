@@ -37,6 +37,12 @@ extension ConvertorViewController: ConverterEventResponder {
         convertSubject.onNext(japaneseString)
     }
 
+    func share(_ convertedString: String) {
+        let activityItems = [convertedString]
+        let activityViewContriller = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
+        present(activityViewContriller, animated: true)
+    }
+
     private func subscribeToConverterEvent() {
         convertSubject
             // Prevent repeated taps

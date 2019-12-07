@@ -80,6 +80,7 @@ class ConverterRootView: NiblessView {
         keyboardButtonItem.action = #selector(toggleKeyboard)
         clearButtonItem.action = #selector(clearInputText)
         convertButtonItem.action = #selector(convertInputText)
+        resultView.shareButton.addTarget(self, action: #selector(shareResult), for: .touchUpInside)
     }
 
     private func setupTextView(_ textView: UITextView) {
@@ -223,6 +224,11 @@ class ConverterRootView: NiblessView {
     private func convertInputText() {
         eventResponder?.convert(inputTextView.text)
         inputTextView.resignFirstResponder()
+    }
+
+    @objc
+    private func shareResult() {
+        eventResponder?.share(resultView.resultTextView.text)
     }
 }
 

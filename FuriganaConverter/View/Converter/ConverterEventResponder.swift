@@ -9,4 +9,5 @@
 protocol ConverterEventResponder: class {
 
     func convert(_ japaneseString: String)
+    func share(_ convertedString: String)
 }
