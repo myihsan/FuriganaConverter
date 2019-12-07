@@ -14,11 +14,7 @@ class ConverterViewControllerTests: XCTestCase {
     class MockConverterUserInterfaceView: UIView, ConverterUserInterface {
 
         var selectedType: ConverterOutputType = .hiragana
-        var result: String?
-
-        func setResult(_ result: String) {
-            self.result = result
-        }
+        var result: String = ""
     }
 
     var userInterface: MockConverterUserInterfaceView!
@@ -71,13 +67,78 @@ class ConverterViewControllerTests: XCTestCase {
         XCTAssertEqual(self.remoteAPI.convertCallCount, 2)
     }
 
-    func test_convert_givenSuccess_callsSetResult() {
+    func test_convert_givenHiraganaSelectedAndSuccess_callsSetResultWithHiragana() {
         // given
         let expectedResult = "かんじが まざっている ぶんしょう"
+        userInterface.selectedType = .hiragana
         remoteAPI.result = .success(expectedResult)
 
         // when
         sut.convert("")
+
+        // then
+        XCTAssertEqual(userInterface.result, expectedResult)
+    }
+
+    func test_convert_givenKatakanaSelectedAndSuccess_callsSetResultWithKatakana() {
+        // given
+        let result = "かんじが まざっている ぶんしょう"
+        let expectedResult = "カンジガ マザッテイル ブンショウ"
+        userInterface.selectedType = .katakana
+        remoteAPI.result = .success(result)
+
+        // when
+        sut.convert("")
+
+        // then
+        XCTAssertEqual(userInterface.result, expectedResult)
+    }
+
+    func test_didSelectHiragana_givenHiraganaResult_keepsHiragana() {
+        // give
+        let expectedResult = "かんじが まざっている ぶんしょう"
+        userInterface.result = expectedResult
+
+        // when
+        sut.didSelect(.hiragana)
+
+        // then
+        XCTAssertEqual(userInterface.result, expectedResult)
+    }
+
+    func test_didSelectHiragana_givenKatakanaResult_convertsToHiragana() {
+        // give
+        let result = "カンジガ マザッテイル ブンショウ"
+        let expectedResult = "かんじが まざっている ぶんしょう"
+        userInterface.result = result
+
+        // when
+        sut.didSelect(.hiragana)
+
+        // then
+        XCTAssertEqual(userInterface.result, expectedResult)
+    }
+
+    func test_didSelectKatakana_givenKatakanaResult_keepsKatakana() {
+        // give
+        let result = "カンジガ マザッテイル ブンショウ"
+        userInterface.result = result
+
+        // when
+        sut.didSelect(.katakana)
+
+        // then
+        XCTAssertEqual(userInterface.result, result)
+    }
+
+    func test_didSelectKatagana_givenHiraganaResult_convertsToKatakana() {
+        // give
+        let result = "かんじが まざっている ぶんしょう"
+        let expectedResult = "カンジガ マザッテイル ブンショウ"
+        userInterface.result = result
+
+        // when
+        sut.didSelect(.katakana)
 
         // then
         XCTAssertEqual(userInterface.result, expectedResult)

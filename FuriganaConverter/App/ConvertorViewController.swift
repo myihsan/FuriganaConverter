@@ -57,6 +57,11 @@ extension ConvertorViewController: ConverterEventResponder {
 
     func didSelect(_ type: ConverterOutputType) {
         UserDefaults.standard.set(type.rawValue, forKey: Self.selectedTypeRawValueUserDefaultsKey)
+        let reverse = type == .hiragana
+        let currentResult = userInterface.result
+        userInterface.result = currentResult
+                .applyingTransform(.hiraganaToKatakana, reverse: reverse) ?? currentResult
+
     }
 
     private func subscribeToConverterEvent() {
@@ -72,8 +77,12 @@ extension ConvertorViewController: ConverterEventResponder {
                         return
                     }
                     switch result {
-                    case let .success(convertedString):
-                        self.userInterface.setResult(convertedString)
+                    case var .success(convertedString):
+                        if self.userInterface.selectedType == .katakana {
+                            convertedString = convertedString
+                                .applyingTransform(.hiraganaToKatakana, reverse: false) ?? convertedString
+                        }
+                        self.userInterface.result = convertedString
                     case let .failure(error):
                         error
                     }

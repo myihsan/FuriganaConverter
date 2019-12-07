@@ -263,8 +263,13 @@ extension ConverterRootView: ConverterUserInterface {
         }
     }
 
-    func setResult(_ result: String) {
-        resultView.resultTextView.text = result
+    var result: String {
+        get {
+            resultView.resultTextView.text
+        }
+        set {
+            resultView.resultTextView.text = newValue
+        }
     }
 }
 
