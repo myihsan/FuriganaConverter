@@ -17,6 +17,10 @@ internal enum L10n {
   internal static let convert = L10n.tr("Localizable", "Convert")
   /// Converting result
   internal static let convertingResult = L10n.tr("Localizable", "Converting result")
+  /// hinagara
+  internal static let hinagara = L10n.tr("Localizable", "hinagara")
+  /// katakana
+  internal static let katakana = L10n.tr("Localizable", "katakana")
   /// Type the text to translate
   internal static let typeTheTextToTranslate = L10n.tr("Localizable", "Type the text to translate")
 }
