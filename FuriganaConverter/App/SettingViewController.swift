@@ -29,6 +29,7 @@ class SettingViewController: NiblessViewController {
     }
 
     override func viewDidLoad() {
+        super.viewDidLoad()
         setupNavigationItem()
         recoverIsAutoShowKeyoardEnable()
         disableClearHitoryCellIfNeed()
