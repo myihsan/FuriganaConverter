@@ -44,6 +44,30 @@ class ConverterViewController: NiblessViewController {
         view = userInterface
     }
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        makeInputViewFirstResponderIfNeed()
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(sceneWillEnterForeground),
+            name: .sceneWillEnterForeground,
+            object: nil
+        )
+    }
+
+    @objc
+    private func sceneWillEnterForeground() {
+        makeInputViewFirstResponderIfNeed()
+    }
+
+    private func makeInputViewFirstResponderIfNeed() {
+        if UserDefaults.standard.bool(forKey: .isAutoShowKeyboardEnableUserDefaultsKey) {
+            userInterface.makeInputViewFirstResponder()
+        }
+    }
+
     private func recoverSelectedType() {
         if let selectedTypeRawValue = UserDefaults.standard.string(forKey: .selectedTypeRawValueUserDefaultsKey),
             let selectedType = ConverterOutputType(rawValue: selectedTypeRawValue) {

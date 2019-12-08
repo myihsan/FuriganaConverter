@@ -34,6 +34,8 @@ class ConverterViewControllerTests: XCTestCase {
         func changeState(_ state: ConverterUserInterfaceState) {
             self.state = state
         }
+
+        func makeInputViewFirstResponder() {}
     }
 
     var userInterface: MockConverterUserInterfaceView!

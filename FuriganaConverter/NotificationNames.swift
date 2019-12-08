@@ -10,5 +10,6 @@ import Foundation
 
 extension Notification.Name {
 
+    static let sceneWillEnterForeground = Notification.Name("sceneWillEnterForeground")
     static let didClearHistory = Notification.Name("didClearHistory")
 }
