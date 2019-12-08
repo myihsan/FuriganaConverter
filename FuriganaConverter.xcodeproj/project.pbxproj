@@ -29,6 +29,7 @@
 		BB69BC20239D1574003B85A3 /* Pods-FuriganaConverter-acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB69BC1F239D1574003B85A3 /* Pods-FuriganaConverter-acknowledgements.plist */; };
 		BB69BC22239D175D003B85A3 /* SettingEventResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69BC21239D175D003B85A3 /* SettingEventResponder.swift */; };
 		BB69BC24239D2944003B85A3 /* NotificationNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69BC23239D2944003B85A3 /* NotificationNames.swift */; };
+		BB69BC26239D2F7F003B85A3 /* UserDefaultKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69BC25239D2F7F003B85A3 /* UserDefaultKeys.swift */; };
 		BB97E07B23993BD000358A90 /* ConverterRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB97E07A23993BD000358A90 /* ConverterRootView.swift */; };
 		BB97E07D2399402F00358A90 /* NiblessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB97E07C2399402F00358A90 /* NiblessView.swift */; };
 		BB97E082239952BB00358A90 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BB97E084239952BB00358A90 /* Localizable.strings */; };
@@ -103,6 +104,7 @@
 		BB69BC1F239D1574003B85A3 /* Pods-FuriganaConverter-acknowledgements.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = "Pods-FuriganaConverter-acknowledgements.plist"; path = "Pods/Target Support Files/Pods-FuriganaConverter/Pods-FuriganaConverter-acknowledgements.plist"; sourceTree = SOURCE_ROOT; };
 		BB69BC21239D175D003B85A3 /* SettingEventResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingEventResponder.swift; sourceTree = "<group>"; };
 		BB69BC23239D2944003B85A3 /* NotificationNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationNames.swift; sourceTree = "<group>"; };
+		BB69BC25239D2F7F003B85A3 /* UserDefaultKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultKeys.swift; sourceTree = "<group>"; };
 		BB97E07A23993BD000358A90 /* ConverterRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterRootView.swift; sourceTree = "<group>"; };
 		BB97E07C2399402F00358A90 /* NiblessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NiblessView.swift; sourceTree = "<group>"; };
 		BB97E0812399529C00358A90 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -317,6 +319,7 @@
 				BBE8A405239825AF00663E73 /* PrivateInfo.plist */,
 				BB97E084239952BB00358A90 /* Localizable.strings */,
 				BB69BC23239D2944003B85A3 /* NotificationNames.swift */,
+				BB69BC25239D2F7F003B85A3 /* UserDefaultKeys.swift */,
 				BB97E096239ACD0A00358A90 /* App */,
 				BB97E07923993B7800358A90 /* View */,
 				BBE8A3F42398218F00663E73 /* Data */,
@@ -674,6 +677,7 @@
 				BB97E07B23993BD000358A90 /* ConverterRootView.swift in Sources */,
 				BBE8A3F9239821BD00663E73 /* FuriganaConverterRemoteAPI.swift in Sources */,
 				BB97E08A239A85B800358A90 /* PrivateInfoPlist.swift in Sources */,
+				BB69BC26239D2F7F003B85A3 /* UserDefaultKeys.swift in Sources */,
 				BB97E09C239ACFC200358A90 /* NiblessViewController.swift in Sources */,
 				BB69BBF8239BE559003B85A3 /* ConverterHistoryView.swift in Sources */,
 				BBE8A3B52398138F00663E73 /* AppDelegate.swift in Sources */,

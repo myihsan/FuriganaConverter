@@ -8,6 +8,7 @@
 
 protocol SettingEventResponder: class {
 
+    func isAutoShowKeyboardEnableDidChange()
     func clearHistory()
     func showAcknowledgements()
 }

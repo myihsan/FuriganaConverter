@@ -12,8 +12,6 @@ import CoreData
 
 class ConverterViewController: NiblessViewController {
 
-    private static let selectedTypeRawValueUserDefaultsKey = "SelectedType"
-
     private let userInterface: ConverterUserInterfaceView
     private let remoteAPI: FuriganaConverterRemoteAPI
     private let coreDataStack: CoreDataStack
@@ -47,7 +45,7 @@ class ConverterViewController: NiblessViewController {
     }
 
     private func recoverSelectedType() {
-        if let selectedTypeRawValue = UserDefaults.standard.string(forKey: Self.selectedTypeRawValueUserDefaultsKey),
+        if let selectedTypeRawValue = UserDefaults.standard.string(forKey: .selectedTypeRawValueUserDefaultsKey),
             let selectedType = ConverterOutputType(rawValue: selectedTypeRawValue) {
             userInterface.selectedType = selectedType
         } else {
@@ -74,7 +72,7 @@ extension ConverterViewController: ConverterEventResponder {
     }
 
     func didSelect(_ type: ConverterOutputType) {
-        UserDefaults.standard.set(type.rawValue, forKey: Self.selectedTypeRawValueUserDefaultsKey)
+        UserDefaults.standard.set(type.rawValue, forKey: .selectedTypeRawValueUserDefaultsKey)
         let reverse = type == .hiragana
         if case let .result(_, resultViewState) = userInterface.state,
             case let .result(currentResult) = resultViewState {

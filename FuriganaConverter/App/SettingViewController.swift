@@ -29,17 +29,26 @@ class SettingViewController: NiblessViewController {
     }
 
     override func viewDidLoad() {
-        navigationController?.delegate = self
-        title = L10n.settings
-        let doneButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
-        navigationItem.rightBarButtonItem = doneButtonItem
-
+        setupNavigationItem()
+        recoverIsAutoShowKeyoardEnable()
         disableClearHitoryCellIfNeed()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         userInterface.deselectCells()
+    }
+
+    private func setupNavigationItem() {
+        navigationController?.delegate = self
+        title = L10n.settings
+        let doneButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
+        navigationItem.rightBarButtonItem = doneButtonItem
+    }
+
+    private func recoverIsAutoShowKeyoardEnable() {
+        let isEnable = UserDefaults.standard.bool(forKey: .isAutoShowKeyboardEnableUserDefaultsKey)
+        userInterface.isAutoShowKeyboardEnable = isEnable
     }
 
     private func disableClearHitoryCellIfNeed() {
@@ -61,6 +70,13 @@ class SettingViewController: NiblessViewController {
 }
 
 extension SettingViewController: SettingEventResponder {
+
+    func isAutoShowKeyboardEnableDidChange() {
+        UserDefaults.standard.set(
+            userInterface.isAutoShowKeyboardEnable,
+            forKey: .isAutoShowKeyboardEnableUserDefaultsKey
+        )
+    }
 
     func clearHistory() {
         userInterface.deselectCells()

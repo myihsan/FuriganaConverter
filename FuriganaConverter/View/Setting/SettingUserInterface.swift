@@ -12,6 +12,8 @@ typealias SettingUserInterfaceView = SettingUserInterface & UIView
 
 protocol SettingUserInterface: class {
 
+    var isAutoShowKeyboardEnable: Bool { get set }
+
     func disableClearHistoryCell()
     func deselectCells()
 }

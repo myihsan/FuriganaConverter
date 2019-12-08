@@ -64,6 +64,13 @@ class SettingRootView: NiblessView {
         tableView.snp.makeConstraints { make in
             make.edges.equalTo(self)
         }
+
+        autoShowKeyboardSwitch.addTarget(self, action: #selector(isAutoShowKeyboardEnableDidChange), for: .valueChanged)
+    }
+
+    @objc
+    private func isAutoShowKeyboardEnableDidChange() {
+        eventResponder?.isAutoShowKeyboardEnableDidChange()
     }
 }
 
@@ -107,6 +114,15 @@ extension SettingRootView: UITableViewDelegate {
 }
 
 extension SettingRootView: SettingUserInterface {
+
+    var isAutoShowKeyboardEnable: Bool {
+        get {
+            autoShowKeyboardSwitch.isOn
+        }
+        set {
+            autoShowKeyboardSwitch.isOn = newValue
+        }
+    }
 
     func disableClearHistoryCell() {
         clearHistoryCell.selectionStyle = .none
