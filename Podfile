@@ -3,6 +3,9 @@ platform :ios, '13.2'
 target 'FuriganaConverter' do
     pod 'SwiftLint'
     pod 'SwiftGen'
+    pod 'SnapKit'
+    pod 'UITextView+Placeholder', :modular_headers => true
+    pod 'RxKeyboard'
 
     target 'FuriganaConverterTests' do
         inherit! :search_paths

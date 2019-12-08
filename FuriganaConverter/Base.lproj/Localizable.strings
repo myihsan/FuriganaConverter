@@ -1,0 +1,24 @@
+/*
+  Localizable.strings
+  FuriganaConverter
+
+  Created by Jierong Li on 2019/12/05.
+  Copyright © 2019 Jierong Li. All rights reserved.
+*/
+
+"Convert" = "Convert";
+"Type the text to translate" = "Type the text to translate";
+"Clear" = "Clear";
+"hinagara" = "hinagara";
+"katakana" = "katakana";
+"Converting..." = "Converting...";
+"Paste" = "Paste";
+"OK" = "OK";
+"Rate Limit Exceeded" = "Rate Limit Exceeded";
+"Please wait until tomorrow." = "Please wait until tomorrow.";
+"Text Too Long" = "Text Too Long";
+"Please try again with a shorter text." = "Please try again with a shorter text.";
+"Converting Failed" = "Converting Failed";
+"Cancel" = "Cancel";
+"Retry" = "Retry";
+"Later" = "Later";
