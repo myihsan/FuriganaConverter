@@ -33,6 +33,12 @@ class SettingRootView: NiblessView {
         return cell
     }()
     private let tableView = UITableView(frame: .zero, style: .grouped)
+    private let supportedByImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = Asset.sgoo.image
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
 
     private lazy var cells = [
         IndexPath(row: 0, section: 0): autoShowKeyboardCell,
@@ -47,12 +53,35 @@ class SettingRootView: NiblessView {
         tableView.dataSource = self
         tableView.delegate = self
 
+        constructHierarchy()
+        activateConstraints()
+
+        autoShowKeyboardSwitch.addTarget(self, action: #selector(isAutoShowKeyboardEnableDidChange), for: .valueChanged)
+    }
+
+    private func constructHierarchy() {
         addSubview(tableView)
+        addSubview(supportedByImageView)
+    }
+
+    private func activateConstraints() {
+        activateTableViewConstraints()
+        activateSupportByImageViewConstraints()
+    }
+
+    private func activateTableViewConstraints() {
         tableView.snp.makeConstraints { make in
             make.edges.equalTo(self)
         }
+    }
 
-        autoShowKeyboardSwitch.addTarget(self, action: #selector(isAutoShowKeyboardEnableDidChange), for: .valueChanged)
+    private func activateSupportByImageViewConstraints() {
+        supportedByImageView.snp.makeConstraints { make in
+            make.width.equalTo(100)
+            make.height.equalTo(supportedByImageView.snp.width).multipliedBy(219 / 522.0)
+            make.centerX.equalTo(self)
+            make.bottom.equalTo(safeAreaLayoutGuide)
+        }
     }
 
     @objc

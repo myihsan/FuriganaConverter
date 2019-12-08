@@ -31,6 +31,7 @@
 		BB69BC24239D2944003B85A3 /* NotificationNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69BC23239D2944003B85A3 /* NotificationNames.swift */; };
 		BB69BC26239D2F7F003B85A3 /* UserDefaultKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69BC25239D2F7F003B85A3 /* UserDefaultKeys.swift */; };
 		BB69BC29239D4EA3003B85A3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BB69BC2B239D4EA3003B85A3 /* InfoPlist.strings */; };
+		BB69BC2E239D53D6003B85A3 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69BC2D239D53D6003B85A3 /* Assets.swift */; };
 		BB97E07B23993BD000358A90 /* ConverterRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB97E07A23993BD000358A90 /* ConverterRootView.swift */; };
 		BB97E07D2399402F00358A90 /* NiblessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB97E07C2399402F00358A90 /* NiblessView.swift */; };
 		BB97E082239952BB00358A90 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BB97E084239952BB00358A90 /* Localizable.strings */; };
@@ -108,6 +109,7 @@
 		BB69BC25239D2F7F003B85A3 /* UserDefaultKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultKeys.swift; sourceTree = "<group>"; };
 		BB69BC2A239D4EA3003B85A3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BB69BC2C239D4EB0003B85A3 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BB69BC2D239D53D6003B85A3 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		BB97E07A23993BD000358A90 /* ConverterRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterRootView.swift; sourceTree = "<group>"; };
 		BB97E07C2399402F00358A90 /* NiblessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NiblessView.swift; sourceTree = "<group>"; };
 		BB97E0812399529C00358A90 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 			children = (
 				BB97E089239A85B800358A90 /* PrivateInfoPlist.swift */,
 				BB97E08E239A8E3700358A90 /* Strings.swift */,
+				BB69BC2D239D53D6003B85A3 /* Assets.swift */,
 			);
 			path = Generated;
 			sourceTree = "<group>";
@@ -704,6 +707,7 @@
 				BB69BC17239CF385003B85A3 /* UIAlertControllerExtensions.swift in Sources */,
 				BB97E098239ACD6200358A90 /* AppDependencyContainer.swift in Sources */,
 				BB69BC04239C0666003B85A3 /* HistoryCell.swift in Sources */,
+				BB69BC2E239D53D6003B85A3 /* Assets.swift in Sources */,
 				BBE8A40C23982EFE00663E73 /* GooFuriganaConverterResponse.swift in Sources */,
 				BB69BC19239D010D003B85A3 /* SettingViewController.swift in Sources */,
 				BB97E08F239A8E3700358A90 /* Strings.swift in Sources */,
