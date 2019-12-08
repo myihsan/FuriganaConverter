@@ -12,19 +12,6 @@ class SettingRootView: NiblessView {
 
     weak var eventResponder: SettingEventResponder?
 
-    private let navigationBar: UINavigationBar = {
-        let navigationBar = UINavigationBar()
-        let navigationItem = UINavigationItem()
-        navigationItem.title = L10n.settings
-        let closeButtonItem = UIBarButtonItem(
-            barButtonSystemItem: .done,
-            target: nil,
-            action: nil
-        )
-        navigationItem.rightBarButtonItem = closeButtonItem
-        navigationBar.items = [navigationItem]
-        return navigationBar
-    }()
     private let autoShowKeyboardSwitch = UISwitch()
     private lazy var autoShowKeyboardCell: UITableViewCell = {
         let cell = UITableViewCell()
