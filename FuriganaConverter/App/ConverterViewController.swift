@@ -82,6 +82,10 @@ extension ConverterViewController: ConverterEventResponder {
         }
     }
 
+    func didTapSettingButton() {
+        
+    }
+
     private func subscribeToConverterEvent() {
         convertSubject
             // Prevent repeated taps

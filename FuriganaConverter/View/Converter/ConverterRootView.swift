@@ -121,6 +121,9 @@ class ConverterRootView: NiblessView {
 
     private func setActionsForControls() {
         topBar.typeSegmentedControl.addTarget(self, action: #selector(selectedTypeChanged), for: .valueChanged)
+        let settingButtonItem = topBar.settingButtonItem
+        settingButtonItem.target = self
+        settingButtonItem.action = #selector(didTapSettingButton)
         keyboardButtonItem.target = self
         keyboardButtonItem.action = #selector(toggleKeyboard)
         pasteButtonItem.target = self
@@ -235,6 +238,11 @@ class ConverterRootView: NiblessView {
         let selectedType: ConverterOutputType =
             topBar.typeSegmentedControl.selectedSegmentIndex == 0 ? .hiragana : .katakana
         eventResponder?.didSelect(selectedType)
+    }
+
+    @objc
+    private func didTapSettingButton() {
+        eventResponder?.didTapSettingButton()
     }
 
     @objc

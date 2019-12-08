@@ -12,4 +12,5 @@ protocol ConverterEventResponder: class {
     func convert(_ japaneseString: String)
     func share(_ convertedString: String)
     func didSelect(_ type: ConverterOutputType)
+    func didTapSettingButton()
 }
