@@ -13,3 +13,12 @@
 "katakana" = "katakana";
 "Converting..." = "Converting...";
 "Paste" = "Paste";
+"OK" = "OK";
+"Rate Limit Exceeded" = "Rate Limit Exceeded";
+"Please wait until tomorrow." = "Please wait until tomorrow.";
+"Text Too Long" = "Text Too Long";
+"Please try again with a shorter text." = "Please try again with a shorter text.";
+"Converting Failed" = "Converting Failed";
+"Cancel" = "Cancel";
+"Retry" = "Retry";
+"Later" = "Later";

@@ -96,21 +96,44 @@ extension ConverterViewController: ConverterEventResponder {
                     convertTask.cancel()
                 }
                 self.userInterface.state = .result(resultViewState: .loading)
-                self.convertTask = self.remoteAPI.convert(japaneseString) { [weak self] result in
-                    guard let self = self else {
-                        return
-                    }
-                    switch result {
-                    case let .success(convertedString):
-                        self.saveHistory(originalString: japaneseString, convertedString: convertedString)
-                        self.setHiraganaResult(convertedString: convertedString)
-                    case let .failure(error):
-                        self.userInterface.state = .history
-                        error
-                    }
-                }
+                self.callRemoteAPI(japaneseString: japaneseString)
             })
             .disposed(by: disposeBag)
+    }
+
+    private func callRemoteAPI(japaneseString: String) {
+        self.convertTask = self.remoteAPI.convert(japaneseString) { [weak self] result in
+            guard let self = self else {
+                return
+            }
+            switch result {
+            case let .success(convertedString):
+                self.saveHistory(originalString: japaneseString, convertedString: convertedString)
+                self.setHiraganaResult(convertedString: convertedString)
+            case let .failure(error):
+                self.userInterface.state = .history
+                let alertViewController = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
+                switch error {
+                case .limitExceeded:
+                    alertViewController.title = L10n.rateLimitExceeded
+                    alertViewController.message = L10n.pleaseWaitUntilTomorrow
+                    alertViewController.addOKAction()
+                case .tooLong:
+                    alertViewController.title = L10n.textTooLong
+                    alertViewController.message = L10n.pleaseTryAgainWithAShorterText
+                    alertViewController.addOKAction()
+                case .unknown,
+                     .unexpected:
+                    alertViewController.title = L10n.convertingFailed
+                    alertViewController.addCancelAction()
+                    let retryAction = UIAlertAction(title: L10n.retry, style: .default) { _ in
+                        self.callRemoteAPI(japaneseString: japaneseString)
+                    }
+                    alertViewController.addAction(retryAction)
+                }
+                self.present(alertViewController, animated: true)
+            }
+        }
     }
 
     private func setHiraganaResult(originalString: String? = nil, convertedString: String) {

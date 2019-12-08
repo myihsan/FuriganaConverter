@@ -13,3 +13,12 @@
 "katakana" = "カタカナ";
 "Converting..." = "変換中...";
 "Paste" = "ペースト";
+
+"Rate Limit Exceeded" = "使用上限を超えていました";
+"Please wait until tomorrow." = "明日までお待ちください。";
+"Text Too Long" = "内容が長すぎます";
+"Please try again with a shorter text." = "短くして、もう一度試してください。";
+"Converting Failed" = "変換に失敗しました";
+"Cancel" = "キャンセル";
+"Retry" = "再試行";
+"Later" = "あとで";
