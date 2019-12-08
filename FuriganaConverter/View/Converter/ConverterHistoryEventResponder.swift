@@ -8,5 +8,6 @@
 
 protocol ConverterHistoryEventResponder: class {
 
+    func didSelect(_ history: History)
     func delete(_ history: History)
 }

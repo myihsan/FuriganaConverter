@@ -34,11 +34,21 @@ class ConverterHistoryView: NiblessView {
             print("Fetching error: \(error), \(error.userInfo)")
         }
 
+        tableView.delegate = self
         tableView.dataSource = self
         addSubview(tableView)
         tableView.snp.makeConstraints { make in
             make.edges.equalTo(self)
         }
+    }
+}
+
+extension ConverterHistoryView: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let history = historyFetchedResultsController.object(at: indexPath)
+        eventResponder?.didSelect(history)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 

@@ -130,6 +130,10 @@ extension ConvertorViewController: ConverterEventResponder {
 
 extension ConvertorViewController: ConverterHistoryEventResponder {
 
+    func didSelect(_ history: History) {
+        
+    }
+
     func delete(_ history: History) {
         coreDataStack.managedContext.delete(history)
         coreDataStack.saveContext()
