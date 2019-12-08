@@ -1,0 +1,29 @@
+/* 
+  Localizable.strings
+  FuriganaConverter
+
+  Created by Jierong Li on 2019/12/05.
+  Copyright © 2019 Jierong Li. All rights reserved.
+*/
+
+"Convert" = "変換";
+"Type the text to translate" = "変換する内容を入力";
+"Clear" = "消去";
+"hinagara" = "ひながら";
+"katakana" = "カタカナ";
+"Converting..." = "変換中...";
+"Paste" = "ペースト";
+
+"Rate Limit Exceeded" = "使用上限を超えていました";
+"Please wait until tomorrow." = "明日までお待ちください。";
+"Text Too Long" = "内容が長すぎます";
+"Please try again with a shorter text." = "短くして、もう一度試してください。";
+"Converting Failed" = "変換に失敗しました";
+"Cancel" = "キャンセル";
+"Retry" = "再試行";
+"Later" = "あとで";
+"Settings" = "設定";
+"Show Keyboard Automatically" = "キーボードの自動表示";
+"Clear History" = "履歴を消去";
+"Acknowledgements" = "謝辞";
+"Clear Failed" = "消去に失敗しました";

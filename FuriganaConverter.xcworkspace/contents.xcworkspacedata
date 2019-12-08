@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <Group
+      location = "container:"
+      name = "Environment">
+      <FileRef
+         location = "group:LICENSE">
+      </FileRef>
+      <FileRef
+         location = "group:README.md">
+      </FileRef>
+      <FileRef
+         location = "group:Gemfile">
+      </FileRef>
+      <FileRef
+         location = "group:Podfile">
+      </FileRef>
+      <FileRef
+         location = "group:swiftgen.yml">
+      </FileRef>
+   </Group>
+   <FileRef
+      location = "group:FuriganaConverter.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Pods/Pods.xcodeproj">
+   </FileRef>
+</Workspace>

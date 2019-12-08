@@ -1,0 +1,20 @@
+input_dir: FuriganaConverter
+output_dir: FuriganaConverter/Generated
+plist:
+  - inputs: PrivateInfo.plist
+    outputs:
+    - templateName: runtime-swift4
+      output: PrivateInfoPlist.swift
+      params:
+        enumName: PrivateInfoPlist
+strings:
+  inputs: Base.lproj
+  filter: .+\.strings$
+  outputs:
+    templateName: structured-swift4
+    output: Strings.swift
+xcassets:
+  inputs: Assets.xcassets
+  outputs:
+    templateName: swift4
+    output: Assets.swift

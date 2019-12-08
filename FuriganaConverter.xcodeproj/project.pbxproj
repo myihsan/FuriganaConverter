@@ -3,18 +3,64 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		37E81342BD21C40CAE1209CD /* libPods-FuriganaConverterTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07AB264A526A138C973F4346 /* libPods-FuriganaConverterTests.a */; };
+		496E7E3BFEDB078A894C3520 /* libPods-FuriganaConverterUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AC9D3F9ABB813AEF2A1D918 /* libPods-FuriganaConverterUITests.a */; };
+		91F4C4D8FB2A5DD6B654A1A7 /* libPods-FuriganaConverter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB72FA2221E48E0F22612127 /* libPods-FuriganaConverter.a */; };
+		BB69BBF8239BE559003B85A3 /* ConverterHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69BBF7239BE558003B85A3 /* ConverterHistoryView.swift */; };
+		BB69BBFB239BE5A0003B85A3 /* FuriganaConverter.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BB69BBF9239BE5A0003B85A3 /* FuriganaConverter.xcdatamodeld */; };
+		BB69BBFE239BE619003B85A3 /* History+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69BBFC239BE619003B85A3 /* History+CoreDataClass.swift */; };
+		BB69BBFF239BE619003B85A3 /* History+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69BBFD239BE619003B85A3 /* History+CoreDataProperties.swift */; };
+		BB69BC02239BF1AB003B85A3 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69BC01239BF1AB003B85A3 /* CoreDataStack.swift */; };
+		BB69BC04239C0666003B85A3 /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69BC03239C0666003B85A3 /* HistoryCell.swift */; };
+		BB69BC08239C9E4D003B85A3 /* MockCoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69BC07239C9E4D003B85A3 /* MockCoreDataStack.swift */; };
+		BB69BC0A239CA1C5003B85A3 /* HistoryHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69BC09239CA1C5003B85A3 /* HistoryHolder.swift */; };
+		BB69BC0C239CA3FF003B85A3 /* MockHistoryHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69BC0B239CA3FF003B85A3 /* MockHistoryHolder.swift */; };
+		BB69BC0E239CAD9A003B85A3 /* ConverterHistoryEventResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69BC0D239CAD9A003B85A3 /* ConverterHistoryEventResponder.swift */; };
+		BB69BC10239CCC47003B85A3 /* ConverterUserInterfaceState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69BC0F239CCC47003B85A3 /* ConverterUserInterfaceState.swift */; };
+		BB69BC12239CDA91003B85A3 /* ConvertingResultViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69BC11239CDA91003B85A3 /* ConvertingResultViewState.swift */; };
+		BB69BC17239CF385003B85A3 /* UIAlertControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69BC16239CF385003B85A3 /* UIAlertControllerExtensions.swift */; };
+		BB69BC19239D010D003B85A3 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69BC18239D010D003B85A3 /* SettingViewController.swift */; };
+		BB69BC1C239D02B0003B85A3 /* SettingRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69BC1B239D02B0003B85A3 /* SettingRootView.swift */; };
+		BB69BC1E239D1143003B85A3 /* SettingUserInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69BC1D239D1143003B85A3 /* SettingUserInterface.swift */; };
+		BB69BC20239D1574003B85A3 /* Pods-FuriganaConverter-acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB69BC1F239D1574003B85A3 /* Pods-FuriganaConverter-acknowledgements.plist */; };
+		BB69BC22239D175D003B85A3 /* SettingEventResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69BC21239D175D003B85A3 /* SettingEventResponder.swift */; };
+		BB69BC24239D2944003B85A3 /* NotificationNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69BC23239D2944003B85A3 /* NotificationNames.swift */; };
+		BB69BC26239D2F7F003B85A3 /* UserDefaultKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69BC25239D2F7F003B85A3 /* UserDefaultKeys.swift */; };
+		BB69BC29239D4EA3003B85A3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BB69BC2B239D4EA3003B85A3 /* InfoPlist.strings */; };
+		BB69BC2E239D53D6003B85A3 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69BC2D239D53D6003B85A3 /* Assets.swift */; };
+		BB97E07B23993BD000358A90 /* ConverterRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB97E07A23993BD000358A90 /* ConverterRootView.swift */; };
+		BB97E07D2399402F00358A90 /* NiblessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB97E07C2399402F00358A90 /* NiblessView.swift */; };
+		BB97E082239952BB00358A90 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BB97E084239952BB00358A90 /* Localizable.strings */; };
+		BB97E08A239A85B800358A90 /* PrivateInfoPlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB97E089239A85B800358A90 /* PrivateInfoPlist.swift */; };
+		BB97E08F239A8E3700358A90 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB97E08E239A8E3700358A90 /* Strings.swift */; };
+		BB97E095239AC95900358A90 /* ConverterEventResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB97E094239AC95900358A90 /* ConverterEventResponder.swift */; };
+		BB97E098239ACD6200358A90 /* AppDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB97E097239ACD6200358A90 /* AppDependencyContainer.swift */; };
+		BB97E09A239ACF0A00358A90 /* ConverterUserInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB97E099239ACF0A00358A90 /* ConverterUserInterface.swift */; };
+		BB97E09C239ACFC200358A90 /* NiblessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB97E09B239ACFC200358A90 /* NiblessViewController.swift */; };
+		BBE83993239B73E900A90DEB /* ConverterViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE83992239B73E900A90DEB /* ConverterViewControllerTests.swift */; };
+		BBE83995239B74B000A90DEB /* MockFuriganaConverterRemoteAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE83994239B74B000A90DEB /* MockFuriganaConverterRemoteAPI.swift */; };
+		BBE83997239B853300A90DEB /* ConvertingResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE83996239B853300A90DEB /* ConvertingResultView.swift */; };
+		BBE83999239B99C300A90DEB /* ConverterTopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE83998239B99C300A90DEB /* ConverterTopBar.swift */; };
+		BBE8399F239BADB700A90DEB /* ConverterOutputType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE8399E239BADB700A90DEB /* ConverterOutputType.swift */; };
 		BBE8A3B52398138F00663E73 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE8A3B42398138F00663E73 /* AppDelegate.swift */; };
 		BBE8A3B72398138F00663E73 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE8A3B62398138F00663E73 /* SceneDelegate.swift */; };
-		BBE8A3B92398138F00663E73 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE8A3B82398138F00663E73 /* ViewController.swift */; };
-		BBE8A3BC2398138F00663E73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBE8A3BA2398138F00663E73 /* Main.storyboard */; };
+		BBE8A3B92398138F00663E73 /* ConverterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE8A3B82398138F00663E73 /* ConverterViewController.swift */; };
 		BBE8A3BE2398139000663E73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBE8A3BD2398139000663E73 /* Assets.xcassets */; };
 		BBE8A3C12398139000663E73 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBE8A3BF2398139000663E73 /* LaunchScreen.storyboard */; };
-		BBE8A3F023981BD200663E73 /* FuriganaConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE8A3EF23981BD200663E73 /* FuriganaConverterTests.swift */; };
 		BBE8A3F223981C0600663E73 /* FuriganaConverterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE8A3F123981C0600663E73 /* FuriganaConverterUITests.swift */; };
+		BBE8A3F7239821A300663E73 /* RemoteAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE8A3F6239821A300663E73 /* RemoteAPIError.swift */; };
+		BBE8A3F9239821BD00663E73 /* FuriganaConverterRemoteAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE8A3F8239821BD00663E73 /* FuriganaConverterRemoteAPI.swift */; };
+		BBE8A3FB239821EA00663E73 /* GooFuriganaConverterRemoteAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE8A3FA239821EA00663E73 /* GooFuriganaConverterRemoteAPI.swift */; };
+		BBE8A3FD2398222900663E73 /* GooFuriganaConverterRemoteAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE8A3FC2398222900663E73 /* GooFuriganaConverterRemoteAPITests.swift */; };
+		BBE8A402239824A300663E73 /* MockURLSessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE8A401239824A300663E73 /* MockURLSessionDataTask.swift */; };
+		BBE8A404239824D500663E73 /* MockURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE8A403239824D500663E73 /* MockURLSession.swift */; };
+		BBE8A4072398263400663E73 /* PrivateInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BBE8A405239825AF00663E73 /* PrivateInfo.plist */; };
+		BBE8A40A23982B7B00663E73 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE8A40923982B7B00663E73 /* ErrorResponse.swift */; };
+		BBE8A40C23982EFE00663E73 /* GooFuriganaConverterResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE8A40B23982EFE00663E73 /* GooFuriganaConverterResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,11 +81,55 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		07AB264A526A138C973F4346 /* libPods-FuriganaConverterTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FuriganaConverterTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0D935B7C6A8A2B6CB0B836A7 /* Pods-FuriganaConverterTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FuriganaConverterTests.debug.xcconfig"; path = "Target Support Files/Pods-FuriganaConverterTests/Pods-FuriganaConverterTests.debug.xcconfig"; sourceTree = "<group>"; };
+		30E2D2FE7B91DAA6FC2E930A /* Pods-FuriganaConverterUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FuriganaConverterUITests.release.xcconfig"; path = "Target Support Files/Pods-FuriganaConverterUITests/Pods-FuriganaConverterUITests.release.xcconfig"; sourceTree = "<group>"; };
+		3AC9D3F9ABB813AEF2A1D918 /* libPods-FuriganaConverterUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FuriganaConverterUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		425D74E59DF6DE29BBB9CB33 /* Pods-FuriganaConverter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FuriganaConverter.debug.xcconfig"; path = "Target Support Files/Pods-FuriganaConverter/Pods-FuriganaConverter.debug.xcconfig"; sourceTree = "<group>"; };
+		732A8E32FBE5CCAAFB7FDCC5 /* Pods-FuriganaConverter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FuriganaConverter.release.xcconfig"; path = "Target Support Files/Pods-FuriganaConverter/Pods-FuriganaConverter.release.xcconfig"; sourceTree = "<group>"; };
+		BB69BBF7239BE558003B85A3 /* ConverterHistoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConverterHistoryView.swift; sourceTree = "<group>"; };
+		BB69BBFA239BE5A0003B85A3 /* FuriganaConverter.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FuriganaConverter.xcdatamodel; sourceTree = "<group>"; };
+		BB69BBFC239BE619003B85A3 /* History+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "History+CoreDataClass.swift"; path = "FuriganaConverter/Data/Model/CoreData/History+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		BB69BBFD239BE619003B85A3 /* History+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "History+CoreDataProperties.swift"; path = "FuriganaConverter/Data/Model/CoreData/History+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		BB69BC01239BF1AB003B85A3 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		BB69BC03239C0666003B85A3 /* HistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCell.swift; sourceTree = "<group>"; };
+		BB69BC07239C9E4D003B85A3 /* MockCoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCoreDataStack.swift; sourceTree = "<group>"; };
+		BB69BC09239CA1C5003B85A3 /* HistoryHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryHolder.swift; sourceTree = "<group>"; };
+		BB69BC0B239CA3FF003B85A3 /* MockHistoryHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockHistoryHolder.swift; sourceTree = "<group>"; };
+		BB69BC0D239CAD9A003B85A3 /* ConverterHistoryEventResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterHistoryEventResponder.swift; sourceTree = "<group>"; };
+		BB69BC0F239CCC47003B85A3 /* ConverterUserInterfaceState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterUserInterfaceState.swift; sourceTree = "<group>"; };
+		BB69BC11239CDA91003B85A3 /* ConvertingResultViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertingResultViewState.swift; sourceTree = "<group>"; };
+		BB69BC16239CF385003B85A3 /* UIAlertControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertControllerExtensions.swift; sourceTree = "<group>"; };
+		BB69BC18239D010D003B85A3 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		BB69BC1B239D02B0003B85A3 /* SettingRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRootView.swift; sourceTree = "<group>"; };
+		BB69BC1D239D1143003B85A3 /* SettingUserInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingUserInterface.swift; sourceTree = "<group>"; };
+		BB69BC1F239D1574003B85A3 /* Pods-FuriganaConverter-acknowledgements.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = "Pods-FuriganaConverter-acknowledgements.plist"; path = "Pods/Target Support Files/Pods-FuriganaConverter/Pods-FuriganaConverter-acknowledgements.plist"; sourceTree = SOURCE_ROOT; };
+		BB69BC21239D175D003B85A3 /* SettingEventResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingEventResponder.swift; sourceTree = "<group>"; };
+		BB69BC23239D2944003B85A3 /* NotificationNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationNames.swift; sourceTree = "<group>"; };
+		BB69BC25239D2F7F003B85A3 /* UserDefaultKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultKeys.swift; sourceTree = "<group>"; };
+		BB69BC2A239D4EA3003B85A3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BB69BC2C239D4EB0003B85A3 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BB69BC2D239D53D6003B85A3 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
+		BB97E07A23993BD000358A90 /* ConverterRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterRootView.swift; sourceTree = "<group>"; };
+		BB97E07C2399402F00358A90 /* NiblessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NiblessView.swift; sourceTree = "<group>"; };
+		BB97E0812399529C00358A90 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		BB97E083239952BB00358A90 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BB97E089239A85B800358A90 /* PrivateInfoPlist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivateInfoPlist.swift; sourceTree = "<group>"; };
+		BB97E08D239A8D3700358A90 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BB97E08E239A8E3700358A90 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		BB97E094239AC95900358A90 /* ConverterEventResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterEventResponder.swift; sourceTree = "<group>"; };
+		BB97E097239ACD6200358A90 /* AppDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependencyContainer.swift; sourceTree = "<group>"; };
+		BB97E099239ACF0A00358A90 /* ConverterUserInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterUserInterface.swift; sourceTree = "<group>"; };
+		BB97E09B239ACFC200358A90 /* NiblessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NiblessViewController.swift; sourceTree = "<group>"; };
+		BBE83992239B73E900A90DEB /* ConverterViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterViewControllerTests.swift; sourceTree = "<group>"; };
+		BBE83994239B74B000A90DEB /* MockFuriganaConverterRemoteAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFuriganaConverterRemoteAPI.swift; sourceTree = "<group>"; };
+		BBE83996239B853300A90DEB /* ConvertingResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertingResultView.swift; sourceTree = "<group>"; };
+		BBE83998239B99C300A90DEB /* ConverterTopBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterTopBar.swift; sourceTree = "<group>"; };
+		BBE8399E239BADB700A90DEB /* ConverterOutputType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterOutputType.swift; sourceTree = "<group>"; };
 		BBE8A3B12398138F00663E73 /* FuriganaConverter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FuriganaConverter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBE8A3B42398138F00663E73 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BBE8A3B62398138F00663E73 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		BBE8A3B82398138F00663E73 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		BBE8A3BB2398138F00663E73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BBE8A3B82398138F00663E73 /* ConverterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterViewController.swift; sourceTree = "<group>"; };
 		BBE8A3BD2398139000663E73 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BBE8A3C02398139000663E73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BBE8A3C22398139000663E73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -47,8 +137,19 @@
 		BBE8A3CD2398139000663E73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BBE8A3D22398139000663E73 /* FuriganaConverterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FuriganaConverterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBE8A3D82398139000663E73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BBE8A3EF23981BD200663E73 /* FuriganaConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuriganaConverterTests.swift; sourceTree = "<group>"; };
 		BBE8A3F123981C0600663E73 /* FuriganaConverterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuriganaConverterUITests.swift; sourceTree = "<group>"; };
+		BBE8A3F6239821A300663E73 /* RemoteAPIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteAPIError.swift; sourceTree = "<group>"; };
+		BBE8A3F8239821BD00663E73 /* FuriganaConverterRemoteAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuriganaConverterRemoteAPI.swift; sourceTree = "<group>"; };
+		BBE8A3FA239821EA00663E73 /* GooFuriganaConverterRemoteAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GooFuriganaConverterRemoteAPI.swift; sourceTree = "<group>"; };
+		BBE8A3FC2398222900663E73 /* GooFuriganaConverterRemoteAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GooFuriganaConverterRemoteAPITests.swift; sourceTree = "<group>"; };
+		BBE8A401239824A300663E73 /* MockURLSessionDataTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSessionDataTask.swift; sourceTree = "<group>"; };
+		BBE8A403239824D500663E73 /* MockURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSession.swift; sourceTree = "<group>"; };
+		BBE8A405239825AF00663E73 /* PrivateInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = PrivateInfo.plist; sourceTree = "<group>"; };
+		BBE8A40923982B7B00663E73 /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
+		BBE8A40B23982EFE00663E73 /* GooFuriganaConverterResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GooFuriganaConverterResponse.swift; sourceTree = "<group>"; };
+		CB72FA2221E48E0F22612127 /* libPods-FuriganaConverter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FuriganaConverter.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F689D00C84499114531E57A7 /* Pods-FuriganaConverterUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FuriganaConverterUITests.debug.xcconfig"; path = "Target Support Files/Pods-FuriganaConverterUITests/Pods-FuriganaConverterUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		FA17C528C8660D2CA58EA13D /* Pods-FuriganaConverterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FuriganaConverterTests.release.xcconfig"; path = "Target Support Files/Pods-FuriganaConverterTests/Pods-FuriganaConverterTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +157,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91F4C4D8FB2A5DD6B654A1A7 /* libPods-FuriganaConverter.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +165,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37E81342BD21C40CAE1209CD /* libPods-FuriganaConverterTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,12 +173,127 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				496E7E3BFEDB078A894C3520 /* libPods-FuriganaConverterUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AF469265813A224EFC46A26A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				425D74E59DF6DE29BBB9CB33 /* Pods-FuriganaConverter.debug.xcconfig */,
+				732A8E32FBE5CCAAFB7FDCC5 /* Pods-FuriganaConverter.release.xcconfig */,
+				0D935B7C6A8A2B6CB0B836A7 /* Pods-FuriganaConverterTests.debug.xcconfig */,
+				FA17C528C8660D2CA58EA13D /* Pods-FuriganaConverterTests.release.xcconfig */,
+				F689D00C84499114531E57A7 /* Pods-FuriganaConverterUITests.debug.xcconfig */,
+				30E2D2FE7B91DAA6FC2E930A /* Pods-FuriganaConverterUITests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		B312C23E8AF3AB8EAE107D4F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CB72FA2221E48E0F22612127 /* libPods-FuriganaConverter.a */,
+				07AB264A526A138C973F4346 /* libPods-FuriganaConverterTests.a */,
+				3AC9D3F9ABB813AEF2A1D918 /* libPods-FuriganaConverterUITests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BB69BC00239BF06C003B85A3 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				BB69BBFC239BE619003B85A3 /* History+CoreDataClass.swift */,
+				BB69BBFD239BE619003B85A3 /* History+CoreDataProperties.swift */,
+				BB69BBF9239BE5A0003B85A3 /* FuriganaConverter.xcdatamodeld */,
+				BB69BC01239BF1AB003B85A3 /* CoreDataStack.swift */,
+				BB69BC09239CA1C5003B85A3 /* HistoryHolder.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		BB69BC1A239D0290003B85A3 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				BB69BC1B239D02B0003B85A3 /* SettingRootView.swift */,
+				BB69BC1D239D1143003B85A3 /* SettingUserInterface.swift */,
+				BB69BC21239D175D003B85A3 /* SettingEventResponder.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		BB97E07923993B7800358A90 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BB97E07C2399402F00358A90 /* NiblessView.swift */,
+				BB97E093239AC8DF00358A90 /* Converter */,
+				BB69BC1A239D0290003B85A3 /* Setting */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		BB97E086239A82A800358A90 /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				BB97E089239A85B800358A90 /* PrivateInfoPlist.swift */,
+				BB97E08E239A8E3700358A90 /* Strings.swift */,
+				BB69BC2D239D53D6003B85A3 /* Assets.swift */,
+			);
+			path = Generated;
+			sourceTree = "<group>";
+		};
+		BB97E093239AC8DF00358A90 /* Converter */ = {
+			isa = PBXGroup;
+			children = (
+				BB97E099239ACF0A00358A90 /* ConverterUserInterface.swift */,
+				BB97E07A23993BD000358A90 /* ConverterRootView.swift */,
+				BB97E094239AC95900358A90 /* ConverterEventResponder.swift */,
+				BBE83996239B853300A90DEB /* ConvertingResultView.swift */,
+				BBE83998239B99C300A90DEB /* ConverterTopBar.swift */,
+				BB69BBF7239BE558003B85A3 /* ConverterHistoryView.swift */,
+				BB69BC03239C0666003B85A3 /* HistoryCell.swift */,
+				BB69BC0D239CAD9A003B85A3 /* ConverterHistoryEventResponder.swift */,
+			);
+			path = Converter;
+			sourceTree = "<group>";
+		};
+		BB97E096239ACD0A00358A90 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				BB97E097239ACD6200358A90 /* AppDependencyContainer.swift */,
+				BBE8A3B42398138F00663E73 /* AppDelegate.swift */,
+				BBE8A3B62398138F00663E73 /* SceneDelegate.swift */,
+				BB97E09B239ACFC200358A90 /* NiblessViewController.swift */,
+				BBE8A3B82398138F00663E73 /* ConverterViewController.swift */,
+				BB69BC16239CF385003B85A3 /* UIAlertControllerExtensions.swift */,
+				BB69BC18239D010D003B85A3 /* SettingViewController.swift */,
+				BB69BC1F239D1574003B85A3 /* Pods-FuriganaConverter-acknowledgements.plist */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		BBE83991239B73D200A90DEB /* App */ = {
+			isa = PBXGroup;
+			children = (
+				BBE83992239B73E900A90DEB /* ConverterViewControllerTests.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		BBE8399D239BADA200A90DEB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BB69BC00239BF06C003B85A3 /* CoreData */,
+				BBE8399E239BADB700A90DEB /* ConverterOutputType.swift */,
+				BB69BC0F239CCC47003B85A3 /* ConverterUserInterfaceState.swift */,
+				BB69BC11239CDA91003B85A3 /* ConvertingResultViewState.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		BBE8A3A82398138F00663E73 = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +301,8 @@
 				BBE8A3CA2398139000663E73 /* FuriganaConverterTests */,
 				BBE8A3D52398139000663E73 /* FuriganaConverterUITests */,
 				BBE8A3B22398138F00663E73 /* Products */,
+				AF469265813A224EFC46A26A /* Pods */,
+				B312C23E8AF3AB8EAE107D4F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,13 +319,18 @@
 		BBE8A3B32398138F00663E73 /* FuriganaConverter */ = {
 			isa = PBXGroup;
 			children = (
-				BBE8A3B42398138F00663E73 /* AppDelegate.swift */,
-				BBE8A3B62398138F00663E73 /* SceneDelegate.swift */,
-				BBE8A3B82398138F00663E73 /* ViewController.swift */,
-				BBE8A3BA2398138F00663E73 /* Main.storyboard */,
 				BBE8A3BD2398139000663E73 /* Assets.xcassets */,
 				BBE8A3BF2398139000663E73 /* LaunchScreen.storyboard */,
 				BBE8A3C22398139000663E73 /* Info.plist */,
+				BBE8A405239825AF00663E73 /* PrivateInfo.plist */,
+				BB69BC2B239D4EA3003B85A3 /* InfoPlist.strings */,
+				BB97E084239952BB00358A90 /* Localizable.strings */,
+				BB69BC23239D2944003B85A3 /* NotificationNames.swift */,
+				BB69BC25239D2F7F003B85A3 /* UserDefaultKeys.swift */,
+				BB97E096239ACD0A00358A90 /* App */,
+				BB97E07923993B7800358A90 /* View */,
+				BBE8A3F42398218F00663E73 /* Data */,
+				BB97E086239A82A800358A90 /* Generated */,
 			);
 			path = FuriganaConverter;
 			sourceTree = "<group>";
@@ -113,8 +338,10 @@
 		BBE8A3CA2398139000663E73 /* FuriganaConverterTests */ = {
 			isa = PBXGroup;
 			children = (
-				BBE8A3EF23981BD200663E73 /* FuriganaConverterTests.swift */,
 				BBE8A3CD2398139000663E73 /* Info.plist */,
+				BBE8A4002398248B00663E73 /* Mock */,
+				BBE83991239B73D200A90DEB /* App */,
+				BBE8A3FE2398223900663E73 /* Data */,
 			);
 			path = FuriganaConverterTests;
 			sourceTree = "<group>";
@@ -128,6 +355,63 @@
 			path = FuriganaConverterUITests;
 			sourceTree = "<group>";
 		};
+		BBE8A3F42398218F00663E73 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				BBE8399D239BADA200A90DEB /* Model */,
+				BBE8A3F52398219600663E73 /* Remote */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		BBE8A3F52398219600663E73 /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+				BBE8A3F6239821A300663E73 /* RemoteAPIError.swift */,
+				BBE8A3F8239821BD00663E73 /* FuriganaConverterRemoteAPI.swift */,
+				BBE8A3FA239821EA00663E73 /* GooFuriganaConverterRemoteAPI.swift */,
+				BBE8A40823982B6B00663E73 /* Response */,
+			);
+			path = Remote;
+			sourceTree = "<group>";
+		};
+		BBE8A3FE2398223900663E73 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				BBE8A3FF2398223F00663E73 /* Remote */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		BBE8A3FF2398223F00663E73 /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+				BBE8A3FC2398222900663E73 /* GooFuriganaConverterRemoteAPITests.swift */,
+			);
+			path = Remote;
+			sourceTree = "<group>";
+		};
+		BBE8A4002398248B00663E73 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				BBE8A401239824A300663E73 /* MockURLSessionDataTask.swift */,
+				BBE8A403239824D500663E73 /* MockURLSession.swift */,
+				BBE83994239B74B000A90DEB /* MockFuriganaConverterRemoteAPI.swift */,
+				BB69BC07239C9E4D003B85A3 /* MockCoreDataStack.swift */,
+				BB69BC0B239CA3FF003B85A3 /* MockHistoryHolder.swift */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
+		BBE8A40823982B6B00663E73 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				BBE8A40923982B7B00663E73 /* ErrorResponse.swift */,
+				BBE8A40B23982EFE00663E73 /* GooFuriganaConverterResponse.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,9 +419,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BBE8A3DB2398139000663E73 /* Build configuration list for PBXNativeTarget "FuriganaConverter" */;
 			buildPhases = (
+				42FCE86BFFCBBAC756950A16 /* [CP] Check Pods Manifest.lock */,
+				BB97E090239A8F3F00358A90 /* SwiftGen */,
 				BBE8A3AD2398138F00663E73 /* Sources */,
 				BBE8A3AE2398138F00663E73 /* Frameworks */,
 				BBE8A3AF2398138F00663E73 /* Resources */,
+				BBE8A3F3239820CA00663E73 /* SwiftLint */,
+				483BFA5D80A1F780D65FEF4E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -152,6 +440,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BBE8A3DE2398139000663E73 /* Build configuration list for PBXNativeTarget "FuriganaConverterTests" */;
 			buildPhases = (
+				3CB355F65B18E9ECDC4EE811 /* [CP] Check Pods Manifest.lock */,
 				BBE8A3C32398139000663E73 /* Sources */,
 				BBE8A3C42398139000663E73 /* Frameworks */,
 				BBE8A3C52398139000663E73 /* Resources */,
@@ -170,6 +459,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BBE8A3E12398139000663E73 /* Build configuration list for PBXNativeTarget "FuriganaConverterUITests" */;
 			buildPhases = (
+				A4B71EFC37E3633AD93F14D7 /* [CP] Check Pods Manifest.lock */,
 				BBE8A3CE2398139000663E73 /* Sources */,
 				BBE8A3CF2398139000663E73 /* Frameworks */,
 				BBE8A3D02398139000663E73 /* Resources */,
@@ -216,6 +506,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
 			);
 			mainGroup = BBE8A3A82398138F00663E73;
 			productRefGroup = BBE8A3B22398138F00663E73 /* Products */;
@@ -234,9 +525,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB97E082239952BB00358A90 /* Localizable.strings in Resources */,
+				BB69BC29239D4EA3003B85A3 /* InfoPlist.strings in Resources */,
 				BBE8A3C12398139000663E73 /* LaunchScreen.storyboard in Resources */,
 				BBE8A3BE2398139000663E73 /* Assets.xcassets in Resources */,
-				BBE8A3BC2398138F00663E73 /* Main.storyboard in Resources */,
+				BBE8A4072398263400663E73 /* PrivateInfo.plist in Resources */,
+				BB69BC20239D1574003B85A3 /* Pods-FuriganaConverter-acknowledgements.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,14 +550,170 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3CB355F65B18E9ECDC4EE811 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FuriganaConverterTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		42FCE86BFFCBBAC756950A16 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FuriganaConverter-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		483BFA5D80A1F780D65FEF4E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FuriganaConverter/Pods-FuriganaConverter-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FuriganaConverter/Pods-FuriganaConverter-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FuriganaConverter/Pods-FuriganaConverter-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A4B71EFC37E3633AD93F14D7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FuriganaConverterUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BB97E090239A8F3F00358A90 /* SwiftGen */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftGen;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which \"$PODS_ROOT/SwiftGen/bin/swiftgen\" >/dev/null; then\n    \"$PODS_ROOT/SwiftGen/bin/swiftgen\"\nelse\n    echo \"warning: SwiftGen not installed, download it from https://github.com/SwiftGen/SwiftGen\"\nfi\n";
+		};
+		BBE8A3F3239820CA00663E73 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which \"${PODS_ROOT}/SwiftLint/swiftlint\" >/dev/null; then\n    \"${PODS_ROOT}/SwiftLint/swiftlint\"\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		BBE8A3AD2398138F00663E73 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BBE8A3B92398138F00663E73 /* ViewController.swift in Sources */,
+				BBE8A3B92398138F00663E73 /* ConverterViewController.swift in Sources */,
+				BB69BBFB239BE5A0003B85A3 /* FuriganaConverter.xcdatamodeld in Sources */,
+				BB69BC0E239CAD9A003B85A3 /* ConverterHistoryEventResponder.swift in Sources */,
+				BB69BBFE239BE619003B85A3 /* History+CoreDataClass.swift in Sources */,
+				BB97E095239AC95900358A90 /* ConverterEventResponder.swift in Sources */,
+				BB97E07B23993BD000358A90 /* ConverterRootView.swift in Sources */,
+				BBE8A3F9239821BD00663E73 /* FuriganaConverterRemoteAPI.swift in Sources */,
+				BB97E08A239A85B800358A90 /* PrivateInfoPlist.swift in Sources */,
+				BB69BC26239D2F7F003B85A3 /* UserDefaultKeys.swift in Sources */,
+				BB97E09C239ACFC200358A90 /* NiblessViewController.swift in Sources */,
+				BB69BBF8239BE559003B85A3 /* ConverterHistoryView.swift in Sources */,
 				BBE8A3B52398138F00663E73 /* AppDelegate.swift in Sources */,
+				BB69BC1E239D1143003B85A3 /* SettingUserInterface.swift in Sources */,
 				BBE8A3B72398138F00663E73 /* SceneDelegate.swift in Sources */,
+				BBE8A3FB239821EA00663E73 /* GooFuriganaConverterRemoteAPI.swift in Sources */,
+				BB69BC1C239D02B0003B85A3 /* SettingRootView.swift in Sources */,
+				BB69BBFF239BE619003B85A3 /* History+CoreDataProperties.swift in Sources */,
+				BBE83997239B853300A90DEB /* ConvertingResultView.swift in Sources */,
+				BB97E09A239ACF0A00358A90 /* ConverterUserInterface.swift in Sources */,
+				BB69BC22239D175D003B85A3 /* SettingEventResponder.swift in Sources */,
+				BB69BC02239BF1AB003B85A3 /* CoreDataStack.swift in Sources */,
+				BB69BC0A239CA1C5003B85A3 /* HistoryHolder.swift in Sources */,
+				BB69BC12239CDA91003B85A3 /* ConvertingResultViewState.swift in Sources */,
+				BBE8A3F7239821A300663E73 /* RemoteAPIError.swift in Sources */,
+				BB69BC10239CCC47003B85A3 /* ConverterUserInterfaceState.swift in Sources */,
+				BB69BC24239D2944003B85A3 /* NotificationNames.swift in Sources */,
+				BB97E07D2399402F00358A90 /* NiblessView.swift in Sources */,
+				BB69BC17239CF385003B85A3 /* UIAlertControllerExtensions.swift in Sources */,
+				BB97E098239ACD6200358A90 /* AppDependencyContainer.swift in Sources */,
+				BB69BC04239C0666003B85A3 /* HistoryCell.swift in Sources */,
+				BB69BC2E239D53D6003B85A3 /* Assets.swift in Sources */,
+				BBE8A40C23982EFE00663E73 /* GooFuriganaConverterResponse.swift in Sources */,
+				BB69BC19239D010D003B85A3 /* SettingViewController.swift in Sources */,
+				BB97E08F239A8E3700358A90 /* Strings.swift in Sources */,
+				BBE83999239B99C300A90DEB /* ConverterTopBar.swift in Sources */,
+				BBE8A40A23982B7B00663E73 /* ErrorResponse.swift in Sources */,
+				BBE8399F239BADB700A90DEB /* ConverterOutputType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,7 +721,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BBE8A3F023981BD200663E73 /* FuriganaConverterTests.swift in Sources */,
+				BBE83995239B74B000A90DEB /* MockFuriganaConverterRemoteAPI.swift in Sources */,
+				BB69BC08239C9E4D003B85A3 /* MockCoreDataStack.swift in Sources */,
+				BBE8A404239824D500663E73 /* MockURLSession.swift in Sources */,
+				BBE8A3FD2398222900663E73 /* GooFuriganaConverterRemoteAPITests.swift in Sources */,
+				BB69BC0C239CA3FF003B85A3 /* MockHistoryHolder.swift in Sources */,
+				BBE8A402239824A300663E73 /* MockURLSessionDataTask.swift in Sources */,
+				BBE83993239B73E900A90DEB /* ConverterViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,18 +755,29 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		BBE8A3BA2398138F00663E73 /* Main.storyboard */ = {
+		BB69BC2B239D4EA3003B85A3 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				BBE8A3BB2398138F00663E73 /* Base */,
+				BB69BC2A239D4EA3003B85A3 /* en */,
+				BB69BC2C239D4EB0003B85A3 /* ja */,
 			);
-			name = Main.storyboard;
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		BB97E084239952BB00358A90 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BB97E083239952BB00358A90 /* ja */,
+				BB97E08D239A8D3700358A90 /* Base */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 		BBE8A3BF2398139000663E73 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				BBE8A3C02398139000663E73 /* Base */,
+				BB97E0812399529C00358A90 /* ja */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -322,6 +789,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -382,6 +850,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -434,6 +903,7 @@
 		};
 		BBE8A3DC2398139000663E73 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 425D74E59DF6DE29BBB9CB33 /* Pods-FuriganaConverter.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -451,6 +921,7 @@
 		};
 		BBE8A3DD2398139000663E73 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 732A8E32FBE5CCAAFB7FDCC5 /* Pods-FuriganaConverter.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -468,6 +939,7 @@
 		};
 		BBE8A3DF2398139000663E73 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0D935B7C6A8A2B6CB0B836A7 /* Pods-FuriganaConverterTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -491,6 +963,7 @@
 		};
 		BBE8A3E02398139000663E73 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FA17C528C8660D2CA58EA13D /* Pods-FuriganaConverterTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -513,6 +986,7 @@
 		};
 		BBE8A3E22398139000663E73 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F689D00C84499114531E57A7 /* Pods-FuriganaConverterUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
@@ -534,6 +1008,7 @@
 		};
 		BBE8A3E32398139000663E73 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 30E2D2FE7B91DAA6FC2E930A /* Pods-FuriganaConverterUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
@@ -592,6 +1067,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		BB69BBF9239BE5A0003B85A3 /* FuriganaConverter.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				BB69BBFA239BE5A0003B85A3 /* FuriganaConverter.xcdatamodel */,
+			);
+			currentVersion = BB69BBFA239BE5A0003B85A3 /* FuriganaConverter.xcdatamodel */;
+			path = FuriganaConverter.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = BBE8A3A92398138F00663E73 /* Project object */;
 }

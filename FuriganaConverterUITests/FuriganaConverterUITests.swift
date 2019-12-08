@@ -11,26 +11,67 @@ import XCTest
 
 class FuriganaConverterUITests: XCTestCase {
 
+    let app = XCUIApplication()
+
     override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        app.launch()
 
         // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     }
 
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        app.terminate()
     }
 
-    func testExample() {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
-        app.launch()
+    func test_initialState() {
+        let table = app
+            .children(matching: .window).element(boundBy: 0)
+            .children(matching: .other).element
+            .children(matching: .other).element
+            .children(matching: .other).element
+            .children(matching: .other).element(boundBy: 2)
+            .children(matching: .table).element
+        let toolbar = app.toolbars["Toolbar"]
+        let keyboardBotton = toolbar.buttons["Keyboard"]
+        let clearButton = toolbar.buttons["Clear"]
+        let convertButton = toolbar.buttons["Convert"]
+        XCTAssertTrue(table.exists)
+        XCTAssertTrue(keyboardBotton.isEnabled)
+        XCTAssertFalse(clearButton.isEnabled)
+        XCTAssertFalse(convertButton.isEnabled)
+    }
 
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    var inputArea: XCUIElement {
+        app
+            .children(matching: .window).element(boundBy: 0)
+            .children(matching: .other).element
+            .children(matching: .other).element
+            .children(matching: .other).element
+            .children(matching: .textView).element
+    }
+
+    func test_inputState() {
+        let inputArea = self.inputArea
+        inputArea.tap()
+        let closeKeyboardButton = app.toolbars["Toolbar"].buttons["keyboard.chevron.compact.down"]
+        XCTAssertTrue(closeKeyboardButton.isHittable)
+    }
+
+    func test_readyToConvertState() {
+        let inputArea = self.inputArea
+        inputArea.tap()
+        inputArea.typeText("漢字が混ざっている文章")
+        let toolbar = app.toolbars["Toolbar"]
+        let clearButton = toolbar.buttons["Clear"]
+        let convertButton = toolbar.buttons["Convert"]
+        XCTAssertTrue(clearButton.isEnabled)
+        XCTAssertTrue(convertButton.isEnabled)
+    }
+
+    func test_tapSettingButton_showSetting() {
+        app.navigationBars.buttons["slider.horizontal.3"].tap()
+        XCTAssertTrue(app.navigationBars["Settings"].exists)
     }
 
     func testLaunchPerformance() {
