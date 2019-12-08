@@ -56,6 +56,11 @@ class ConverterViewController: NiblessViewController {
 
 extension ConverterViewController: ConverterEventResponder {
 
+    func inputWillChange() {
+        convertTask?.cancel()
+        userInterface.changeState(.history)
+    }
+
     func convert(_ japaneseString: String) {
         convertSubject.onNext(japaneseString)
     }

@@ -201,6 +201,7 @@ class ConverterRootView: NiblessView {
         inputTextView.rx.didBeginEditing
             .subscribe { _ in
                 self.keyboardButtonItem.image = UIImage(systemName: "keyboard.chevron.compact.down")
+                self.eventResponder?.inputWillChange()
             }
             .disposed(by: disposeBag)
         inputTextView.rx.didEndEditing
@@ -237,6 +238,7 @@ class ConverterRootView: NiblessView {
 
     @objc
     private func clearInputText() {
+        eventResponder?.inputWillChange()
         inputTextView.text = nil
         changeButtonsIsEnableTo(false)
     }
@@ -281,18 +283,25 @@ extension ConverterRootView: ConverterUserInterface {
     }
 
     func changeState(_ state: ConverterUserInterfaceState) {
+        let animateions: () -> Void
         switch state {
         case .history:
-            historyView.isHidden = false
-            resultView.isHidden = true
+            animateions = {
+                self.historyView.isHidden = false
+                self.resultView.isHidden = true
+            }
         case let .result(originalString, convertedString):
+            inputTextView.resignFirstResponder()
             changeButtonsIsEnableTo(true)
             if let originalString = originalString {
                 inputTextView.text = originalString
             }
             resultView.resultTextView.text = convertedString
-            historyView.isHidden = true
-            resultView.isHidden = false
+            animateions = {
+                self.historyView.isHidden = true
+                self.resultView.isHidden = false
+            }
         }
+        UIView.transition(with: self, duration: 0.2, options: .transitionCrossDissolve, animations: animateions)
     }
 }
