@@ -15,8 +15,8 @@ internal enum L10n {
   internal static let clear = L10n.tr("Localizable", "Clear")
   /// Convert
   internal static let convert = L10n.tr("Localizable", "Convert")
-  /// Converting result
-  internal static let convertingResult = L10n.tr("Localizable", "Converting result")
+  /// Converting...
+  internal static let converting = L10n.tr("Localizable", "Converting...")
   /// hinagara
   internal static let hinagara = L10n.tr("Localizable", "hinagara")
   /// katakana

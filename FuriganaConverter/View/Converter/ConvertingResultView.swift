@@ -29,7 +29,7 @@ class ConvertingResultView: NiblessView {
     }()
     let resultTextView: UITextView = {
         let textView = UITextView()
-        textView.placeholder = L10n.convertingResult
+        textView.placeholder = L10n.converting
         textView.isEditable = false
         return textView
     }()
@@ -78,6 +78,22 @@ class ConvertingResultView: NiblessView {
     @objc
     private func copyResult() {
         UIPasteboard.general.string = resultTextView.text
+    }
+
+    func changeState(_ state: ConvertingResultViewState) {
+        switch state {
+        case .loading:
+            resultTextView.text = nil
+            changeButtonsIsEnableTo(false)
+        case let .result(convertedString):
+            resultTextView.text = convertedString
+            changeButtonsIsEnableTo(true)
+        }
+    }
+
+    private func changeButtonsIsEnableTo(_ isEnable: Bool) {
+        shareButton.isEnabled = isEnable
+        copyButton.isEnabled = isEnable
     }
 }
 

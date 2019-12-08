@@ -21,6 +21,7 @@
 		BB69BC0C239CA3FF003B85A3 /* MockHistoryHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69BC0B239CA3FF003B85A3 /* MockHistoryHolder.swift */; };
 		BB69BC0E239CAD9A003B85A3 /* ConverterHistoryEventResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69BC0D239CAD9A003B85A3 /* ConverterHistoryEventResponder.swift */; };
 		BB69BC10239CCC47003B85A3 /* ConverterUserInterfaceState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69BC0F239CCC47003B85A3 /* ConverterUserInterfaceState.swift */; };
+		BB69BC12239CDA91003B85A3 /* ConvertingResultViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69BC11239CDA91003B85A3 /* ConvertingResultViewState.swift */; };
 		BB97E07B23993BD000358A90 /* ConverterRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB97E07A23993BD000358A90 /* ConverterRootView.swift */; };
 		BB97E07D2399402F00358A90 /* NiblessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB97E07C2399402F00358A90 /* NiblessView.swift */; };
 		BB97E082239952BB00358A90 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BB97E084239952BB00358A90 /* Localizable.strings */; };
@@ -87,6 +88,7 @@
 		BB69BC0B239CA3FF003B85A3 /* MockHistoryHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockHistoryHolder.swift; sourceTree = "<group>"; };
 		BB69BC0D239CAD9A003B85A3 /* ConverterHistoryEventResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterHistoryEventResponder.swift; sourceTree = "<group>"; };
 		BB69BC0F239CCC47003B85A3 /* ConverterUserInterfaceState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterUserInterfaceState.swift; sourceTree = "<group>"; };
+		BB69BC11239CDA91003B85A3 /* ConvertingResultViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertingResultViewState.swift; sourceTree = "<group>"; };
 		BB97E07A23993BD000358A90 /* ConverterRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterRootView.swift; sourceTree = "<group>"; };
 		BB97E07C2399402F00358A90 /* NiblessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NiblessView.swift; sourceTree = "<group>"; };
 		BB97E0812399529C00358A90 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 				BB69BC00239BF06C003B85A3 /* CoreData */,
 				BBE8399E239BADB700A90DEB /* ConverterOutputType.swift */,
 				BB69BC0F239CCC47003B85A3 /* ConverterUserInterfaceState.swift */,
+				BB69BC11239CDA91003B85A3 /* ConvertingResultViewState.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -633,6 +636,7 @@
 				BB97E09A239ACF0A00358A90 /* ConverterUserInterface.swift in Sources */,
 				BB69BC02239BF1AB003B85A3 /* CoreDataStack.swift in Sources */,
 				BB69BC0A239CA1C5003B85A3 /* HistoryHolder.swift in Sources */,
+				BB69BC12239CDA91003B85A3 /* ConvertingResultViewState.swift in Sources */,
 				BBE8A3F7239821A300663E73 /* RemoteAPIError.swift in Sources */,
 				BB69BC10239CCC47003B85A3 /* ConverterUserInterfaceState.swift in Sources */,
 				BB97E07D2399402F00358A90 /* NiblessView.swift in Sources */,

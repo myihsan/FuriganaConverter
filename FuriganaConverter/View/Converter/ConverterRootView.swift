@@ -290,13 +290,13 @@ extension ConverterRootView: ConverterUserInterface {
                 self.historyView.isHidden = false
                 self.resultView.isHidden = true
             }
-        case let .result(originalString, convertedString):
+        case let .result(originalString, resultViewState):
             inputTextView.resignFirstResponder()
             changeButtonsIsEnableTo(true)
             if let originalString = originalString {
                 inputTextView.text = originalString
             }
-            resultView.resultTextView.text = convertedString
+            resultView.changeState(resultViewState)
             animateions = {
                 self.historyView.isHidden = true
                 self.resultView.isHidden = false

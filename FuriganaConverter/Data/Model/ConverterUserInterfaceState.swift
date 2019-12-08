@@ -9,5 +9,5 @@
 enum ConverterUserInterfaceState {
 
     case history
-    case result(originalString: String? = nil, convertedString: String)
+    case result(originalString: String? = nil, resultViewState: ConvertingResultViewState)
 }
