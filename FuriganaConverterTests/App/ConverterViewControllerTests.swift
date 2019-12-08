@@ -19,17 +19,28 @@ class ConverterViewControllerTests: XCTestCase {
 
     var userInterface: MockConverterUserInterfaceView!
     var remoteAPI: MockFuriganaConverterRemoteAPI!
+    var coreDataStack: MockCoreDataStack!
+    var historyHolder: MockHistoryHolder!
     var sut: ConvertorViewController!
 
     override func setUp() {
         userInterface = MockConverterUserInterfaceView()
         remoteAPI = MockFuriganaConverterRemoteAPI()
-        sut = ConvertorViewController(userInterface: userInterface, remoteAPI: remoteAPI)
+        coreDataStack = MockCoreDataStack()
+        historyHolder = MockHistoryHolder()
+        sut = ConvertorViewController(
+            userInterface: userInterface,
+            remoteAPI: remoteAPI,
+            coreDataStack: coreDataStack,
+            historyHolder: historyHolder
+        )
     }
 
     override func tearDown() {
         userInterface = nil
         remoteAPI = nil
+        coreDataStack = nil
+        historyHolder = nil
         sut = nil
     }
 
@@ -92,6 +103,45 @@ class ConverterViewControllerTests: XCTestCase {
 
         // then
         XCTAssertEqual(userInterface.result, expectedResult)
+    }
+
+    func test_covert_givenJapaneseStringExistInHistoryAndHiraganaSelected_usesHistory() {
+        // given
+        let history = givenHistory()
+        userInterface.selectedType = .hiragana
+
+        // when
+        sut.convert(history.originalString)
+
+        // then
+        verifyNoRemoteAPICallsAndSetsResult(history.convertedString)
+    }
+
+    func test_covert_givenJapaneseStringExistInHistoryAndKataganaSelected_usesHistory() {
+        // given
+        let history = givenHistory()
+        userInterface.selectedType = .katakana
+
+        // when
+        sut.convert(history.originalString)
+
+        // then
+        verifyNoRemoteAPICallsAndSetsResult("カンジガ マザッテイル ブンショウ")
+    }
+
+    private func givenHistory() -> History {
+        let japaneseString = "漢字が混ざっている文章"
+        let expectedResult = "かんじが まざっている ぶんしょう"
+        let history = History(context: coreDataStack.persistentContainer.viewContext)
+        history.originalString = japaneseString
+        history.convertedString = expectedResult
+        historyHolder.histories = [history]
+        return history
+    }
+
+    private func verifyNoRemoteAPICallsAndSetsResult(_ result: String) {
+        XCTAssertEqual(remoteAPI.convertCallCount, 0)
+        XCTAssertEqual(userInterface.result, result)
     }
 
     func test_didSelectHiragana_givenHiraganaResult_keepsHiragana() {

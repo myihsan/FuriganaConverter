@@ -29,6 +29,7 @@ class ConverterRootView: NiblessView {
         return view
     }()
     private let resultView = ConvertingResultView()
+    private let historyView: ConverterHistoryView
     private let keyboardButtonItem: UIBarButtonItem = {
         let buttonItem = UIBarButtonItem(
             image: UIImage(systemName: "keyboard")!,
@@ -62,8 +63,9 @@ class ConverterRootView: NiblessView {
 
     private let disposeBag = DisposeBag()
 
-    override init(frame: CGRect = .zero) {
-        super.init(frame: frame)
+    init(historyView: ConverterHistoryView) {
+        self.historyView = historyView
+        super.init(frame: .zero)
 
         backgroundColor = .systemBackground
         setupTextView(inputTextView)
@@ -88,6 +90,7 @@ class ConverterRootView: NiblessView {
     private func constructHierarchy() {
         addSubview(inputTextView)
         addSubview(resultView)
+        addSubview(historyView)
         addSubview(separatorView)
         addSubview(topBar)
         addSubview(toolbar)
@@ -105,6 +108,7 @@ class ConverterRootView: NiblessView {
         activeSeparatorViewConstrains()
         activeInputTextViewConstraints()
         activeResultTextViewConstraints()
+        activeHistoryViewConstraints()
     }
 
     private func setActionsForControls() {
@@ -155,6 +159,12 @@ class ConverterRootView: NiblessView {
             make.bottom.equalTo(toolbar.snp.top)
                 // Ignore if it is not possible when the keyboard is showing
                 .priority(.medium)
+        }
+    }
+
+    private func activeHistoryViewConstraints() {
+        historyView.snp.makeConstraints { make in
+            make.edges.equalTo(resultView)
         }
     }
 
@@ -272,36 +282,3 @@ extension ConverterRootView: ConverterUserInterface {
         }
     }
 }
-
-#if canImport(SwiftUI) && DEBUG
-import SwiftUI
-
-struct ConverterRootViewRepresentable: UIViewRepresentable {
-
-    func makeUIView(context: Context) -> UIView {
-        ConverterRootView()
-    }
-
-    func updateUIView(_ uiView: UIView, context: Context) {}
-}
-
-let deviceNames: [String] = [
-    "iPhone 11 Pro Max",
-    "iPhone SE"
-]
-
-struct ConverterRootView_Previews: PreviewProvider {
-
-    static var previews: some View {
-        ForEach(deviceNames, id: \.self) { deviceName in
-            ForEach(ColorScheme.allCases, id: \.self) { colorScheme in
-                ConverterRootViewRepresentable()
-                    .accentColor(.green)
-                    .environment(\.colorScheme, colorScheme)
-                    .previewDevice(PreviewDevice(rawValue: deviceName))
-                    .previewDisplayName("\(deviceName) (\(colorScheme))")
-            }
-        }
-    }
-}
-#endif
