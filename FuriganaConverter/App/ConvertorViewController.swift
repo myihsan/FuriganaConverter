@@ -127,3 +127,11 @@ extension ConvertorViewController: ConverterEventResponder {
         coreDataStack.saveContext()
     }
 }
+
+extension ConvertorViewController: ConverterHistoryEventResponder {
+
+    func delete(_ history: History) {
+        coreDataStack.managedContext.delete(history)
+        coreDataStack.saveContext()
+    }
+}

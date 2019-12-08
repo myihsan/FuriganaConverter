@@ -21,6 +21,8 @@ class ConverterHistoryView: NiblessView {
         return tableView
     }()
 
+    weak var eventResponder: ConverterHistoryEventResponder?
+
     init(historyFetchedResultsController: NSFetchedResultsController<History>) {
         self.historyFetchedResultsController = historyFetchedResultsController
         super.init(frame: .zero)
@@ -59,11 +61,49 @@ extension ConverterHistoryView: UITableViewDataSource {
         let history = historyFetchedResultsController.object(at: indexPath)
         cell.setHistory(history)
     }
+
+    func tableView(
+        _ tableView: UITableView,
+        commit editingStyle: UITableViewCell.EditingStyle,
+        forRowAt indexPath: IndexPath
+    ) {
+        if editingStyle == .delete {
+            let history = historyFetchedResultsController.object(at: indexPath)
+            eventResponder?.delete(history)
+        }
+    }
 }
 
 extension ConverterHistoryView: NSFetchedResultsControllerDelegate {
 
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
+    }
+
+    func controller(
+        _ controller: NSFetchedResultsController<NSFetchRequestResult>,
+        didChange anObject: Any,
+        at indexPath: IndexPath?,
+        for type: NSFetchedResultsChangeType,
+        newIndexPath: IndexPath?
+    ) {
+        switch type {
+        case .insert:
+            tableView.insertRows(at: [newIndexPath!], with: .automatic)
+        case .delete:
+            tableView.deleteRows(at: [indexPath!], with: .automatic)
+        case .update:
+            let cell = tableView.cellForRow(at: indexPath!)!
+            setupCell(cell, indexPath: indexPath!)
+        case .move:
+            tableView.deleteRows(at: [indexPath!], with: .automatic)
+            tableView.insertRows(at: [newIndexPath!], with: .automatic)
+        @unknown default:
+            break
+        }
+    }
+
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.reloadData()
+        tableView.endUpdates()
     }
 }

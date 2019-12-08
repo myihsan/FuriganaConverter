@@ -23,6 +23,7 @@ class AppDependencyContainer {
             coreDataStack: coreDataStack,
             historyHolder: historyHolder
         )
+        historyView.eventResponder = viewController
         userInterface.eventResponder = viewController
         return viewController
     }
