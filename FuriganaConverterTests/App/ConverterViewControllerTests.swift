@@ -19,17 +19,20 @@ class ConverterViewControllerTests: XCTestCase {
 
     var userInterface: MockConverterUserInterfaceView!
     var remoteAPI: MockFuriganaConverterRemoteAPI!
+    var coreDataStack: MockCoreDataStack!
     var sut: ConvertorViewController!
 
     override func setUp() {
         userInterface = MockConverterUserInterfaceView()
         remoteAPI = MockFuriganaConverterRemoteAPI()
-        sut = ConvertorViewController(userInterface: userInterface, remoteAPI: remoteAPI)
+        coreDataStack = MockCoreDataStack()
+        sut = ConvertorViewController(userInterface: userInterface, remoteAPI: remoteAPI, coreDataStack: coreDataStack)
     }
 
     override func tearDown() {
         userInterface = nil
         remoteAPI = nil
+        coreDataStack = nil
         sut = nil
     }
 

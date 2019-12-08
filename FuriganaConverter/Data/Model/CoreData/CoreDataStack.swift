@@ -15,7 +15,7 @@ class CoreDataStack {
         return self.persistentContainer.viewContext
     }()
 
-    private lazy var persistentContainer: NSPersistentContainer = {
+    lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "FuriganaConverter")
         container.loadPersistentStores { _, error in
             if let error = error {
