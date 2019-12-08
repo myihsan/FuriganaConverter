@@ -49,15 +49,23 @@ class GooFuriganaConverterRemoteAPI: FuriganaConverterRemoteAPI {
         request.httpBody = try!  JSONSerialization.data(withJSONObject: httpBodyJSONObject)
         let task = session.dataTask(with: request) { data, response, error in
             var result = RemoteAPIResult.failure(.unknown)
+            var isCancelled = false
             defer {
-                DispatchQueue.main.async {
-                    completionHandler(result)
+                if !isCancelled {
+                    DispatchQueue.main.async {
+                        completionHandler(result)
+                    }
                 }
             }
 
             guard let response = response as? HTTPURLResponse,
                 error == nil else {
-                return
+                    if let error = error as NSError?,
+                        error.domain == NSURLErrorDomain,
+                        error.code == NSURLErrorCancelled {
+                            isCancelled = true
+                    }
+                    return
             }
 
             let statusCode = response.statusCode

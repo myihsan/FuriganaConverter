@@ -99,13 +99,34 @@ class GooFuriganaConverterRemoteAPITests: XCTestCase {
         let error = NSError(
             domain: NSURLErrorDomain,
             code: NSURLErrorCannotConnectToHost,
-            userInfo: nil)
+            userInfo: nil
+        )
 
         // when
         let result = verifyConvertDispatchedToMainWhen(error: error)
 
         // then
         XCTAssertEqual(result, .failure(.unknown))
+    }
+
+    func test_convert_givenCancelError_abortsConvert() {
+        // given
+        let error = NSError(
+            domain: NSURLErrorDomain,
+            code: NSURLErrorCancelled,
+            userInfo: nil
+        )
+
+        let expectation = self.expectation(description: "Completion wasn't called")
+        expectation.isInverted = true
+
+        let mockTask = sut.convert("") { _ in
+            expectation.fulfill()
+            } as! MockURLSessionDataTask
+        // swiftlint:disable:previous force_cast
+        mockTask.completionHandler(nil, nil, error)
+
+        wait(for: [expectation], timeout: 0.2)
     }
 
     func test_convert_givenFailureResponseWithUndecodableBody_callsCompletionWithUnknown() {
