@@ -148,6 +148,18 @@ class ConverterViewControllerTests: XCTestCase {
         verifyNoRemoteAPICallsAndSetsResult("カンジガ マザッテイル ブンショウ")
     }
 
+    func test_didSelectHistory_givenKatakanaSelected_convertsToHiragana() {
+        // given
+        let history = givenHistory()
+        userInterface.selectedType = .katakana
+
+        // when
+        sut.didSelect(history)
+
+        // then
+        verifyNoRemoteAPICallsAndSetsResult("カンジガ マザッテイル ブンショウ")
+    }
+
     private func givenHistory() -> History {
         let japaneseString = "漢字が混ざっている文章"
         let expectedResult = "かんじが まざっている ぶんしょう"
@@ -213,7 +225,7 @@ class ConverterViewControllerTests: XCTestCase {
         XCTAssertEqual(userInterface.result, expectedResult)
     }
 
-    func test_didSelect_givenNotShowingResult_keepsState() {
+    func test_didSelectOutputTypes_givenNotShowingResult_keepsState() {
         // given
         let state: ConverterUserInterfaceState = .history
         userInterface.state = state
