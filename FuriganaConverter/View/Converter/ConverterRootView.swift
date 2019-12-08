@@ -39,6 +39,15 @@ class ConverterRootView: NiblessView {
         )
         return buttonItem
     }()
+    private let pasteButtonItem: UIBarButtonItem = {
+        let buttonItem = UIBarButtonItem(
+            title: L10n.paste,
+            style: .plain,
+            target: nil,
+            action: nil
+        )
+        return buttonItem
+    }()
     private let clearButtonItem: UIBarButtonItem = {
         let buttonItem = UIBarButtonItem(
             title: L10n.clear,
@@ -97,9 +106,7 @@ class ConverterRootView: NiblessView {
 
         let flexibleSpace =
             UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let fixedSpace = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
-        fixedSpace.width = 16
-        toolbar.items = [keyboardButtonItem, fixedSpace, clearButtonItem, flexibleSpace, convertButtonItem]
+        toolbar.items = [keyboardButtonItem, pasteButtonItem, clearButtonItem, flexibleSpace, convertButtonItem]
     }
 
     private func activateConstraints() {
@@ -115,6 +122,8 @@ class ConverterRootView: NiblessView {
         topBar.typeSegmentedControl.addTarget(self, action: #selector(selectedTypeChanged), for: .valueChanged)
         keyboardButtonItem.target = self
         keyboardButtonItem.action = #selector(toggleKeyboard)
+        pasteButtonItem.target = self
+        pasteButtonItem.action = #selector(pasteToInputTextView)
         clearButtonItem.target = self
         clearButtonItem.action = #selector(clearInputText)
         convertButtonItem.target = self
@@ -233,6 +242,18 @@ class ConverterRootView: NiblessView {
             inputTextView.resignFirstResponder()
         } else {
             inputTextView.becomeFirstResponder()
+        }
+    }
+
+    @objc
+    private func pasteToInputTextView() {
+        let selectedRange = inputTextView.selectedRange
+        let text = (inputTextView.text ?? "") as NSString
+        let textToPaste = UIPasteboard.general.string ?? ""
+        inputTextView.text = text.replacingCharacters(in: selectedRange, with: textToPaste)
+        if inputTextView.isFirstResponder {
+            let newSelectedRange = NSRange(location: selectedRange.location + textToPaste.count, length: 0)
+            inputTextView.selectedRange = newSelectedRange
         }
     }
 

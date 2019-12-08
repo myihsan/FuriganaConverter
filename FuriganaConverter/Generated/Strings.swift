@@ -21,6 +21,8 @@ internal enum L10n {
   internal static let hinagara = L10n.tr("Localizable", "hinagara")
   /// katakana
   internal static let katakana = L10n.tr("Localizable", "katakana")
+  /// Paste
+  internal static let paste = L10n.tr("Localizable", "Paste")
   /// Type the text to translate
   internal static let typeTheTextToTranslate = L10n.tr("Localizable", "Type the text to translate")
 }
