@@ -11,10 +11,16 @@ import Foundation
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name
 internal enum L10n {
+  /// Acknowledgements
+  internal static let acknowledgements = L10n.tr("Localizable", "Acknowledgements")
   /// Cancel
   internal static let cancel = L10n.tr("Localizable", "Cancel")
   /// Clear
   internal static let clear = L10n.tr("Localizable", "Clear")
+  /// Clear Failed
+  internal static let clearFailed = L10n.tr("Localizable", "Clear Failed")
+  /// Clear History
+  internal static let clearHistory = L10n.tr("Localizable", "Clear History")
   /// Convert
   internal static let convert = L10n.tr("Localizable", "Convert")
   /// Converting Failed
@@ -39,6 +45,10 @@ internal enum L10n {
   internal static let rateLimitExceeded = L10n.tr("Localizable", "Rate Limit Exceeded")
   /// Retry
   internal static let retry = L10n.tr("Localizable", "Retry")
+  /// Settings
+  internal static let settings = L10n.tr("Localizable", "Settings")
+  /// Show Keyboard Automatically
+  internal static let showKeyboardAutomatically = L10n.tr("Localizable", "Show Keyboard Automatically")
   /// Text Too Long
   internal static let textTooLong = L10n.tr("Localizable", "Text Too Long")
   /// Type the text to translate

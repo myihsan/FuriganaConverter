@@ -34,6 +34,8 @@ class ConverterViewControllerTests: XCTestCase {
         func changeState(_ state: ConverterUserInterfaceState) {
             self.state = state
         }
+
+        func makeInputViewFirstResponder() {}
     }
 
     var userInterface: MockConverterUserInterfaceView!
@@ -52,7 +54,9 @@ class ConverterViewControllerTests: XCTestCase {
             remoteAPI: remoteAPI,
             coreDataStack: coreDataStack,
             historyHolder: historyHolder
-        )
+        ) {
+            UIViewController()
+        }
     }
 
     override func tearDown() {

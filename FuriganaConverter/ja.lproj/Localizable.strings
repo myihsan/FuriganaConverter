@@ -22,3 +22,8 @@
 "Cancel" = "キャンセル";
 "Retry" = "再試行";
 "Later" = "あとで";
+"Settings" = "設定";
+"Show Keyboard Automatically" = "キーボードの自動表示";
+"Clear History" = "履歴を消去";
+"Acknowledgements" = "謝辞";
+"Clear Failed" = "消去に失敗しました";

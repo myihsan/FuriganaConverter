@@ -322,6 +322,10 @@ extension ConverterRootView: ConverterUserInterface {
         }
     }
 
+    func makeInputViewFirstResponder() {
+        inputTextView.becomeFirstResponder()
+    }
+
     private func changeState(_ state: ConverterUserInterfaceState) {
         let animateions: () -> Void
         switch state {

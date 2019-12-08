@@ -14,4 +14,6 @@ protocol ConverterUserInterface: class {
 
     var selectedType: ConverterOutputType { get set }
     var state: ConverterUserInterfaceState { get set }
+
+    func makeInputViewFirstResponder()
 }

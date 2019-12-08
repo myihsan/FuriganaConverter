@@ -28,11 +28,9 @@ class ConverterHistoryView: NiblessView {
         super.init(frame: .zero)
 
         historyFetchedResultsController.delegate = self
-        do {
-            try historyFetchedResultsController.performFetch()
-        } catch let error as NSError {
-            print("Fetching error: \(error), \(error.userInfo)")
-        }
+        fetchHistories()
+        NotificationCenter.default
+            .addObserver(self, selector: #selector(didClearHistory), name: .didClearHistory, object: nil)
 
         tableView.delegate = self
         tableView.dataSource = self
@@ -40,6 +38,24 @@ class ConverterHistoryView: NiblessView {
         tableView.snp.makeConstraints { make in
             make.edges.equalTo(self)
         }
+    }
+
+    private func fetchHistories() {
+        do {
+            try historyFetchedResultsController.performFetch()
+        } catch let error as NSError {
+            print("Fetching error: \(error), \(error.userInfo)")
+        }
+    }
+
+    @objc
+    private func didClearHistory() {
+        fetchHistories()
+        tableView.reloadData()
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 }
 

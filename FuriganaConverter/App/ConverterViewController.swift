@@ -12,28 +12,28 @@ import CoreData
 
 class ConverterViewController: NiblessViewController {
 
-    private static let selectedTypeRawValueUserDefaultsKey = "SelectedType"
-
     private let userInterface: ConverterUserInterfaceView
     private let remoteAPI: FuriganaConverterRemoteAPI
+    private let coreDataStack: CoreDataStack
+    private let historyHolder: HistoryHolder
+    private let makeSettingViewController: () -> UIViewController
 
     private let convertSubject = PublishSubject<String>()
     private let disposeBag = DisposeBag()
     private var convertTask: URLSessionDataTask?
 
-    private let coreDataStack: CoreDataStack
-    private let historyHolder: HistoryHolder
-
     init(
         userInterface: ConverterUserInterfaceView,
         remoteAPI: FuriganaConverterRemoteAPI,
         coreDataStack: CoreDataStack,
-        historyHolder: HistoryHolder
+        historyHolder: HistoryHolder,
+        makeSettingViewController: @escaping () -> UIViewController
     ) {
         self.userInterface = userInterface
         self.remoteAPI = remoteAPI
         self.coreDataStack = coreDataStack
         self.historyHolder = historyHolder
+        self.makeSettingViewController = makeSettingViewController
         super.init()
 
         recoverSelectedType()
@@ -44,8 +44,32 @@ class ConverterViewController: NiblessViewController {
         view = userInterface
     }
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        makeInputViewFirstResponderIfNeed()
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(sceneWillEnterForeground),
+            name: .sceneWillEnterForeground,
+            object: nil
+        )
+    }
+
+    @objc
+    private func sceneWillEnterForeground() {
+        makeInputViewFirstResponderIfNeed()
+    }
+
+    private func makeInputViewFirstResponderIfNeed() {
+        if UserDefaults.standard.bool(forKey: .isAutoShowKeyboardEnableUserDefaultsKey) {
+            userInterface.makeInputViewFirstResponder()
+        }
+    }
+
     private func recoverSelectedType() {
-        if let selectedTypeRawValue = UserDefaults.standard.string(forKey: Self.selectedTypeRawValueUserDefaultsKey),
+        if let selectedTypeRawValue = UserDefaults.standard.string(forKey: .selectedTypeRawValueUserDefaultsKey),
             let selectedType = ConverterOutputType(rawValue: selectedTypeRawValue) {
             userInterface.selectedType = selectedType
         } else {
@@ -72,7 +96,7 @@ extension ConverterViewController: ConverterEventResponder {
     }
 
     func didSelect(_ type: ConverterOutputType) {
-        UserDefaults.standard.set(type.rawValue, forKey: Self.selectedTypeRawValueUserDefaultsKey)
+        UserDefaults.standard.set(type.rawValue, forKey: .selectedTypeRawValueUserDefaultsKey)
         let reverse = type == .hiragana
         if case let .result(_, resultViewState) = userInterface.state,
             case let .result(currentResult) = resultViewState {
@@ -83,7 +107,8 @@ extension ConverterViewController: ConverterEventResponder {
     }
 
     func didTapSettingButton() {
-        
+        let settingViewController = makeSettingViewController()
+        present(settingViewController, animated: true)
     }
 
     private func subscribeToConverterEvent() {
