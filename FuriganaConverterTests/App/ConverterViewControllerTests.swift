@@ -14,14 +14,25 @@ class ConverterViewControllerTests: XCTestCase {
     class MockConverterUserInterfaceView: UIView, ConverterUserInterface {
 
         var selectedType: ConverterOutputType = .hiragana
-        var result: String = ""
+        var result: String? {
+            get {
+                if case let .result(_, resultViewState) = state,
+                    case let .result(currentResult) = resultViewState {
+                    return currentResult
+                } else {
+                    return nil
+                }
+            }
+            set {
+                if let newValue = newValue {
+                    state = .result(resultViewState: .result(newValue))
+                }
+            }
+        }
         var state: ConverterUserInterfaceState = .history
 
         func changeState(_ state: ConverterUserInterfaceState) {
             self.state = state
-            if case let .result(_, convertedString) = state {
-                self.result = convertedString
-            }
         }
     }
 
@@ -200,5 +211,19 @@ class ConverterViewControllerTests: XCTestCase {
 
         // then
         XCTAssertEqual(userInterface.result, expectedResult)
+    }
+
+    func test_didSelect_givenNotShowingResult_keepsState() {
+        // given
+        let state: ConverterUserInterfaceState = .history
+        userInterface.state = state
+
+        ConverterOutputType.allCases.forEach { type in
+            // when
+            sut.didSelect(type)
+
+            // then
+            XCTAssertEqual(userInterface.state, state)
+        }
     }
 }

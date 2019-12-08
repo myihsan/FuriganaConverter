@@ -16,6 +16,7 @@ import RxCocoa
 class ConverterRootView: NiblessView {
 
     weak var eventResponder: ConverterEventResponder?
+    private var privateState: ConverterUserInterfaceState = .history
 
     private let topBar = ConverterTopBar()
     private let inputTextView: UITextView = {
@@ -303,7 +304,17 @@ extension ConverterRootView: ConverterUserInterface {
         resultView.resultTextView.text
     }
 
-    func changeState(_ state: ConverterUserInterfaceState) {
+    var state: ConverterUserInterfaceState {
+        get {
+            privateState
+        }
+        set {
+            changeState(newValue)
+            privateState = newValue
+        }
+    }
+
+    private func changeState(_ state: ConverterUserInterfaceState) {
         let animateions: () -> Void
         switch state {
         case .history:

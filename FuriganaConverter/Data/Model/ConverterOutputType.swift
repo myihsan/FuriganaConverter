@@ -6,7 +6,8 @@
 //  Copyright © 2019 Jierong Li. All rights reserved.
 //
 
-enum ConverterOutputType: String {
+enum ConverterOutputType: String, CaseIterable  {
+
     case hiragana
     case katakana
 }

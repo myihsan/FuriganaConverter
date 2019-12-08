@@ -58,7 +58,7 @@ extension ConverterViewController: ConverterEventResponder {
 
     func inputWillChange() {
         convertTask?.cancel()
-        userInterface.changeState(.history)
+        userInterface.state = .history
     }
 
     func convert(_ japaneseString: String) {
@@ -74,10 +74,12 @@ extension ConverterViewController: ConverterEventResponder {
     func didSelect(_ type: ConverterOutputType) {
         UserDefaults.standard.set(type.rawValue, forKey: Self.selectedTypeRawValueUserDefaultsKey)
         let reverse = type == .hiragana
-        let currentResult = userInterface.result
-        let convertedString = currentResult
+        if case let .result(_, resultViewState) = userInterface.state,
+            case let .result(currentResult) = resultViewState {
+            let convertedString = currentResult
                 .applyingTransform(.hiraganaToKatakana, reverse: reverse) ?? currentResult
-        setResult(convertedString)
+            setResult(convertedString)
+        }
     }
 
     private func subscribeToConverterEvent() {
@@ -93,7 +95,7 @@ extension ConverterViewController: ConverterEventResponder {
                 if let convertTask = self.convertTask {
                     convertTask.cancel()
                 }
-                self.userInterface.changeState(.result(resultViewState: .loading))
+                self.userInterface.state = .result(resultViewState: .loading)
                 self.convertTask = self.remoteAPI.convert(japaneseString) { [weak self] result in
                     guard let self = self else {
                         return
@@ -103,7 +105,7 @@ extension ConverterViewController: ConverterEventResponder {
                         self.saveHistory(originalString: japaneseString, convertedString: convertedString)
                         self.setHiraganaResult(convertedString)
                     case let .failure(error):
-                        self.userInterface.changeState(.history)
+                        self.userInterface.state = .history
                         error
                     }
                 }
@@ -121,7 +123,7 @@ extension ConverterViewController: ConverterEventResponder {
     }
 
     private func setResult(_ convertedString: String) {
-        userInterface.changeState(.result(resultViewState: .result(convertedString)))
+        userInterface.state = .result(resultViewState: .result(convertedString))
     }
 
     private func getConvertedStringFromHistory(japaneseString: String) -> String? {
@@ -144,7 +146,7 @@ extension ConverterViewController: ConverterHistoryEventResponder {
     func didSelect(_ history: History) {
         let originalString = history.originalString
         let convertedString = history.convertedString
-        userInterface.changeState(.result(originalString: originalString, resultViewState: .result(convertedString)))
+        userInterface.state = .result(originalString: originalString, resultViewState: .result(convertedString))
     }
 
     func delete(_ history: History) {

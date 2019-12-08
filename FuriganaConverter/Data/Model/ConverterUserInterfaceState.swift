@@ -6,7 +6,7 @@
 //  Copyright © 2019 Jierong Li. All rights reserved.
 //
 
-enum ConverterUserInterfaceState {
+enum ConverterUserInterfaceState: Equatable {
 
     case history
     case result(originalString: String? = nil, resultViewState: ConvertingResultViewState)

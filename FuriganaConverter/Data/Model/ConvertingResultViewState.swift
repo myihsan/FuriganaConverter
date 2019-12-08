@@ -6,7 +6,7 @@
 //  Copyright © 2019 Jierong Li. All rights reserved.
 //
 
-enum ConvertingResultViewState {
+enum ConvertingResultViewState: Equatable {
 
     case loading
     case result(_ convertedString: String)
