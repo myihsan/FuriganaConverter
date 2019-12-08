@@ -1,0 +1,6 @@
+module Pods_FuriganaConverter {
+  umbrella header "Pods-FuriganaConverter-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -264,6 +264,9 @@ class ConverterRootView: NiblessView {
             let newSelectedRange = NSRange(location: selectedRange.location + textToPaste.count, length: 0)
             inputTextView.selectedRange = newSelectedRange
         }
+        if !inputTextView.text.isEmpty {
+            changeButtonsIsEnableTo(true)
+        }
     }
 
     @objc
