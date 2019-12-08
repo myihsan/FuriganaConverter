@@ -214,8 +214,7 @@ class ConverterRootView: NiblessView {
         inputTextView.rx.didChange
             .subscribe { _ in
                 let isNotEmpty = self.inputTextView.text.isEmpty == false
-                self.clearButtonItem.isEnabled = isNotEmpty
-                self.convertButtonItem.isEnabled = isNotEmpty
+                self.changeButtonsIsEnableTo(isNotEmpty)
             }
             .disposed(by: disposeBag)
     }
@@ -239,8 +238,7 @@ class ConverterRootView: NiblessView {
     @objc
     private func clearInputText() {
         inputTextView.text = nil
-        self.clearButtonItem.isEnabled = false
-        self.convertButtonItem.isEnabled = false
+        changeButtonsIsEnableTo(false)
     }
 
     @objc
@@ -252,6 +250,11 @@ class ConverterRootView: NiblessView {
     @objc
     private func shareResult() {
         eventResponder?.share(resultView.resultTextView.text)
+    }
+
+    private func changeButtonsIsEnableTo(_ isEnable: Bool) {
+        clearButtonItem.isEnabled = isEnable
+        convertButtonItem.isEnabled = isEnable
     }
 }
 
@@ -274,11 +277,22 @@ extension ConverterRootView: ConverterUserInterface {
     }
 
     var result: String {
-        get {
-            resultView.resultTextView.text
-        }
-        set {
-            resultView.resultTextView.text = newValue
+        resultView.resultTextView.text
+    }
+
+    func changeState(_ state: ConverterUserInterfaceState) {
+        switch state {
+        case .history:
+            historyView.isHidden = false
+            resultView.isHidden = true
+        case let .result(originalString, convertedString):
+            changeButtonsIsEnableTo(true)
+            if let originalString = originalString {
+                inputTextView.text = originalString
+            }
+            resultView.resultTextView.text = convertedString
+            historyView.isHidden = true
+            resultView.isHidden = false
         }
     }
 }

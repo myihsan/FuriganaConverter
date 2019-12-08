@@ -13,5 +13,7 @@ typealias ConverterUserInterfaceView = ConverterUserInterface & UIView
 protocol ConverterUserInterface: class {
 
     var selectedType: ConverterOutputType { get set }
-    var result: String { get set }
+    var result: String { get }
+
+    func changeState(_ state: ConverterUserInterfaceState)
 }

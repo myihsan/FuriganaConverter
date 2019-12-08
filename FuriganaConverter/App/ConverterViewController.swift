@@ -70,9 +70,9 @@ extension ConverterViewController: ConverterEventResponder {
         UserDefaults.standard.set(type.rawValue, forKey: Self.selectedTypeRawValueUserDefaultsKey)
         let reverse = type == .hiragana
         let currentResult = userInterface.result
-        userInterface.result = currentResult
+        let convertedString = currentResult
                 .applyingTransform(.hiraganaToKatakana, reverse: reverse) ?? currentResult
-
+        setResult(convertedString)
     }
 
     private func subscribeToConverterEvent() {
@@ -82,7 +82,7 @@ extension ConverterViewController: ConverterEventResponder {
             .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
             .subscribe(onNext: { japaneseString in
                 if let convertedString = self.getConvertedStringFromHistory(japaneseString: japaneseString) {
-                    self.setResult(convertedString: convertedString)
+                    self.setHiraganaResult(convertedString)
                     return
                 }
                 if let convertTask = self.convertTask {
@@ -95,7 +95,7 @@ extension ConverterViewController: ConverterEventResponder {
                     switch result {
                     case let .success(convertedString):
                         self.saveHistory(originalString: japaneseString, convertedString: convertedString)
-                        self.setResult(convertedString: convertedString)
+                        self.setHiraganaResult(convertedString)
                     case let .failure(error):
                         error
                     }
@@ -104,13 +104,17 @@ extension ConverterViewController: ConverterEventResponder {
             .disposed(by: disposeBag)
     }
 
-    private func setResult(convertedString: String) {
+    private func setHiraganaResult(_ convertedString: String) {
         var convertedString = convertedString
         if userInterface.selectedType == .katakana {
             convertedString = convertedString
                 .applyingTransform(.hiraganaToKatakana, reverse: false) ?? convertedString
         }
-        self.userInterface.result = convertedString
+        setResult(convertedString)
+    }
+
+    private func setResult(_ convertedString: String) {
+        userInterface.changeState(.result(convertedString: convertedString))
     }
 
     private func getConvertedStringFromHistory(japaneseString: String) -> String? {
@@ -131,7 +135,9 @@ extension ConverterViewController: ConverterEventResponder {
 extension ConverterViewController: ConverterHistoryEventResponder {
 
     func didSelect(_ history: History) {
-        
+        let originalString = history.originalString
+        let convertedString = history.convertedString
+        userInterface.changeState(.result(originalString: originalString, convertedString: convertedString))
     }
 
     func delete(_ history: History) {

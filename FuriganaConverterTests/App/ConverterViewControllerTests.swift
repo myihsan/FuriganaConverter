@@ -15,6 +15,14 @@ class ConverterViewControllerTests: XCTestCase {
 
         var selectedType: ConverterOutputType = .hiragana
         var result: String = ""
+        var state: ConverterUserInterfaceState = .history
+
+        func changeState(_ state: ConverterUserInterfaceState) {
+            self.state = state
+            if case let .result(_, convertedString) = state {
+                self.result = convertedString
+            }
+        }
     }
 
     var userInterface: MockConverterUserInterfaceView!
