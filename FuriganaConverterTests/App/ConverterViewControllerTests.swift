@@ -21,14 +21,14 @@ class ConverterViewControllerTests: XCTestCase {
     var remoteAPI: MockFuriganaConverterRemoteAPI!
     var coreDataStack: MockCoreDataStack!
     var historyHolder: MockHistoryHolder!
-    var sut: ConvertorViewController!
+    var sut: ConverterViewController!
 
     override func setUp() {
         userInterface = MockConverterUserInterfaceView()
         remoteAPI = MockFuriganaConverterRemoteAPI()
         coreDataStack = MockCoreDataStack()
         historyHolder = MockHistoryHolder()
-        sut = ConvertorViewController(
+        sut = ConverterViewController(
             userInterface: userInterface,
             remoteAPI: remoteAPI,
             coreDataStack: coreDataStack,

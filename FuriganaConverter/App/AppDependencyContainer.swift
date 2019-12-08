@@ -10,14 +10,14 @@ import CoreData
 
 class AppDependencyContainer {
 
-    func makeConvertorViewController() -> ConvertorViewController {
+    func makeConvertorViewController() -> ConverterViewController {
         let coreDataStack = CoreDataStack()
         let historyFetchedResultsController = createFetchedResultsController(coreDataStack: coreDataStack)
         let historyView = ConverterHistoryView(historyFetchedResultsController: historyFetchedResultsController)
         let userInterface = ConverterRootView(historyView: historyView)
         let remoteAPI = GooFuriganaConverterRemoteAPI(session: .shared)
         let historyHolder = CoreDataHistoryHolder(fetchedResultsController: historyFetchedResultsController)
-        let viewController = ConvertorViewController(
+        let viewController = ConverterViewController(
             userInterface: userInterface,
             remoteAPI: remoteAPI,
             coreDataStack: coreDataStack,

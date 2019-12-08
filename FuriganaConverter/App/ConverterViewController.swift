@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import CoreData
 
-class ConvertorViewController: NiblessViewController {
+class ConverterViewController: NiblessViewController {
 
     private static let selectedTypeRawValueUserDefaultsKey = "SelectedType"
 
@@ -54,7 +54,7 @@ class ConvertorViewController: NiblessViewController {
     }
 }
 
-extension ConvertorViewController: ConverterEventResponder {
+extension ConverterViewController: ConverterEventResponder {
 
     func convert(_ japaneseString: String) {
         convertSubject.onNext(japaneseString)
@@ -128,7 +128,7 @@ extension ConvertorViewController: ConverterEventResponder {
     }
 }
 
-extension ConvertorViewController: ConverterHistoryEventResponder {
+extension ConverterViewController: ConverterHistoryEventResponder {
 
     func didSelect(_ history: History) {
         
