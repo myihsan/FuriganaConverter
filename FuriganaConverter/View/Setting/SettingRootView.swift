@@ -10,6 +10,8 @@ import UIKit
 
 class SettingRootView: NiblessView {
 
+    weak var eventResponder: SettingEventResponder?
+
     private let navigationBar: UINavigationBar = {
         let navigationBar = UINavigationBar()
         let navigationItem = UINavigationItem()
@@ -56,6 +58,7 @@ class SettingRootView: NiblessView {
 
         backgroundColor = .systemBackground
         tableView.dataSource = self
+        tableView.delegate = self
 
         addSubview(tableView)
         tableView.snp.makeConstraints { make in
@@ -83,6 +86,18 @@ extension SettingRootView: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return cells[indexPath]!
+    }
+}
+
+extension SettingRootView: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch cells[indexPath] {
+        case acknowledgementsCell:
+            eventResponder?.showAcknowledgements()
+        default:
+            break
+        }
     }
 }
 

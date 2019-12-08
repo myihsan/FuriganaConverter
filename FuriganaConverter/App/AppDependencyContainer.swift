@@ -31,7 +31,9 @@ class AppDependencyContainer {
     }
 
     func makeSettingViewController() -> UIViewController {
-        let settingViewController = SettingViewController()
+        let userInterface = SettingRootView()
+        let settingViewController = SettingViewController(userInterface: userInterface)
+        userInterface.eventResponder = settingViewController
         let navigationController = UINavigationController(rootViewController: settingViewController)
         return navigationController
     }

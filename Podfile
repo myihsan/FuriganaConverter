@@ -6,6 +6,7 @@ target 'FuriganaConverter' do
     pod 'SnapKit'
     pod 'UITextView+Placeholder', :modular_headers => true
     pod 'RxKeyboard'
+    pod 'AcknowList'
 
     target 'FuriganaConverterTests' do
         inherit! :search_paths
