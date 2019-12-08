@@ -93,6 +93,11 @@ extension SettingRootView: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch cells[indexPath] {
+        case clearHistoryCell:
+            if clearHistoryCell.textLabel?.isEnabled == false {
+                return
+            }
+            eventResponder?.clearHistory()
         case acknowledgementsCell:
             eventResponder?.showAcknowledgements()
         default:
@@ -102,6 +107,11 @@ extension SettingRootView: UITableViewDelegate {
 }
 
 extension SettingRootView: SettingUserInterface {
+
+    func disableClearHistoryCell() {
+        clearHistoryCell.selectionStyle = .none
+        clearHistoryCell.textLabel?.isEnabled = false
+    }
 
     func deselectCells() {
         if let indexPath = tableView.indexPathForSelectedRow {

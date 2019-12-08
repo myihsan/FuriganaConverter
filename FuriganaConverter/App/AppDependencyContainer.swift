@@ -11,9 +11,10 @@ import CoreData
 
 class AppDependencyContainer {
 
+    private let coreDataStack = CoreDataStack()
+    private lazy var historyFetchedResultsController = createFetchedResultsController(coreDataStack: coreDataStack)
+
     func makeConvertorViewController() -> ConverterViewController {
-        let coreDataStack = CoreDataStack()
-        let historyFetchedResultsController = createFetchedResultsController(coreDataStack: coreDataStack)
         let historyView = ConverterHistoryView(historyFetchedResultsController: historyFetchedResultsController)
         let userInterface = ConverterRootView(historyView: historyView)
         let remoteAPI = GooFuriganaConverterRemoteAPI(session: .shared)
@@ -32,7 +33,10 @@ class AppDependencyContainer {
 
     func makeSettingViewController() -> UIViewController {
         let userInterface = SettingRootView()
-        let settingViewController = SettingViewController(userInterface: userInterface)
+        let settingViewController = SettingViewController(
+            userInterface: userInterface,
+            coreDataStack: coreDataStack
+        )
         userInterface.eventResponder = settingViewController
         let navigationController = UINavigationController(rootViewController: settingViewController)
         return navigationController

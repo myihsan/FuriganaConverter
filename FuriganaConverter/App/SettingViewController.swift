@@ -8,13 +8,19 @@
 
 import UIKit
 import AcknowList
+import CoreData
 
 class SettingViewController: NiblessViewController {
 
     private let userInterface: SettingUserInterfaceView
+    private let coreDataStack: CoreDataStack
 
-    init(userInterface: SettingUserInterfaceView) {
+    init(
+        userInterface: SettingUserInterfaceView,
+        coreDataStack: CoreDataStack
+    ) {
         self.userInterface = userInterface
+        self.coreDataStack = coreDataStack
         super.init()
     }
 
@@ -27,11 +33,25 @@ class SettingViewController: NiblessViewController {
         title = L10n.settings
         let doneButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
         navigationItem.rightBarButtonItem = doneButtonItem
+
+        disableClearHitoryCellIfNeed()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         userInterface.deselectCells()
+    }
+
+    private func disableClearHitoryCellIfNeed() {
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = History.fetchRequest()
+        do {
+            let count = try coreDataStack.managedContext.count(for: fetchRequest)
+            if count == 0 {
+                userInterface.disableClearHistoryCell()
+            }
+        } catch let error as NSError {
+            print("Fetching error: \(error), \(error.userInfo)")
+        }
     }
 
     @objc
@@ -41,6 +61,31 @@ class SettingViewController: NiblessViewController {
 }
 
 extension SettingViewController: SettingEventResponder {
+
+    func clearHistory() {
+        userInterface.deselectCells()
+        let alertController = UIAlertController()
+        alertController.addCancelAction()
+        let clearAction = UIAlertAction(title: L10n.clearHistory, style: .destructive) { _ in
+            let fetchRequest: NSFetchRequest<NSFetchRequestResult> = History.fetchRequest()
+            let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+            do {
+                try self.coreDataStack.managedContext.execute(deleteRequest)
+                NotificationCenter.default.post(name: .didClearHistory, object: self)
+                self.userInterface.disableClearHistoryCell()
+            } catch {
+                self.presentClearFailedAlert()
+            }
+        }
+        alertController.addAction(clearAction)
+        present(alertController, animated: true)
+    }
+
+    private func presentClearFailedAlert() {
+        let alertController = UIAlertController(title: L10n.clearFailed, message: nil, preferredStyle: .alert)
+        alertController.addOKAction()
+        present(alertController, animated: true)
+    }
 
     func showAcknowledgements() {
         let viewController = AcknowListViewController()

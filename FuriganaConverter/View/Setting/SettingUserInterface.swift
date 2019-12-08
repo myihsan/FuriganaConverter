@@ -12,5 +12,6 @@ typealias SettingUserInterfaceView = SettingUserInterface & UIView
 
 protocol SettingUserInterface: class {
 
+    func disableClearHistoryCell()
     func deselectCells()
 }

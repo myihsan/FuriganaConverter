@@ -8,5 +8,6 @@
 
 protocol SettingEventResponder: class {
 
+    func clearHistory()
     func showAcknowledgements()
 }

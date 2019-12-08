@@ -17,6 +17,8 @@ internal enum L10n {
   internal static let cancel = L10n.tr("Localizable", "Cancel")
   /// Clear
   internal static let clear = L10n.tr("Localizable", "Clear")
+  /// Clear Failed
+  internal static let clearFailed = L10n.tr("Localizable", "Clear Failed")
   /// Clear History
   internal static let clearHistory = L10n.tr("Localizable", "Clear History")
   /// Convert
