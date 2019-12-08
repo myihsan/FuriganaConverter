@@ -52,7 +52,9 @@ class ConverterViewControllerTests: XCTestCase {
             remoteAPI: remoteAPI,
             coreDataStack: coreDataStack,
             historyHolder: historyHolder
-        )
+        ) {
+            UIViewController()
+        }
     }
 
     override func tearDown() {

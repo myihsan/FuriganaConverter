@@ -23,6 +23,9 @@
 		BB69BC10239CCC47003B85A3 /* ConverterUserInterfaceState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69BC0F239CCC47003B85A3 /* ConverterUserInterfaceState.swift */; };
 		BB69BC12239CDA91003B85A3 /* ConvertingResultViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69BC11239CDA91003B85A3 /* ConvertingResultViewState.swift */; };
 		BB69BC17239CF385003B85A3 /* UIAlertControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69BC16239CF385003B85A3 /* UIAlertControllerExtensions.swift */; };
+		BB69BC19239D010D003B85A3 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69BC18239D010D003B85A3 /* SettingViewController.swift */; };
+		BB69BC1C239D02B0003B85A3 /* SettingRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69BC1B239D02B0003B85A3 /* SettingRootView.swift */; };
+		BB69BC1E239D1143003B85A3 /* SettingUserInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69BC1D239D1143003B85A3 /* SettingUserInterface.swift */; };
 		BB97E07B23993BD000358A90 /* ConverterRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB97E07A23993BD000358A90 /* ConverterRootView.swift */; };
 		BB97E07D2399402F00358A90 /* NiblessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB97E07C2399402F00358A90 /* NiblessView.swift */; };
 		BB97E082239952BB00358A90 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BB97E084239952BB00358A90 /* Localizable.strings */; };
@@ -91,6 +94,9 @@
 		BB69BC0F239CCC47003B85A3 /* ConverterUserInterfaceState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterUserInterfaceState.swift; sourceTree = "<group>"; };
 		BB69BC11239CDA91003B85A3 /* ConvertingResultViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertingResultViewState.swift; sourceTree = "<group>"; };
 		BB69BC16239CF385003B85A3 /* UIAlertControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertControllerExtensions.swift; sourceTree = "<group>"; };
+		BB69BC18239D010D003B85A3 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		BB69BC1B239D02B0003B85A3 /* SettingRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRootView.swift; sourceTree = "<group>"; };
+		BB69BC1D239D1143003B85A3 /* SettingUserInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingUserInterface.swift; sourceTree = "<group>"; };
 		BB97E07A23993BD000358A90 /* ConverterRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterRootView.swift; sourceTree = "<group>"; };
 		BB97E07C2399402F00358A90 /* NiblessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NiblessView.swift; sourceTree = "<group>"; };
 		BB97E0812399529C00358A90 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -196,11 +202,21 @@
 			path = CoreData;
 			sourceTree = "<group>";
 		};
+		BB69BC1A239D0290003B85A3 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				BB69BC1B239D02B0003B85A3 /* SettingRootView.swift */,
+				BB69BC1D239D1143003B85A3 /* SettingUserInterface.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
 		BB97E07923993B7800358A90 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				BB97E07C2399402F00358A90 /* NiblessView.swift */,
 				BB97E093239AC8DF00358A90 /* Converter */,
+				BB69BC1A239D0290003B85A3 /* Setting */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -238,6 +254,7 @@
 				BB97E09B239ACFC200358A90 /* NiblessViewController.swift */,
 				BBE8A3B82398138F00663E73 /* ConverterViewController.swift */,
 				BB69BC16239CF385003B85A3 /* UIAlertControllerExtensions.swift */,
+				BB69BC18239D010D003B85A3 /* SettingViewController.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -632,8 +649,10 @@
 				BB97E09C239ACFC200358A90 /* NiblessViewController.swift in Sources */,
 				BB69BBF8239BE559003B85A3 /* ConverterHistoryView.swift in Sources */,
 				BBE8A3B52398138F00663E73 /* AppDelegate.swift in Sources */,
+				BB69BC1E239D1143003B85A3 /* SettingUserInterface.swift in Sources */,
 				BBE8A3B72398138F00663E73 /* SceneDelegate.swift in Sources */,
 				BBE8A3FB239821EA00663E73 /* GooFuriganaConverterRemoteAPI.swift in Sources */,
+				BB69BC1C239D02B0003B85A3 /* SettingRootView.swift in Sources */,
 				BB69BBFF239BE619003B85A3 /* History+CoreDataProperties.swift in Sources */,
 				BBE83997239B853300A90DEB /* ConvertingResultView.swift in Sources */,
 				BB97E09A239ACF0A00358A90 /* ConverterUserInterface.swift in Sources */,
@@ -647,6 +666,7 @@
 				BB97E098239ACD6200358A90 /* AppDependencyContainer.swift in Sources */,
 				BB69BC04239C0666003B85A3 /* HistoryCell.swift in Sources */,
 				BBE8A40C23982EFE00663E73 /* GooFuriganaConverterResponse.swift in Sources */,
+				BB69BC19239D010D003B85A3 /* SettingViewController.swift in Sources */,
 				BB97E08F239A8E3700358A90 /* Strings.swift in Sources */,
 				BBE83999239B99C300A90DEB /* ConverterTopBar.swift in Sources */,
 				BBE8A40A23982B7B00663E73 /* ErrorResponse.swift in Sources */,

@@ -16,24 +16,26 @@ class ConverterViewController: NiblessViewController {
 
     private let userInterface: ConverterUserInterfaceView
     private let remoteAPI: FuriganaConverterRemoteAPI
+    private let coreDataStack: CoreDataStack
+    private let historyHolder: HistoryHolder
+    private let makeSettingViewController: () -> UIViewController
 
     private let convertSubject = PublishSubject<String>()
     private let disposeBag = DisposeBag()
     private var convertTask: URLSessionDataTask?
 
-    private let coreDataStack: CoreDataStack
-    private let historyHolder: HistoryHolder
-
     init(
         userInterface: ConverterUserInterfaceView,
         remoteAPI: FuriganaConverterRemoteAPI,
         coreDataStack: CoreDataStack,
-        historyHolder: HistoryHolder
+        historyHolder: HistoryHolder,
+        makeSettingViewController: @escaping () -> UIViewController
     ) {
         self.userInterface = userInterface
         self.remoteAPI = remoteAPI
         self.coreDataStack = coreDataStack
         self.historyHolder = historyHolder
+        self.makeSettingViewController = makeSettingViewController
         super.init()
 
         recoverSelectedType()
@@ -83,7 +85,8 @@ extension ConverterViewController: ConverterEventResponder {
     }
 
     func didTapSettingButton() {
-        
+        let settingViewController = makeSettingViewController()
+        present(settingViewController, animated: true)
     }
 
     private func subscribeToConverterEvent() {
