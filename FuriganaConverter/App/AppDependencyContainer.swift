@@ -16,10 +16,12 @@ class AppDependencyContainer {
         let historyView = ConverterHistoryView(historyFetchedResultsController: historyFetchedResultsController)
         let userInterface = ConverterRootView(historyView: historyView)
         let remoteAPI = GooFuriganaConverterRemoteAPI(session: .shared)
+        let historyHolder = CoreDataHistoryHolder(fetchedResultsController: historyFetchedResultsController)
         let viewController = ConvertorViewController(
             userInterface: userInterface,
             remoteAPI: remoteAPI,
-            coreDataStack: coreDataStack
+            coreDataStack: coreDataStack,
+            historyHolder: historyHolder
         )
         userInterface.eventResponder = viewController
         return viewController

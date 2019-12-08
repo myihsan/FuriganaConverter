@@ -8,6 +8,7 @@
 
 import UIKit
 import RxSwift
+import CoreData
 
 class ConvertorViewController: NiblessViewController {
 
@@ -21,15 +22,18 @@ class ConvertorViewController: NiblessViewController {
     private var convertTask: URLSessionDataTask?
 
     private let coreDataStack: CoreDataStack
+    private let historyHolder: HistoryHolder
 
     init(
         userInterface: ConverterUserInterfaceView,
         remoteAPI: FuriganaConverterRemoteAPI,
-        coreDataStack: CoreDataStack
+        coreDataStack: CoreDataStack,
+        historyHolder: HistoryHolder
     ) {
         self.userInterface = userInterface
         self.remoteAPI = remoteAPI
         self.coreDataStack = coreDataStack
+        self.historyHolder = historyHolder
         super.init()
 
         recoverSelectedType()
@@ -75,7 +79,12 @@ extension ConvertorViewController: ConverterEventResponder {
         convertSubject
             // Prevent repeated taps
             .throttle(.milliseconds(300), latest: false, scheduler: MainScheduler.instance)
+            .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
             .subscribe(onNext: { japaneseString in
+                if let convertedString = self.getConvertedStringFromHistory(japaneseString: japaneseString) {
+                    self.setResult(convertedString: convertedString)
+                    return
+                }
                 if let convertTask = self.convertTask {
                     convertTask.cancel()
                 }
@@ -84,17 +93,37 @@ extension ConvertorViewController: ConverterEventResponder {
                         return
                     }
                     switch result {
-                    case var .success(convertedString):
-                        if self.userInterface.selectedType == .katakana {
-                            convertedString = convertedString
-                                .applyingTransform(.hiraganaToKatakana, reverse: false) ?? convertedString
-                        }
-                        self.userInterface.result = convertedString
+                    case let .success(convertedString):
+                        self.saveHistory(originalString: japaneseString, convertedString: convertedString)
+                        self.setResult(convertedString: convertedString)
                     case let .failure(error):
                         error
                     }
                 }
             })
             .disposed(by: disposeBag)
+    }
+
+    private func setResult(convertedString: String) {
+        var convertedString = convertedString
+        if userInterface.selectedType == .katakana {
+            convertedString = convertedString
+                .applyingTransform(.hiraganaToKatakana, reverse: false) ?? convertedString
+        }
+        self.userInterface.result = convertedString
+    }
+
+    private func getConvertedStringFromHistory(japaneseString: String) -> String? {
+        historyHolder.histories
+            .first { $0.originalString == japaneseString }?
+            .convertedString
+    }
+
+    private func saveHistory(originalString: String, convertedString: String) {
+        let history = History(context: self.coreDataStack.managedContext)
+        history.originalString = originalString
+        history.convertedString = convertedString
+        history.timestamp = Date()
+        coreDataStack.saveContext()
     }
 }

@@ -17,6 +17,8 @@
 		BB69BC02239BF1AB003B85A3 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69BC01239BF1AB003B85A3 /* CoreDataStack.swift */; };
 		BB69BC04239C0666003B85A3 /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69BC03239C0666003B85A3 /* HistoryCell.swift */; };
 		BB69BC08239C9E4D003B85A3 /* MockCoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69BC07239C9E4D003B85A3 /* MockCoreDataStack.swift */; };
+		BB69BC0A239CA1C5003B85A3 /* HistoryHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69BC09239CA1C5003B85A3 /* HistoryHolder.swift */; };
+		BB69BC0C239CA3FF003B85A3 /* MockHistoryHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB69BC0B239CA3FF003B85A3 /* MockHistoryHolder.swift */; };
 		BB97E07B23993BD000358A90 /* ConverterRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB97E07A23993BD000358A90 /* ConverterRootView.swift */; };
 		BB97E07D2399402F00358A90 /* NiblessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB97E07C2399402F00358A90 /* NiblessView.swift */; };
 		BB97E082239952BB00358A90 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BB97E084239952BB00358A90 /* Localizable.strings */; };
@@ -79,6 +81,8 @@
 		BB69BC01239BF1AB003B85A3 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		BB69BC03239C0666003B85A3 /* HistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCell.swift; sourceTree = "<group>"; };
 		BB69BC07239C9E4D003B85A3 /* MockCoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCoreDataStack.swift; sourceTree = "<group>"; };
+		BB69BC09239CA1C5003B85A3 /* HistoryHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryHolder.swift; sourceTree = "<group>"; };
+		BB69BC0B239CA3FF003B85A3 /* MockHistoryHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockHistoryHolder.swift; sourceTree = "<group>"; };
 		BB97E07A23993BD000358A90 /* ConverterRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterRootView.swift; sourceTree = "<group>"; };
 		BB97E07C2399402F00358A90 /* NiblessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NiblessView.swift; sourceTree = "<group>"; };
 		BB97E0812399529C00358A90 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -179,6 +183,7 @@
 				BB69BBFD239BE619003B85A3 /* History+CoreDataProperties.swift */,
 				BB69BBF9239BE5A0003B85A3 /* FuriganaConverter.xcdatamodeld */,
 				BB69BC01239BF1AB003B85A3 /* CoreDataStack.swift */,
+				BB69BC09239CA1C5003B85A3 /* HistoryHolder.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -345,6 +350,7 @@
 				BBE8A403239824D500663E73 /* MockURLSession.swift */,
 				BBE83994239B74B000A90DEB /* MockFuriganaConverterRemoteAPI.swift */,
 				BB69BC07239C9E4D003B85A3 /* MockCoreDataStack.swift */,
+				BB69BC0B239CA3FF003B85A3 /* MockHistoryHolder.swift */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
@@ -619,6 +625,7 @@
 				BBE83997239B853300A90DEB /* ConvertingResultView.swift in Sources */,
 				BB97E09A239ACF0A00358A90 /* ConverterUserInterface.swift in Sources */,
 				BB69BC02239BF1AB003B85A3 /* CoreDataStack.swift in Sources */,
+				BB69BC0A239CA1C5003B85A3 /* HistoryHolder.swift in Sources */,
 				BBE8A3F7239821A300663E73 /* RemoteAPIError.swift in Sources */,
 				BB97E07D2399402F00358A90 /* NiblessView.swift in Sources */,
 				BB97E098239ACD6200358A90 /* AppDependencyContainer.swift in Sources */,
@@ -639,6 +646,7 @@
 				BB69BC08239C9E4D003B85A3 /* MockCoreDataStack.swift in Sources */,
 				BBE8A404239824D500663E73 /* MockURLSession.swift in Sources */,
 				BBE8A3FD2398222900663E73 /* GooFuriganaConverterRemoteAPITests.swift in Sources */,
+				BB69BC0C239CA3FF003B85A3 /* MockHistoryHolder.swift in Sources */,
 				BBE8A402239824A300663E73 /* MockURLSessionDataTask.swift in Sources */,
 				BBE83993239B73E900A90DEB /* ConverterViewControllerTests.swift in Sources */,
 			);
